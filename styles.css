@@ -429,6 +429,20 @@ section {
   border: 1px solid var(--line);
 }
 
+.panel-role-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.panel-role-link:hover,
+.panel-role-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(20, 86, 140, 0.28);
+  box-shadow: 0 10px 22px rgba(28, 40, 63, 0.08);
+}
+
 .panel-role strong {
   display: block;
   font-size: 0.95rem;
