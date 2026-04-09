@@ -88,20 +88,6 @@
             <a href="#work" class="btn btn-primary">See selected work</a>
             <a href="mailto:yaochong.chow.20@gmail.com" class="btn btn-secondary">Email me</a>
           </div>
-          <ul class="hero-highlights">
-            <li>
-              <span class="highlight-value">10x</span>
-              <span class="highlight-copy">Go rate limiter instances behind Envoy</span>
-            </li>
-            <li>
-              <span class="highlight-value">6-node</span>
-              <span class="highlight-copy">Redis Cluster with Lua-based atomic limits</span>
-            </li>
-            <li>
-              <span class="highlight-value">7 services</span>
-              <span class="highlight-copy">Event-driven e-commerce platform on AWS</span>
-            </li>
-          </ul>
         </div>
 
         <aside class="hero-panel" aria-label="Strengths and tools">
@@ -128,61 +114,6 @@
             </div>
           </div>
         </aside>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="container section-shell">
-        <div class="section-intro">
-          <p class="section-kicker">Experience</p>
-          <h2>Internships where the work moved past demos.</h2>
-          <p>
-            My internships have mostly centered on the same thing this portfolio does:
-            turning system bottlenecks into measurable improvements across backend,
-            data, and hardware-adjacent software.
-          </p>
-        </div>
-
-        <div class="experience-grid">
-          <article class="experience-card reveal">
-            <div class="experience-head">
-              <div>
-                <p class="experience-role">NeuroLeap</p>
-                <h3>Software and Robotics Intern</h3>
-              </div>
-              <span class="experience-date">2025</span>
-            </div>
-            <p class="experience-summary">
-              Worked across APIs, caching, telemetry, BLE streaming, and PostgreSQL-backed
-              analytics for AI-driven hardware and software systems.
-            </p>
-            <ul class="experience-points">
-              <li>Built Node.js REST APIs with Redis-backed coordination and request deduplication, sustaining 900 req/sec with sub-180ms p95 latency.</li>
-              <li>Reduced p95 latency from 420ms to 110ms and increased ingestion throughput 2.8x by tuning PostgreSQL indexing, connection management, and ingestion workflows on 8M+ rows.</li>
-              <li>Designed nRF52840 firmware and a real-time telemetry pipeline that streamed multi-channel sensor data over BLE and handled 1.2M records per hour across 8 channels.</li>
-              <li>Tuned BLE link parameters to cut packet loss from 9.2% to 1.8%, making long validation runs far more stable for the team.</li>
-            </ul>
-          </article>
-
-          <article class="experience-card reveal">
-            <div class="experience-head">
-              <div>
-                <p class="experience-role">Infinite Option</p>
-                <h3>Software Engineer Intern</h3>
-              </div>
-              <span class="experience-date">2024</span>
-            </div>
-            <p class="experience-summary">
-              Focused on platform reliability and authentication infrastructure for a
-              production Node.js backend.
-            </p>
-            <ul class="experience-points">
-              <li>Reduced recurring production incidents 32% and lowered MTTR 60%, from 45 minutes to 18 minutes, by standardizing Joi request validation across APIs.</li>
-              <li>Implemented multi-tier RBAC, JWT authentication, refresh rotation, and Redis session invalidation to strengthen platform security.</li>
-              <li>Built an authentication API that supported roughly 2K daily logins.</li>
-            </ul>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -223,6 +154,103 @@
               <li>Measure before optimizing.</li>
               <li>Design around failure modes, not just happy paths.</li>
               <li>Prefer systems I can explain clearly over systems that sound impressive.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container section-shell">
+        <div class="section-intro">
+          <p class="section-kicker">Experience</p>
+          <h2>Internships where the work moved past demos.</h2>
+          <p>
+            My internships have mostly centered on the same thing this portfolio does:
+            turning system bottlenecks into measurable improvements across backend,
+            data, and hardware-adjacent software.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <article class="experience-card reveal">
+            <div class="experience-head">
+              <div>
+                <p class="experience-role">NeuroLeap</p>
+                <h3>Software and Robotics Intern</h3>
+              </div>
+              <span class="experience-date">2025</span>
+            </div>
+            <div class="experience-tags">
+              <span>Node.js APIs</span>
+              <span>Redis</span>
+              <span>PostgreSQL</span>
+              <span>BLE Firmware</span>
+              <span>Telemetry</span>
+            </div>
+            <p class="experience-summary">
+              Worked across APIs, caching, telemetry, BLE streaming, and PostgreSQL-backed
+              analytics for AI-driven hardware and software systems.
+            </p>
+            <div class="experience-metrics">
+              <div class="experience-metric">
+                <span class="metric-value">900 req/sec</span>
+                <span class="metric-label">API throughput</span>
+              </div>
+              <div class="experience-metric">
+                <span class="metric-value">2.8x</span>
+                <span class="metric-label">ingestion gain</span>
+              </div>
+              <div class="experience-metric">
+                <span class="metric-value">9.2% → 1.8%</span>
+                <span class="metric-label">packet loss</span>
+              </div>
+            </div>
+            <ul class="experience-points">
+              <li>Built Node.js REST APIs with Redis-backed coordination and request deduplication, sustaining 900 req/sec with sub-180ms p95 latency.</li>
+              <li>Reduced p95 latency from 420ms to 110ms and increased ingestion throughput 2.8x by tuning PostgreSQL indexing, connection management, and ingestion workflows on 8M+ rows.</li>
+              <li>Designed nRF52840 firmware and a real-time telemetry pipeline that streamed multi-channel sensor data over BLE and handled 1.2M records per hour across 8 channels.</li>
+              <li>Tuned BLE link parameters to cut packet loss from 9.2% to 1.8%, making long validation runs far more stable for the team.</li>
+            </ul>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="experience-head">
+              <div>
+                <p class="experience-role">Infinite Option</p>
+                <h3>Software Engineer Intern</h3>
+              </div>
+              <span class="experience-date">2024</span>
+            </div>
+            <div class="experience-tags">
+              <span>Node.js</span>
+              <span>JWT Auth</span>
+              <span>RBAC</span>
+              <span>Redis Sessions</span>
+              <span>Platform Reliability</span>
+            </div>
+            <p class="experience-summary">
+              Focused on platform reliability and authentication infrastructure for a
+              production Node.js backend.
+            </p>
+            <div class="experience-metrics">
+              <div class="experience-metric">
+                <span class="metric-value">-32%</span>
+                <span class="metric-label">incidents</span>
+              </div>
+              <div class="experience-metric">
+                <span class="metric-value">45 → 18 min</span>
+                <span class="metric-label">MTTR</span>
+              </div>
+              <div class="experience-metric">
+                <span class="metric-value">2K/day</span>
+                <span class="metric-label">logins supported</span>
+              </div>
+            </div>
+            <ul class="experience-points">
+              <li>Reduced recurring production incidents 32% and lowered MTTR 60%, from 45 minutes to 18 minutes, by standardizing Joi request validation across APIs.</li>
+              <li>Implemented multi-tier RBAC, JWT authentication, refresh rotation, and Redis session invalidation to strengthen platform security.</li>
+              <li>Built an authentication API that supported roughly 2K daily logins.</li>
             </ul>
           </article>
         </div>

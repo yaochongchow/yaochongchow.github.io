@@ -437,6 +437,16 @@ section {
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-warm));
 }
 
 .experience-head {
@@ -468,6 +478,55 @@ section {
 
 .experience-summary {
   margin: 0.9rem 0 0;
+  color: var(--muted);
+}
+
+.experience-tags {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.experience-tags span {
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 118, 110, 0.16);
+  background: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-strong);
+}
+
+.experience-metrics {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.experience-metric {
+  padding: 0.9rem;
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 233, 219, 0.95));
+  border: 1px solid rgba(24, 32, 40, 0.08);
+}
+
+.metric-value {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+.metric-label {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--muted);
 }
 
@@ -779,6 +838,10 @@ footer {
   .about-grid,
   .experience-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .experience-metrics {
+    grid-template-columns: 1fr;
   }
 
   .hero-highlights {
