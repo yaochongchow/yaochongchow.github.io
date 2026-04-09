@@ -425,6 +425,76 @@ section {
   gap: 1rem;
 }
 
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.experience-card {
+  border-radius: var(--radius-lg);
+  padding: 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.experience-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+}
+
+.experience-role,
+.experience-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.experience-head h3 {
+  margin: 0.35rem 0 0;
+  font-size: 1.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.experience-date {
+  white-space: nowrap;
+}
+
+.experience-summary {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+}
+
+.experience-points {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-points li {
+  position: relative;
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+
+.experience-points li + li {
+  margin-top: 0.75rem;
+}
+
+.experience-points li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-warm);
+}
+
 .about-card {
   border-radius: var(--radius-lg);
   padding: 1.4rem;
@@ -706,7 +776,8 @@ footer {
     order: initial;
   }
 
-  .about-grid {
+  .about-grid,
+  .experience-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -766,6 +837,7 @@ footer {
 
   .hero-panel,
   .about-grid,
+  .experience-grid,
   .mini-grid,
   .contact-grid {
     grid-template-columns: 1fr;
@@ -782,6 +854,7 @@ footer {
 
   .feature-head,
   .mini-head,
+  .experience-head,
   .footer-inner {
     flex-direction: column;
     align-items: start;

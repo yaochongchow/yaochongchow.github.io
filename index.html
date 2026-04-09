@@ -32,7 +32,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -42,6 +42,7 @@
       <a class="nav-logo" href="#top">Charles Chow</a>
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#contact">Contact</a></li>
         <li>
@@ -127,6 +128,61 @@
             </div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container section-shell">
+        <div class="section-intro">
+          <p class="section-kicker">Experience</p>
+          <h2>Internships where the work moved past demos.</h2>
+          <p>
+            My internships have mostly centered on the same thing this portfolio does:
+            turning system bottlenecks into measurable improvements across backend,
+            data, and hardware-adjacent software.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <article class="experience-card reveal">
+            <div class="experience-head">
+              <div>
+                <p class="experience-role">NeuroLeap</p>
+                <h3>Software and Robotics Intern</h3>
+              </div>
+              <span class="experience-date">2025</span>
+            </div>
+            <p class="experience-summary">
+              Worked across APIs, caching, telemetry, BLE streaming, and PostgreSQL-backed
+              analytics for AI-driven hardware and software systems.
+            </p>
+            <ul class="experience-points">
+              <li>Built Node.js REST APIs with Redis-backed coordination and request deduplication, sustaining 900 req/sec with sub-180ms p95 latency.</li>
+              <li>Reduced p95 latency from 420ms to 110ms and increased ingestion throughput 2.8x by tuning PostgreSQL indexing, connection management, and ingestion workflows on 8M+ rows.</li>
+              <li>Designed nRF52840 firmware and a real-time telemetry pipeline that streamed multi-channel sensor data over BLE and handled 1.2M records per hour across 8 channels.</li>
+              <li>Tuned BLE link parameters to cut packet loss from 9.2% to 1.8%, making long validation runs far more stable for the team.</li>
+            </ul>
+          </article>
+
+          <article class="experience-card reveal">
+            <div class="experience-head">
+              <div>
+                <p class="experience-role">Infinite Option</p>
+                <h3>Software Engineer Intern</h3>
+              </div>
+              <span class="experience-date">2024</span>
+            </div>
+            <p class="experience-summary">
+              Focused on platform reliability and authentication infrastructure for a
+              production Node.js backend.
+            </p>
+            <ul class="experience-points">
+              <li>Reduced recurring production incidents 32% and lowered MTTR 60%, from 45 minutes to 18 minutes, by standardizing Joi request validation across APIs.</li>
+              <li>Implemented multi-tier RBAC, JWT authentication, refresh rotation, and Redis session invalidation to strengthen platform security.</li>
+              <li>Built an authentication API that supported roughly 2K daily logins.</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -435,7 +491,7 @@
             class="contact-card"
           >
             <span class="contact-label">GitHub</span>
-            <span class="contact-value">github.com/yaochongchow</span>
+            <span class="contact-value">Charles Chow on GitHub</span>
           </a>
 
           <div class="contact-card contact-card-static">
