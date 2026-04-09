@@ -1,32 +1,62 @@
-// Navbar shadow on scroll
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
+const navbar = document.getElementById("navbar");
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+const animatedItems = document.querySelectorAll(".reveal");
+
+function syncNavbar() {
+  navbar.classList.toggle("scrolled", window.scrollY > 16);
+}
+
+function closeMenu() {
+  hamburger.classList.remove("open");
+  navLinks.classList.remove("open");
+  hamburger.setAttribute("aria-expanded", "false");
+}
+
+function toggleMenu() {
+  const nextState = !navLinks.classList.contains("open");
+  hamburger.classList.toggle("open", nextState);
+  navLinks.classList.toggle("open", nextState);
+  hamburger.setAttribute("aria-expanded", String(nextState));
+}
+
+syncNavbar();
+window.addEventListener("scroll", syncNavbar, { passive: true });
+
+hamburger.addEventListener("click", toggleMenu);
+
+navLinks.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", closeMenu);
 });
 
-// Hamburger menu
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    navLinks.classList.remove('open');
-  });
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
 });
 
-// Scroll-triggered fade-in
-const observer = new IntersectionObserver(
-  (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-  { threshold: 0.1 }
-);
-
-document.querySelectorAll(
-  '.project-card, .what-card, .think-card, .flagship-block, .result-card, .contact-card, .skill-group'
-).forEach(el => {
-  el.classList.add('fade-in');
-  observer.observe(el);
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 720) {
+    closeMenu();
+  }
 });
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  animatedItems.forEach((item) => item.classList.add("visible"));
+} else {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  animatedItems.forEach((item) => observer.observe(item));
+}
