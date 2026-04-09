@@ -42,9 +42,9 @@
       <a class="nav-logo" href="#top">Charles Chow</a>
       <ul class="nav-links" id="nav-links">
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#work">Flagship Work</a></li>
+        <li><a href="#work">Work</a></li>
         <li><a href="#additional-work">Additional Work</a></li>
-        <li><a href="#about">How I Work</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
         <li>
           <a
@@ -74,20 +74,21 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="hero-eyebrow">Backend, Distributed Systems, Real-Time Infrastructure</p>
-          <h1 class="hero-title">Backend and real-time systems engineer.</h1>
+          <h1 class="hero-title">Backend engineer for distributed systems, real-time pipelines, and hardware-adjacent software.</h1>
           <p class="hero-sub">
-            I build distributed services, telemetry pipelines, cloud backends, and
-            hardware-adjacent software where latency, reliability, and observability are
-            part of the job from the start.
+            I build measurable systems across backend infrastructure, telemetry pipelines,
+            cloud services, and embedded-adjacent environments. My work is strongest
+            where reliability, latency, observability, and cross-layer debugging all
+            matter at once.
           </p>
           <p class="hero-note">
-            My best work sits at the boundary between software and system behavior:
-            APIs under load, data paths with real latency constraints, and infrastructure
-            that has to stay explainable when things go wrong.
+            Recent work includes APIs handling 900 req/sec, PostgreSQL p95 latency
+            reduced from 420ms to 110ms, telemetry pipelines ingesting 1.2M records per
+            hour, and BLE streaming tuned from 9.2% to 1.8% packet loss.
           </p>
           <div class="hero-actions">
-            <a href="#experience" class="btn btn-primary">See experience</a>
-            <a href="assets/resumes/Charles_Chow_Software_Resume.pdf" class="btn btn-secondary">Open software resume</a>
+            <a href="#experience" class="btn btn-primary">View experience</a>
+            <a href="assets/resumes/Charles_Chow_Software_Resume.pdf" class="btn btn-secondary">Open resume</a>
           </div>
         </div>
 
@@ -97,7 +98,7 @@
             <ul class="panel-list">
               <li>I optimize for measurable system behavior, not vague “scale.”</li>
               <li>I am comfortable debugging across APIs, databases, telemetry, and device integration.</li>
-              <li>I care about instrumentation, reliability, and architectures I can defend in detail.</li>
+              <li>I care about instrumentation, failure modes, and architectures I can defend in detail.</li>
             </ul>
           </div>
 
@@ -128,7 +129,7 @@
         <article class="proof-stat">
           <span class="proof-stat-label">Database latency</span>
           <strong>420ms to 110ms p95</strong>
-          <p>PostgreSQL tuning across 8M+ rows with better indexing, plans, and ingestion flow.</p>
+          <p>PostgreSQL p95 latency reduced on 8M+ rows through indexing, query-plan, and ingestion work.</p>
         </article>
         <article class="proof-stat">
           <span class="proof-stat-label">Telemetry ingestion</span>
@@ -138,7 +139,7 @@
         <article class="proof-stat">
           <span class="proof-stat-label">BLE reliability</span>
           <strong>9.2% to 1.8% packet loss</strong>
-          <p>Streaming stability improvements that enabled uninterrupted test sessions.</p>
+          <p>BLE streaming tuned for uninterrupted test sessions and lower recalibration overhead.</p>
         </article>
       </div>
     </section>
@@ -149,9 +150,10 @@
           <p class="section-kicker">Experience</p>
           <h2>Production work where system behavior actually mattered.</h2>
           <p>
-            The strongest signal on this site is not that I have touched a lot of tools.
-            It is that I have worked on systems where p95 latency, packet loss, MTTR,
-            and end-to-end reliability were visible and had to improve.
+            My strongest experience is production work where system behavior was visible
+            and had to improve. The point is not that I used a lot of tools. The point
+            is that latency, packet loss, MTTR, and throughput were measurable, and I
+            was responsible for moving them.
           </p>
         </div>
 
@@ -172,15 +174,15 @@
               <span>CloudWatch</span>
             </div>
             <p class="experience-summary">
-              Built backend and telemetry systems for AI-driven devices, moving across
-              Node.js APIs, Redis coordination, database tuning, dashboard performance,
-              and BLE data paths.
+              Built backend and telemetry systems for AI-driven devices across Node.js
+              APIs, Redis coordination, PostgreSQL performance, dashboard latency, and
+              BLE data paths.
             </p>
             <ul class="experience-points">
-              <li>Architected Node.js REST APIs with Redis caching, session coordination, and request deduplication that sustained 900 req/sec at sub-180ms p95 latency.</li>
+              <li>Architected Node.js REST APIs with Redis-backed coordination and request deduplication that sustained 900 req/sec at sub-180ms p95 latency.</li>
               <li>Cut PostgreSQL p95 latency from 420ms to 110ms and increased ingestion throughput 2.8x on 8M+ rows by reworking indexes, query plans, connection handling, and ingestion flow.</li>
-              <li>Reduced dashboard latency from 280ms to 65ms with virtualization and off-thread parsing, then added CloudWatch instrumentation to make the device-to-UI path easier to debug under load.</li>
-              <li>Tuned BLE streaming to reduce packet loss from 9.2% to 1.8%, enabling stable eight-hour test sessions and cutting recalibration time 60%.</li>
+              <li>Cut dashboard latency from 280ms to 65ms with virtualization and off-thread parsing, then added CloudWatch instrumentation to make the device-to-UI path debuggable under load.</li>
+              <li>Reduced BLE packet loss from 9.2% to 1.8%, enabling stable eight-hour test sessions and cutting recalibration time 60%.</li>
             </ul>
           </article>
 
@@ -201,13 +203,12 @@
             </div>
             <p class="experience-summary">
               Worked on authentication and API reliability for a production Node.js
-              platform, with a focus on reducing incidents and making backend behavior
-              more predictable.
+              platform, with a focus on reducing incidents and making backend behavior more predictable.
             </p>
             <ul class="experience-points">
               <li>Cut recurring production incidents 32% and lowered MTTR 60% from 45 to 18 minutes by standardizing Joi request validation across backend APIs.</li>
               <li>Built authentication APIs supporting roughly 2K daily logins and tightened session lifecycle behavior with JWT auth, refresh rotation, and Redis session invalidation.</li>
-              <li>Implemented multi-tier RBAC and authorization rules that hardened the platform without turning access control into brittle one-off logic.</li>
+              <li>Implemented multi-tier RBAC and authorization rules that hardened platform access control without turning the system into brittle one-off logic.</li>
             </ul>
           </article>
         </div>
@@ -220,9 +221,10 @@
           <p class="section-kicker">Flagship Systems Work</p>
           <h2>The projects that best show how I reason about systems.</h2>
           <p>
-            These are the projects I would lead with for backend, infrastructure, cloud,
-            robotics software, and real-time systems roles. Each one has a clear systems
-            problem, explicit architecture, and evidence that the implementation holds up.
+            These projects are here because they show how I think about architecture,
+            coordination, isolation, observability, and real-time behavior. The strongest
+            infrastructure and systems work comes first. The rest supports the same story
+            from different angles.
           </p>
         </div>
         <div class="flagship-grid">
@@ -261,13 +263,13 @@
                 </a>
               </div>
               <p class="feature-summary">
-                A Go rate-limiting service for horizontally scaled backends, built so
-                shared limits stay correct even when traffic is spread across instances.
+                A Go rate-limiting service for horizontally scaled backends, built to keep
+                shared limits correct when traffic is distributed across instances.
               </p>
               <ul class="feature-points">
-                <li>Moves coordination into Redis Cluster and keeps the Go layer stateless behind Envoy.</li>
-                <li>Implements token bucket and sliding window variants with atomic Lua scripts, so correctness does not depend on timing or instance affinity.</li>
-                <li>Backed by load tests, 52 tests, and Prometheus and Grafana instrumentation with sustained throughput of 12K req/sec.</li>
+                <li>Moves coordination into Redis Cluster and keeps the Go service layer stateless behind Envoy.</li>
+                <li>Implements token bucket and sliding window algorithms with atomic Lua scripts, so correctness does not depend on timing or instance affinity.</li>
+                <li>Backed by load tests, 52 tests, and observability tooling, with sustained throughput of 12K req/sec under concurrent load.</li>
               </ul>
               <div class="tag-row">
                 <span>Go</span>
@@ -384,7 +386,7 @@
               <ul class="feature-points">
                 <li>Combines mapping, Nav2 waypoint navigation, behavior-tree control, task prioritization, battery-aware scheduling, and a status dashboard in one stack.</li>
                 <li>Uses launch-based bring-up, slam_toolbox, tf2, and a custom Gazebo environment so the system behaves like a real robot workflow instead of a toy example.</li>
-                <li>Adds rosbag2 logging and diagnostics so failures can be replayed and isolated, which is often the hardest part of robotics software in practice.</li>
+                <li>Adds rosbag2 logging and diagnostics so failures can be replayed and isolated, which is where robotics software often becomes hard in practice.</li>
               </ul>
               <div class="tag-row">
                 <span>ROS2</span>
@@ -404,18 +406,18 @@
       <div class="container section-shell">
         <div class="section-intro">
           <p class="section-kicker">Additional Work</p>
-          <h2>Supporting projects that show range without diluting the systems story.</h2>
+          <h2>Supporting projects that extend the same systems story.</h2>
           <p>
-            These projects still matter, but they work best as support for the main
-            narrative: real-time pipelines, applied ML systems, and product-minded
-            implementation with clear constraints.
+            These projects are smaller signals, but they still reinforce the same themes:
+            real-time pipelines, product-grade isolation, and ML work where the system
+            around the model matters.
           </p>
         </div>
 
         <div class="work-category reveal">
           <div class="category-copy">
             <p class="section-kicker">Software + Product</p>
-            <h3>Application systems where isolation, UX, and data flow still matter.</h3>
+            <h3>Product systems where isolation, UX, and data flow still matter.</h3>
           </div>
 
           <div class="support-grid">
@@ -443,12 +445,12 @@
                   </a>
                 </div>
                 <p class="feature-summary">
-                  A SQL learning platform where the hard part is safe execution and product-grade isolation, not just the interface.
+                  A SQL learning platform where the real engineering problem is safe execution, isolation, and product-grade feedback, not just the interface.
                 </p>
                 <ul class="feature-points compact-points">
-                  <li>Runs each student submission in its own temporary MySQL sandbox.</li>
-                  <li>Combines Django REST APIs, React, role-based auth, and analytics storage.</li>
-                  <li>Keeps AI scoped to structured SQL hints instead of generic chatbot behavior.</li>
+                  <li>Runs each student submission in its own temporary MySQL sandbox so untrusted queries do not touch shared state.</li>
+                  <li>Combines Django REST APIs, React, role-based auth, and analytics storage around a real product workflow.</li>
+                  <li>Keeps AI scoped to structured SQL hints, which makes the feature more reliable and easier to reason about.</li>
                 </ul>
               </div>
             </article>
@@ -486,12 +488,12 @@
                   </a>
                 </div>
                 <p class="feature-summary">
-                  A real-time traffic analysis pipeline combining geometry, lane modeling, object detection, and scene interpretation.
+                  A real-time traffic analysis pipeline combining geometry, lane modeling, object detection, and scene interpretation in one live system.
                 </p>
                 <ul class="feature-points compact-points">
-                  <li>Coordinates perspective correction, lane fitting, and YOLO detection in one live pipeline.</li>
-                  <li>Useful because the real challenge is stage-to-stage stability, not just model choice.</li>
-                  <li>Maps cleanly to monitoring and analytics workflows where inference plugs into a larger system.</li>
+                  <li>Coordinates perspective correction, lane fitting, and YOLO-based detection instead of treating model inference as the whole product.</li>
+                  <li>The hard part is stage-to-stage stability and live processing behavior, not just training a detector.</li>
+                  <li>Maps cleanly to monitoring and analytics workflows where inference has to plug into a larger system.</li>
                 </ul>
                 <div class="tag-row">
                   <span>Python</span>
@@ -526,12 +528,12 @@
                   </a>
                 </div>
                 <p class="feature-summary">
-                  A fraud detection project focused on model choice, class imbalance, and evaluation discipline for transaction data.
+                  A fraud detection project focused on model choice, class imbalance, and evaluation discipline for transaction data where false confidence is easy to fake.
                 </p>
                 <ul class="feature-points compact-points">
-                  <li>Compares several classifiers instead of relying on one benchmark-friendly model.</li>
+                  <li>Compares several classifiers instead of relying on a single benchmark-friendly model.</li>
                   <li>Tests class weighting and SMOTE where evaluation choices actually matter.</li>
-                  <li>Uses GPU-accelerated tooling to keep experimentation practical.</li>
+                  <li>Uses GPU-accelerated tooling to keep experimentation practical and to treat the work as an engineering workflow, not just a notebook exercise.</li>
                 </ul>
                 <div class="tag-row">
                   <span>Python</span>
@@ -567,12 +569,12 @@
                   </a>
                 </div>
                 <p class="feature-summary">
-                  A webcam-based emotion recognition app that combines live inference, lightweight analytics, and user-facing feedback.
+                  A webcam-based emotion recognition app that combines live inference, lightweight analytics, and user-facing feedback in one responsive loop.
                 </p>
                 <ul class="feature-points compact-points">
-                  <li>Wires real-time input, inference, and a live overlay loop together.</li>
-                  <li>Tracks emotion trends over time instead of stopping at single-frame output.</li>
-                  <li>Works well as a smaller proof point for responsive ML interface work.</li>
+                  <li>Wires real-time input, inference, and a live overlay loop together instead of stopping at model output.</li>
+                  <li>Tracks emotion trends over time and exposes them in a form that is easy to inspect.</li>
+                  <li>Works as a smaller proof point for responsive ML interface work.</li>
                 </ul>
                 <div class="tag-row">
                   <span>Python</span>
@@ -590,49 +592,51 @@
     <section id="about">
       <div class="container section-shell">
         <div class="section-intro">
-          <p class="section-kicker">How I Work</p>
-          <h2>Clear systems thinking is part of the product.</h2>
+          <p class="section-kicker">About</p>
+          <h2>I build systems that have to behave correctly under real constraints.</h2>
           <p>
-            I work best on systems where the hard part is not just shipping code, but
-            understanding behavior under load, narrowing failures quickly, and making
-            the architecture easy to reason about for the next engineer.
+            The common thread in my work is not a stack. It is system behavior. I like
+            problems where requests race, devices drop packets, telemetry arrives out of
+            order, or a backend starts failing at the tail. That is where observability,
+            tradeoffs, and architecture stop being abstract and start mattering.
           </p>
         </div>
 
         <div class="about-grid">
           <article class="about-card reveal">
-            <h3>Measure before optimizing</h3>
+            <h3>What I build</h3>
             <p>
-              I trust latency distributions, throughput numbers, packet loss, and incident
-              patterns more than intuition. The best engineering decisions usually start
-              with visibility.
+              I build backend services, telemetry pipelines, cloud-native systems, and
+              robotics-adjacent software. The best fit for me is work where APIs, data
+              flow, infrastructure, and real-world constraints all interact.
             </p>
           </article>
 
           <article class="about-card reveal">
-            <h3>Instrument before guessing</h3>
+            <h3>What I’m looking for</h3>
             <p>
-              Observability is not cleanup work after the fact. I want the traces,
-              logs, metrics, and replay paths that make debugging faster when the system
-              stops behaving the way it should.
+              I am looking for backend, distributed systems, infrastructure, platform,
+              robotics software, and real-time systems roles where reliability,
+              performance, and ownership matter more than buzzwords.
             </p>
           </article>
 
           <article class="about-card reveal">
-            <h3>Design for failure modes</h3>
-            <p>
-              I care about what happens when requests race, devices drop packets, services
-              drift out of sync, or state becomes stale. That is usually where systems
-              engineering stops being generic.
-            </p>
+            <h3>How I usually work</h3>
+            <ul class="check-list">
+              <li>Measure before optimizing.</li>
+              <li>Instrument before guessing.</li>
+              <li>Design around failure modes, not just happy paths.</li>
+              <li>Keep systems explainable enough to debug under pressure.</li>
+            </ul>
           </article>
 
           <article class="about-card reveal">
-            <h3>Keep systems explainable</h3>
+            <h3>What I pay attention to</h3>
             <p>
-              The architecture should be simple enough to defend in an interview and clear
-              enough that a teammate can debug it without folklore. Complexity only earns
-              its place when it solves a real constraint.
+              I pay attention to the parts that make systems feel real: latency
+              distributions, packet loss, retries, stale state, queueing, MTTR, and the
+              design decisions that make debugging easier or harder later.
             </p>
           </article>
         </div>
@@ -646,7 +650,8 @@
         <p class="contact-lead">
           I am most interested in backend, distributed systems, platform, robotics
           software, real-time systems, and applied AI systems roles where performance,
-          reliability, and ownership matter.
+          reliability, and ownership matter. If that is the kind of work your team does,
+          I would be glad to talk.
         </p>
 
         <div class="contact-grid">
