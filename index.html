@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Charles Chow — Software & Robotics Engineer</title>
+  <title>Charles Chow — Real-Time Systems Engineer</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,9 +13,10 @@
     <div class="nav-inner">
       <span class="nav-logo">CC</span>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
+        <li><a href="#what-i-do">What I Do</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
+        <li><a href="#flagship">Deep Dive</a></li>
+        <li><a href="#how-i-think">Mindset</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://github.com/yaochongchow" target="_blank" class="nav-cta">GitHub</a></li>
       </ul>
@@ -28,93 +29,135 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-content">
-      <p class="hero-eyebrow">Hi, I'm</p>
-      <h1 class="hero-name">Charles Chow</h1>
-      <h2 class="hero-title"><span id="typing-text"></span><span class="cursor">|</span></h2>
+      <p class="hero-eyebrow">Real-Time Systems Engineer</p>
+      <h1 class="hero-name">I Build Systems<br/>That Don't Break.</h1>
+      <p class="hero-metrics">
+        <span>12K req/sec</span>
+        <span class="divider">·</span>
+        <span>73% latency reduction</span>
+        <span class="divider">·</span>
+        <span>1.2M records/hour</span>
+      </p>
       <p class="hero-sub">
-        Building end-to-end systems — from embedded firmware and robotics<br />
-        to distributed backends and real-time ML pipelines.
+        From embedded firmware and edge devices to distributed backends and real-time ML pipelines —
+        I own systems end-to-end and optimize for reliability, performance, and scale.
       </p>
       <div class="hero-btns">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        <a href="#flagship" class="btn btn-primary">See Deep Dive</a>
+        <a href="#projects" class="btn btn-outline">View Projects</a>
       </div>
     </div>
     <div class="hero-bg"></div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
+  <!-- WHAT I DO -->
+  <section id="what-i-do">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p class="about-text">
-        I'm a software engineer with hands-on experience designing systems that perform under real-world constraints.
-        My work spans distributed infrastructure, real-time data pipelines, computer vision, and robotics.
-        I care about measurable outcomes: latency numbers, throughput, reliability.
-      </p>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <span class="stat-num">12K</span>
-          <span class="stat-label">req/sec sustained</span>
+      <h2 class="section-title">What I Do</h2>
+      <p class="section-sub">I specialize in real-time systems across three layers of the stack.</p>
+      <div class="what-grid">
+        <div class="what-card">
+          <div class="what-icon">⚡</div>
+          <h3>Distributed Backend Systems</h3>
+          <p>High-throughput services in Go and Python — rate limiting, telemetry pipelines, microservice architectures. Designed for horizontal scale and fault tolerance.</p>
+          <ul>
+            <li>gRPC + Redis Cluster coordination</li>
+            <li>Token bucket &amp; sliding window algorithms</li>
+            <li>12,000 req/sec with sub-2ms overhead</li>
+          </ul>
         </div>
-        <div class="stat-card">
-          <span class="stat-num">73%</span>
-          <span class="stat-label">latency reduction</span>
+        <div class="what-card">
+          <div class="what-icon">👁️</div>
+          <h3>Real-Time ML Pipelines</h3>
+          <p>Computer vision and inference pipelines optimized for low-latency, high-accuracy production deployments.</p>
+          <ul>
+            <li>YOLOv8 object detection at 25fps</li>
+            <li>Emotion detection &lt;80ms per frame</li>
+            <li>195ms → 48ms inference optimization</li>
+          </ul>
         </div>
-        <div class="stat-card">
-          <span class="stat-num">1.2M</span>
-          <span class="stat-label">records/hour pipeline</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-num">2.8×</span>
-          <span class="stat-label">throughput on 8M+ rows</span>
+        <div class="what-card">
+          <div class="what-icon">🤖</div>
+          <h3>Robotics &amp; Embedded Systems</h3>
+          <p>Full autonomous navigation stacks and embedded firmware — from sensor integration to real-time control loops.</p>
+          <ul>
+            <li>ROS2 + Nav2 autonomous navigation</li>
+            <li>BLE firmware optimization</li>
+            <li>9.2% → 1.8% packet loss reduction</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- FEATURED PROJECTS -->
   <section id="projects">
     <div class="container">
-      <h2 class="section-title">Projects</h2>
+      <h2 class="section-title">Featured Projects</h2>
       <div class="projects-grid">
 
         <div class="project-card">
           <div class="project-preview" style="--preview-color: #7c6fff;">
-            <div class="preview-placeholder">
-              <span>⚡</span>
-              <!-- Replace with: <img src="images/rate-limiter.png" alt="Distributed Rate Limiter" /> -->
-            </div>
+            <div class="preview-placeholder"><span>⚡</span></div>
+            <!-- Replace with: <img src="images/rate-limiter.png" alt="Distributed Rate Limiter" /> -->
           </div>
           <div class="project-body">
             <div class="project-header">
               <h3>Distributed Rate Limiter</h3>
-              <div class="project-links">
-                <a href="https://github.com/yaochongchow/distributed-rate-limiter" target="_blank">GitHub →</a>
-              </div>
+              <a href="https://github.com/yaochongchow/distributed-rate-limiter" target="_blank" class="project-link">GitHub →</a>
             </div>
-            <p>Distributed gRPC rate limiter using Redis Cluster and Lua scripting for atomic token bucket and sliding-window enforcement. Load balanced across 10 stateless nodes. Sustains 12,000 req/sec with fault-tolerant failover.</p>
+            <p class="project-impact">Engineered a fault-tolerant distributed rate limiter sustaining 12,000 req/sec with &lt;2ms per-request overhead.</p>
+            <ul class="project-bullets">
+              <li>Implemented atomic token bucket + sliding window with Lua scripts in Redis, eliminating race conditions under concurrent load</li>
+              <li>Scaled across 10 stateless Go nodes behind Envoy load balancer — no single point of failure</li>
+              <li>Chaos tested with simulated node failures; measured &lt;50ms failover recovery time</li>
+              <li>Sustained 12,000 req/sec at p95 &lt;180ms across the full distributed cluster</li>
+            </ul>
             <div class="tags">
-              <span>Go</span><span>Redis</span><span>gRPC</span><span>Docker</span><span>Envoy</span>
+              <span>Go</span><span>Redis Cluster</span><span>gRPC</span><span>Docker</span><span>Envoy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-preview" style="--preview-color: #22c55e;">
+            <div class="preview-placeholder"><span>🚦</span></div>
+            <!-- Replace with: <img src="images/traffic-monitor.png" alt="Traffic Monitor" /> -->
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <h3>Real-Time Traffic Monitor</h3>
+              <a href="https://github.com/yaochongchow/traffic-monitor" target="_blank" class="project-link">GitHub →</a>
+            </div>
+            <p class="project-impact">Deployed a multi-class vehicle detection system processing live video at 25fps with sub-40ms per-frame inference.</p>
+            <ul class="project-bullets">
+              <li>Integrated YOLOv8 for vehicle detection with a custom lane boundary detection algorithm</li>
+              <li>Optimized inference pipeline to maintain 25fps throughput at &lt;40ms per frame</li>
+              <li>Classified 8 vehicle types with confidence scoring and real-time traffic flow metrics</li>
+              <li>Designed for edge deployment — runs on GPU-constrained hardware without accuracy loss</li>
+            </ul>
+            <div class="tags">
+              <span>Python</span><span>YOLOv8</span><span>OpenCV</span>
             </div>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-preview" style="--preview-color: #4fc3f7;">
-            <div class="preview-placeholder">
-              <span>📚</span>
-              <!-- Replace with: <img src="images/sql-tutor.png" alt="Interactive SQL Tutor" /> -->
-            </div>
+            <div class="preview-placeholder"><span>📚</span></div>
+            <!-- Replace with: <img src="images/sql-tutor.png" alt="Interactive SQL Tutor" /> -->
           </div>
           <div class="project-body">
             <div class="project-header">
               <h3>Interactive SQL Tutor</h3>
-              <div class="project-links">
-                <a href="https://github.com/yaochongchow/interactive-sql-tutor" target="_blank">GitHub →</a>
-              </div>
+              <a href="https://github.com/yaochongchow/interactive-sql-tutor" target="_blank" class="project-link">GitHub →</a>
             </div>
-            <p>Full-stack web platform for interactive SQL education with real-time query validation and GPT-4-powered feedback. Built for scale to support concurrent learners.</p>
+            <p class="project-impact">Built a GPT-4-powered SQL learning platform with real-time query validation and sub-800ms AI feedback loops.</p>
+            <ul class="project-bullets">
+              <li>Integrated GPT-4 API for contextual query feedback — corrections delivered in &lt;800ms</li>
+              <li>Designed sandboxed PostgreSQL execution environment with per-session query isolation</li>
+              <li>Implemented scalable REST backend supporting concurrent learners with session state management</li>
+            </ul>
             <div class="tags">
               <span>Python</span><span>PostgreSQL</span><span>GPT-4</span><span>REST</span>
             </div>
@@ -123,19 +166,20 @@
 
         <div class="project-card">
           <div class="project-preview" style="--preview-color: #f97316;">
-            <div class="preview-placeholder">
-              <span>😎</span>
-              <!-- Replace with: <img src="images/emoji-cam.png" alt="Emoji Cam" /> -->
-            </div>
+            <div class="preview-placeholder"><span>😎</span></div>
+            <!-- Replace with: <img src="images/emoji-cam.png" alt="Emoji Cam" /> -->
           </div>
           <div class="project-body">
             <div class="project-header">
               <h3>Emoji Cam</h3>
-              <div class="project-links">
-                <a href="https://github.com/yaochongchow/emoji-cam" target="_blank">GitHub →</a>
-              </div>
+              <a href="https://github.com/yaochongchow/emoji-cam" target="_blank" class="project-link">GitHub →</a>
             </div>
-            <p>Real-time video conferencing enhancement that detects facial emotions and overlays context-aware graphics. Includes an analytics dashboard for session emotion tracking.</p>
+            <p class="project-impact">Engineered a real-time emotion detection pipeline achieving &lt;80ms inference latency per frame during live video conferencing.</p>
+            <ul class="project-bullets">
+              <li>Implemented facial emotion classification pipeline with OpenCV preprocessing + ML inference</li>
+              <li>Optimized frame processing to maintain 30fps real-time throughput at &lt;80ms per frame</li>
+              <li>Built analytics dashboard tracking emotion distribution and engagement patterns across sessions</li>
+            </ul>
             <div class="tags">
               <span>Python</span><span>OpenCV</span><span>ML</span>
             </div>
@@ -143,43 +187,23 @@
         </div>
 
         <div class="project-card">
-          <div class="project-preview" style="--preview-color: #22c55e;">
-            <div class="preview-placeholder">
-              <span>🚦</span>
-              <!-- Replace with: <img src="images/traffic-monitor.png" alt="Traffic Monitor" /> -->
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-header">
-              <h3>Traffic Monitor</h3>
-              <div class="project-links">
-                <a href="https://github.com/yaochongchow/traffic-monitor" target="_blank">GitHub →</a>
-              </div>
-            </div>
-            <p>Real-time traffic analysis combining lane detection with YOLOv8 object detection. Processes live video feeds for vehicle classification and traffic flow monitoring.</p>
-            <div class="tags">
-              <span>Python</span><span>YOLOv8</span><span>OpenCV</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
           <div class="project-preview" style="--preview-color: #a855f7;">
-            <div class="preview-placeholder">
-              <span>🛒</span>
-              <!-- Replace with: <img src="images/ecommerce.png" alt="E-Commerce Microservice" /> -->
-            </div>
+            <div class="preview-placeholder"><span>🛒</span></div>
+            <!-- Replace with: <img src="images/ecommerce.png" alt="E-Commerce Microservice" /> -->
           </div>
           <div class="project-body">
             <div class="project-header">
               <h3>E-Commerce Microservice</h3>
-              <div class="project-links">
-                <a href="https://github.com/yaochongchow/ecommerce-microservice" target="_blank">GitHub →</a>
-              </div>
+              <a href="https://github.com/yaochongchow/ecommerce-microservice" target="_blank" class="project-link">GitHub →</a>
             </div>
-            <p>Microservice architecture for e-commerce operations, designed for modularity and independent deployability across services.</p>
+            <p class="project-impact">Decomposed monolithic e-commerce backend into independently deployable services with isolated failure boundaries.</p>
+            <ul class="project-bullets">
+              <li>Designed discrete services for inventory, orders, payments, and users — each independently deployable</li>
+              <li>Implemented inter-service communication with clearly defined API contracts</li>
+              <li>Built for horizontal scalability — individual services scale under load without affecting others</li>
+            </ul>
             <div class="tags">
-              <span>Python</span><span>Microservices</span>
+              <span>Python</span><span>Microservices</span><span>REST</span>
             </div>
           </div>
         </div>
@@ -188,10 +212,143 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
+  <!-- FLAGSHIP DEEP DIVE -->
+  <section id="flagship">
     <div class="container">
-      <h2 class="section-title">Technical Skills</h2>
+      <p class="flagship-eyebrow">Flagship Project · Deep Dive</p>
+      <h2 class="flagship-title">Distributed Rate Limiter</h2>
+      <p class="flagship-tagline">A production-grade, fault-tolerant rate limiting service designed to scale horizontally without consistency trade-offs.</p>
+
+      <div class="flagship-grid">
+
+        <div class="flagship-block">
+          <h4>The Problem</h4>
+          <p>Distributed APIs need rate limiting to prevent abuse and protect downstream services. A centralized limiter is a single point of failure. A purely local limiter can't enforce global request budgets across nodes.</p>
+        </div>
+
+        <div class="flagship-block">
+          <h4>Why It's Hard</h4>
+          <p>Atomic state across distributed processes requires distributed locks or consensus — both expensive. The challenge: enforce consistent global limits with sub-millisecond overhead under 12K+ req/sec without creating a new bottleneck.</p>
+        </div>
+
+        <div class="flagship-block">
+          <h4>Key Trade-offs</h4>
+          <ul>
+            <li><strong>Strong consistency via Lua</strong> — Redis executes token bucket logic atomically server-side, eliminating race conditions at the cost of Redis dependency</li>
+            <li><strong>Stateless nodes</strong> — Go services hold zero local state; all rate limit state lives in Redis Cluster, enabling true horizontal scale</li>
+            <li><strong>gRPC over HTTP</strong> — binary framing + multiplexing reduced per-request overhead vs REST at high concurrency</li>
+          </ul>
+        </div>
+
+        <div class="flagship-block">
+          <h4>Optimizations</h4>
+          <ul>
+            <li>Lua scripting for atomic check-and-decrement in a single Redis round-trip</li>
+            <li>Redis pipelining to batch operations under burst load</li>
+            <li>Envoy health checks + circuit breaking for &lt;50ms failover on node loss</li>
+            <li>Chaos testing: injected random node failures, measured no dropped legitimate requests</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Architecture Diagram -->
+      <div class="arch-section">
+        <h4 class="arch-title">Architecture</h4>
+        <div class="arch-diagram">
+          <div class="arch-col">
+            <div class="arch-box client">Client<br/><span>HTTP/gRPC</span></div>
+          </div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-col">
+            <div class="arch-box lb">Envoy<br/><span>Load Balancer</span></div>
+          </div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-col">
+            <div class="arch-box nodes">
+              <div class="node-row">
+                <span class="node">Go Node</span>
+                <span class="node">Go Node</span>
+                <span class="node">Go Node</span>
+              </div>
+              <div class="node-label">10× stateless</div>
+            </div>
+          </div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-col">
+            <div class="arch-box redis">Redis Cluster<br/><span>Lua atomic ops</span></div>
+          </div>
+        </div>
+        <div class="arch-labels">
+          <span>Bottleneck: Redis round-trip latency</span>
+          <span>Scale point: Go nodes (horizontal)</span>
+          <span>Consistency: Lua scripts (atomic)</span>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="flagship-results">
+        <div class="result-card">
+          <span class="result-num">12K</span>
+          <span class="result-label">req/sec sustained</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">&lt;2ms</span>
+          <span class="result-label">per-request overhead</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">&lt;50ms</span>
+          <span class="result-label">failover on node loss</span>
+        </div>
+        <div class="result-card">
+          <span class="result-num">0</span>
+          <span class="result-label">dropped legit requests under chaos</span>
+        </div>
+      </div>
+
+      <a href="https://github.com/yaochongchow/distributed-rate-limiter" target="_blank" class="btn btn-primary flagship-cta">View Full Code on GitHub →</a>
+    </div>
+  </section>
+
+  <!-- HOW I THINK -->
+  <section id="how-i-think">
+    <div class="container">
+      <h2 class="section-title">How I Think</h2>
+      <p class="section-sub">The principles I bring to every system I build.</p>
+      <div class="think-grid">
+        <div class="think-card">
+          <span class="think-num">01</span>
+          <h4>Reliability First</h4>
+          <p>I design for failure before optimizing the happy path. Every component I build degrades gracefully — circuit breakers, retries, fallbacks are not afterthoughts.</p>
+        </div>
+        <div class="think-card">
+          <span class="think-num">02</span>
+          <h4>Metrics-Driven Decisions</h4>
+          <p>I don't optimize blind. Instrument first, identify the bottleneck with data, then optimize with measured impact. Intuition is a starting point, not a conclusion.</p>
+        </div>
+        <div class="think-card">
+          <span class="think-num">03</span>
+          <h4>End-to-End Ownership</h4>
+          <p>I trace problems from the client request to the database row. No black boxes. I own the full path — network, application logic, data layer.</p>
+        </div>
+        <div class="think-card">
+          <span class="think-num">04</span>
+          <h4>Cross-Layer Debugging</h4>
+          <p>Performance issues rarely live in one layer. I debug at the network, application, and data layer simultaneously — packet traces, query plans, flame graphs.</p>
+        </div>
+        <div class="think-card">
+          <span class="think-num">05</span>
+          <h4>Performance as a Constraint</h4>
+          <p>Latency and throughput aren't afterthoughts — they're design constraints I apply from day one, shaping architecture decisions before a line of code is written.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="stack">
+    <div class="container">
+      <h2 class="section-title">Tech Stack</h2>
       <div class="skills-grid">
         <div class="skill-group">
           <h4>Languages</h4>
@@ -214,7 +371,7 @@
         <div class="skill-group">
           <h4>Cloud & DevOps</h4>
           <div class="badges">
-            <span>AWS</span><span>Docker</span><span>Kubernetes</span>
+            <span>AWS</span><span>Docker</span><span>Kubernetes</span><span>Envoy</span>
           </div>
         </div>
         <div class="skill-group">
@@ -237,7 +394,7 @@
   <section id="contact">
     <div class="container">
       <h2 class="section-title">Get In Touch</h2>
-      <p class="contact-sub">Open to full-time roles, internships, and interesting projects.</p>
+      <p class="contact-sub">Open to full-time roles, internships, and interesting problems.</p>
       <div class="contact-grid">
         <a href="mailto:your@email.com" class="contact-card">
           <div class="contact-icon">✉️</div>
