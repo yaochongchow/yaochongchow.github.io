@@ -337,6 +337,33 @@ section {
   padding: 1.35rem;
 }
 
+.panel-roles {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.panel-role {
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid var(--line);
+}
+
+.panel-role strong {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.panel-role span {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 .panel-list,
 .check-list,
 .feature-points {
@@ -496,38 +523,6 @@ section {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--accent-strong);
-}
-
-.experience-metrics {
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.experience-metric {
-  padding: 0.9rem;
-  border-radius: 1rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 233, 219, 0.95));
-  border: 1px solid rgba(24, 32, 40, 0.08);
-}
-
-.metric-value {
-  display: block;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--text);
-}
-
-.metric-label {
-  display: block;
-  margin-top: 0.2rem;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
 }
 
 .experience-points {
@@ -838,10 +833,6 @@ footer {
   .about-grid,
   .experience-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .experience-metrics {
-    grid-template-columns: 1fr;
   }
 
   .hero-highlights {

@@ -32,7 +32,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -72,12 +72,12 @@
     <section id="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="hero-eyebrow">San Jose, CA • Backend, Systems, Real-Time ML</p>
-          <h1 class="hero-title">Proof-first software for backend and real-time systems.</h1>
+          <p class="hero-eyebrow">San Jose, CA</p>
+          <h1 class="hero-title">Engineer focused on real-time systems across edge devices, backends, and applied ML.</h1>
           <p class="hero-sub">
-            I'm Charles Chow. I build distributed services, cloud-native platforms, and
-            computer vision tooling with an emphasis on clear trade-offs, measurable
-            behavior, and end-to-end ownership.
+            I'm Charles Chow. I work on production-minded software that spans embedded
+            systems, distributed services, and ML-enabled products. The common thread is
+            building reliable systems and debugging across layers.
           </p>
           <p class="hero-note">
             My background spans mechanical engineering, computer science, and
@@ -85,32 +85,32 @@
             toward systems work that crosses software, hardware, and real-world constraints.
           </p>
           <div class="hero-actions">
-            <a href="#work" class="btn btn-primary">See selected work</a>
+            <a href="#experience" class="btn btn-primary">See experience</a>
             <a href="mailto:yaochong.chow.20@gmail.com" class="btn btn-secondary">Email me</a>
           </div>
         </div>
 
         <aside class="hero-panel" aria-label="Strengths and tools">
           <div class="panel-card">
-            <p class="panel-label">What I’m strongest at</p>
+            <p class="panel-label">What I bring</p>
             <ul class="panel-list">
-              <li>Turning interesting systems ideas into concrete, explainable builds</li>
-              <li>Working across service boundaries instead of treating infrastructure as a black box</li>
-              <li>Using instrumentation and architecture to make claims feel earned</li>
+              <li>I build systems that survive real load.</li>
+              <li>I debug across hardware, software, and infrastructure.</li>
+              <li>I optimize with metrics, not guesses.</li>
             </ul>
           </div>
 
           <div class="panel-card">
-            <p class="panel-label">Core tools I keep reaching for</p>
-            <div class="badge-row">
-              <span>Go</span>
-              <span>Python</span>
-              <span>Redis</span>
-              <span>AWS</span>
-              <span>Django</span>
-              <span>React</span>
-              <span>OpenCV</span>
-              <span>Docker</span>
+            <p class="panel-label">Recent production work</p>
+            <div class="panel-roles">
+              <div class="panel-role">
+                <strong>NeuroLeap</strong>
+                <span>APIs, telemetry, firmware, and backend systems for AI-driven devices.</span>
+              </div>
+              <div class="panel-role">
+                <strong>Infinite Option</strong>
+                <span>Platform reliability, authentication, and backend API hardening.</span>
+              </div>
             </div>
           </div>
         </aside>
@@ -192,25 +192,11 @@
               Worked across APIs, caching, telemetry, BLE streaming, and PostgreSQL-backed
               analytics for AI-driven hardware and software systems.
             </p>
-            <div class="experience-metrics">
-              <div class="experience-metric">
-                <span class="metric-value">900 req/sec</span>
-                <span class="metric-label">API throughput</span>
-              </div>
-              <div class="experience-metric">
-                <span class="metric-value">2.8x</span>
-                <span class="metric-label">ingestion gain</span>
-              </div>
-              <div class="experience-metric">
-                <span class="metric-value">9.2% → 1.8%</span>
-                <span class="metric-label">packet loss</span>
-              </div>
-            </div>
             <ul class="experience-points">
-              <li>Built Node.js REST APIs with Redis-backed coordination and request deduplication, sustaining 900 req/sec with sub-180ms p95 latency.</li>
-              <li>Reduced p95 latency from 420ms to 110ms and increased ingestion throughput 2.8x by tuning PostgreSQL indexing, connection management, and ingestion workflows on 8M+ rows.</li>
-              <li>Designed nRF52840 firmware and a real-time telemetry pipeline that streamed multi-channel sensor data over BLE and handled 1.2M records per hour across 8 channels.</li>
-              <li>Tuned BLE link parameters to cut packet loss from 9.2% to 1.8%, making long validation runs far more stable for the team.</li>
+              <li>Built Node.js REST APIs with Redis-backed coordination, request deduplication, and session handling for AI-driven hardware and software systems.</li>
+              <li>Improved PostgreSQL indexing, connection management, and ingestion workflows to make backend and analytics pipelines more responsive under load.</li>
+              <li>Designed embedded firmware and a real-time telemetry pipeline for streaming sensor data over BLE into backend services.</li>
+              <li>Worked across hardware, ML, and software teams on data formats, observability, and cross-layer debugging.</li>
             </ul>
           </article>
 
@@ -233,24 +219,10 @@
               Focused on platform reliability and authentication infrastructure for a
               production Node.js backend.
             </p>
-            <div class="experience-metrics">
-              <div class="experience-metric">
-                <span class="metric-value">-32%</span>
-                <span class="metric-label">incidents</span>
-              </div>
-              <div class="experience-metric">
-                <span class="metric-value">45 → 18 min</span>
-                <span class="metric-label">MTTR</span>
-              </div>
-              <div class="experience-metric">
-                <span class="metric-value">2K/day</span>
-                <span class="metric-label">logins supported</span>
-              </div>
-            </div>
             <ul class="experience-points">
-              <li>Reduced recurring production incidents 32% and lowered MTTR 60%, from 45 minutes to 18 minutes, by standardizing Joi request validation across APIs.</li>
+              <li>Improved API reliability by standardizing request validation and hardening backend request handling.</li>
               <li>Implemented multi-tier RBAC, JWT authentication, refresh rotation, and Redis session invalidation to strengthen platform security.</li>
-              <li>Built an authentication API that supported roughly 2K daily logins.</li>
+              <li>Built and maintained authentication APIs for a production Node.js platform.</li>
             </ul>
           </article>
         </div>
@@ -278,7 +250,7 @@
                 <div class="pipeline-arrow" aria-hidden="true">→</div>
                 <div class="pipeline-box">Envoy<span>Load balancing</span></div>
                 <div class="pipeline-arrow" aria-hidden="true">→</div>
-                <div class="pipeline-box">Go services<span>10 scaled instances</span></div>
+                <div class="pipeline-box">Go services<span>Stateless application layer</span></div>
               </div>
               <div class="proof-stack">
                 <div class="proof-chip">Redis Cluster shared state</div>
@@ -310,7 +282,7 @@
             </p>
             <ul class="feature-points">
               <li>Uses Lua scripts inside Redis so token bucket and sliding window decisions stay atomic.</li>
-              <li>Runs behind Envoy and can be scaled to 10 application instances in Docker Compose.</li>
+              <li>Runs behind Envoy with a stateless service layer and shared Redis-backed coordination.</li>
               <li>Ships with Prometheus and Grafana, which makes the performance story easier to trust.</li>
             </ul>
             <div class="tag-row">
@@ -371,7 +343,7 @@
               distributed transactions are free.
             </p>
             <ul class="feature-points">
-              <li>Breaks the platform into seven services spanning Lambda, ECS Fargate, DynamoDB, SQS, and EventBridge.</li>
+              <li>Breaks the platform into independently deployable services spanning Lambda, ECS Fargate, DynamoDB, SQS, and EventBridge.</li>
               <li>Uses the Order service as the Saga orchestrator for inventory, payment, and fulfillment workflows.</li>
               <li>Defines infrastructure in AWS CDK, which makes the system feel more complete than a repo of isolated services.</li>
             </ul>
@@ -422,7 +394,7 @@
             </ul>
             <div class="tag-row">
               <span>Django</span>
-              <span>React 19</span>
+              <span>React</span>
               <span>MySQL</span>
               <span>OpenAI API</span>
               <span>GCP</span>
