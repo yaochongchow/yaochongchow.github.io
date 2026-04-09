@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charles Chow — Software & Robotics Engineer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo">CC</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="https://github.com/yaochongchow" target="_blank" class="nav-cta">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Hi, I'm</p>
+      <h1 class="hero-name">Charles Chow</h1>
+      <h2 class="hero-title">Software &amp; Robotics Engineer</h2>
+      <p class="hero-sub">
+        Building end-to-end systems — from embedded firmware and robotics<br />
+        to distributed backends and real-time ML pipelines.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="https://github.com/yaochongchow" target="_blank" class="btn btn-outline">GitHub Profile</a>
+      </div>
+    </div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="about-text">
+        I'm a software engineer with hands-on experience designing systems that perform under real-world constraints.
+        My work spans distributed infrastructure, real-time data pipelines, computer vision, and robotics.
+        I care about measurable outcomes: latency numbers, throughput, reliability.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-num">12K</span>
+          <span class="stat-label">req/sec sustained</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">73%</span>
+          <span class="stat-label">latency reduction</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">1.2M</span>
+          <span class="stat-label">records/hour pipeline</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">2.8×</span>
+          <span class="stat-label">throughput on 8M+ rows</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon">⚡</span>
+            <div class="project-links">
+              <a href="https://github.com/yaochongchow/distributed-rate-limiter" target="_blank">GitHub →</a>
+            </div>
+          </div>
+          <h3>Distributed Rate Limiter</h3>
+          <p>Distributed gRPC rate limiter using Redis Cluster and Lua scripting for atomic token bucket and sliding-window enforcement. Load balanced across 10 stateless nodes. Sustains 12,000 req/sec with fault-tolerant failover.</p>
+          <div class="tags">
+            <span>Go</span><span>Redis</span><span>gRPC</span><span>Docker</span><span>Envoy</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon">📚</span>
+            <div class="project-links">
+              <a href="https://github.com/yaochongchow/interactive-sql-tutor" target="_blank">GitHub →</a>
+            </div>
+          </div>
+          <h3>Interactive SQL Tutor</h3>
+          <p>Full-stack web platform for interactive SQL education with real-time query validation and GPT-4-powered feedback. Built for scale to support concurrent learners.</p>
+          <div class="tags">
+            <span>Python</span><span>PostgreSQL</span><span>GPT-4</span><span>REST</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon">😎</span>
+            <div class="project-links">
+              <a href="https://github.com/yaochongchow/emoji-cam" target="_blank">GitHub →</a>
+            </div>
+          </div>
+          <h3>Emoji Cam</h3>
+          <p>Real-time video conferencing enhancement that detects facial emotions and overlays context-aware graphics. Includes an analytics dashboard for session emotion tracking.</p>
+          <div class="tags">
+            <span>Python</span><span>OpenCV</span><span>ML</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon">🚦</span>
+            <div class="project-links">
+              <a href="https://github.com/yaochongchow/traffic-monitor" target="_blank">GitHub →</a>
+            </div>
+          </div>
+          <h3>Traffic Monitor</h3>
+          <p>Real-time traffic analysis combining lane detection with YOLOv8 object detection. Processes live video feeds for vehicle classification and traffic flow monitoring.</p>
+          <div class="tags">
+            <span>Python</span><span>YOLOv8</span><span>OpenCV</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon">🛒</span>
+            <div class="project-links">
+              <a href="https://github.com/yaochongchow/ecommerce-microservice" target="_blank">GitHub →</a>
+            </div>
+          </div>
+          <h3>E-Commerce Microservice</h3>
+          <p>Microservice architecture for e-commerce operations, designed for modularity and independent deployability across services.</p>
+          <div class="tags">
+            <span>Python</span><span>Microservices</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <div class="badges">
+            <span>Python</span><span>Go</span><span>Java</span><span>TypeScript</span><span>C</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Backend</h4>
+          <div class="badges">
+            <span>Node.js</span><span>Django</span><span>REST</span><span>gRPC</span><span>WebSockets</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Databases</h4>
+          <div class="badges">
+            <span>PostgreSQL</span><span>MySQL</span><span>Redis</span><span>DynamoDB</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Cloud & DevOps</h4>
+          <div class="badges">
+            <span>AWS</span><span>Docker</span><span>Kubernetes</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Robotics</h4>
+          <div class="badges">
+            <span>ROS2</span><span>Nav2</span><span>Gazebo</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>ML / CV</h4>
+          <div class="badges">
+            <span>PyTorch</span><span>OpenCV</span><span>YOLOv8</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>Charles Chow · San Jose, CA</p>
+      <a href="https://github.com/yaochongchow" target="_blank">github.com/yaochongchow</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
