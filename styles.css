@@ -244,6 +244,13 @@ section {
   font-size: 1.08rem;
 }
 
+.hero-note {
+  margin: 1rem 0 0;
+  max-width: 42rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .hero-actions {
   margin-top: 2rem;
   display: flex;
