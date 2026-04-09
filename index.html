@@ -32,7 +32,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -233,229 +233,393 @@
       <div class="container section-shell">
         <div class="section-intro">
           <p class="section-kicker">Selected Work</p>
-          <h2>The projects that best represent how I think.</h2>
+          <h2>Selected work, organized by discipline.</h2>
           <p>
-            These are the builds I’d want someone to open if they wanted a quick read on
-            my engineering taste: distributed coordination, cloud systems, and product
-            work with enough complexity to make architecture matter.
+            The work below is grouped the same way I think about my experience:
+            software engineering, machine learning, and robotics. Different domains,
+            but the same preference for systems that are explainable, production-minded,
+            and worth maintaining.
           </p>
         </div>
 
-        <article class="feature-card reveal">
-          <div class="feature-media proof-media">
-            <div class="proof-panel">
-              <p class="proof-label">Distributed rate limiter</p>
-              <div class="pipeline">
-                <div class="pipeline-box">Clients<span>HTTP / gRPC</span></div>
-                <div class="pipeline-arrow" aria-hidden="true">→</div>
-                <div class="pipeline-box">Envoy<span>Load balancing</span></div>
-                <div class="pipeline-arrow" aria-hidden="true">→</div>
-                <div class="pipeline-box">Go services<span>Stateless application layer</span></div>
-              </div>
-              <div class="proof-stack">
-                <div class="proof-chip">Redis Cluster shared state</div>
-                <div class="proof-chip">Lua scripts for atomic checks</div>
-                <div class="proof-chip">Prometheus + Grafana included</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="feature-copy">
-            <div class="feature-head">
-              <div>
-                <p class="feature-kicker">Distributed systems</p>
-                <h3>Distributed Rate Limiter</h3>
-              </div>
-              <a
-                href="https://github.com/yaochongchow/distributed-rate-limiter"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="feature-link"
-              >
-                View repo
-              </a>
-            </div>
-            <p class="feature-summary">
-              A Go service for enforcing shared rate limits across horizontally scaled
-              nodes, with Redis Cluster for shared state and observability built in from
-              the start.
+        <div class="work-category reveal">
+          <div class="category-copy">
+            <p class="section-kicker">Software Engineering</p>
+            <h3>Backend, platform, and product systems.</h3>
+            <p>
+              These are the projects that best represent how I build software systems:
+              service boundaries, data flow, infrastructure choices, and product-facing APIs.
             </p>
-            <ul class="feature-points">
-              <li>Uses Lua scripts inside Redis so token bucket and sliding window decisions stay atomic.</li>
-              <li>Runs behind Envoy with a stateless service layer and shared Redis-backed coordination.</li>
-              <li>Ships with Prometheus and Grafana, which makes the performance story easier to trust.</li>
-            </ul>
-            <div class="tag-row">
-              <span>Go</span>
-              <span>Redis Cluster</span>
-              <span>gRPC</span>
-              <span>Envoy</span>
-              <span>Prometheus</span>
-              <span>Grafana</span>
-            </div>
           </div>
-        </article>
 
-        <article class="feature-card feature-card-alt reveal">
-          <div class="feature-media proof-media">
-            <div class="proof-panel">
-              <p class="proof-label">ShopCloud architecture</p>
-              <div class="cloud-grid">
-                <div class="cloud-box">CloudFront + S3</div>
-                <div class="cloud-box">API Gateway + BFF</div>
-                <div class="cloud-box cloud-box-accent">EventBridge</div>
-                <div class="cloud-services">
-                  <span>Order</span>
-                  <span>Payment</span>
-                  <span>Inventory</span>
-                  <span>Shipping</span>
-                  <span>Notification</span>
-                  <span>Product</span>
-                  <span>Cart</span>
+          <div class="category-grid">
+            <article class="stack-card">
+              <div class="stack-media proof-media">
+                <div class="proof-panel">
+                  <p class="proof-label">Distributed rate limiter</p>
+                  <div class="pipeline">
+                    <div class="pipeline-box">Clients<span>HTTP / gRPC</span></div>
+                    <div class="pipeline-arrow" aria-hidden="true">→</div>
+                    <div class="pipeline-box">Envoy<span>Load balancing</span></div>
+                    <div class="pipeline-arrow" aria-hidden="true">→</div>
+                    <div class="pipeline-box">Go services<span>Stateless application layer</span></div>
+                  </div>
+                  <div class="proof-stack">
+                    <div class="proof-chip">Redis Cluster shared state</div>
+                    <div class="proof-chip">Lua scripts for atomic checks</div>
+                    <div class="proof-chip">Prometheus + Grafana included</div>
+                  </div>
                 </div>
               </div>
-              <div class="proof-stack">
-                <div class="proof-chip">Saga orchestration</div>
-                <div class="proof-chip">AWS CDK infrastructure</div>
-                <div class="proof-chip">Polyglot services: Go, Python, TypeScript</div>
+              <div class="stack-body">
+                <div class="feature-head">
+                  <div>
+                    <p class="feature-kicker">Distributed systems</p>
+                    <h3>Distributed Rate Limiter</h3>
+                  </div>
+                  <a
+                    href="https://github.com/yaochongchow/distributed-rate-limiter"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="feature-link"
+                  >
+                    View repo
+                  </a>
+                </div>
+                <p class="feature-summary">
+                  A Go service for enforcing shared rate limits across horizontally scaled
+                  nodes, with Redis Cluster for shared state and observability built in from
+                  the start.
+                </p>
+                <ul class="feature-points">
+                  <li>Uses Lua scripts inside Redis so token bucket and sliding window decisions stay atomic.</li>
+                  <li>Runs behind Envoy with a stateless service layer and shared Redis-backed coordination.</li>
+                  <li>Includes observability infrastructure so the performance story is easier to reason about.</li>
+                </ul>
+                <div class="tag-row">
+                  <span>Go</span>
+                  <span>Redis Cluster</span>
+                  <span>gRPC</span>
+                  <span>Envoy</span>
+                  <span>Prometheus</span>
+                </div>
               </div>
-            </div>
-          </div>
+            </article>
 
-          <div class="feature-copy">
-            <div class="feature-head">
-              <div>
-                <p class="feature-kicker">Cloud platform</p>
-                <h3>ShopCloud E-Commerce Platform</h3>
+            <article class="stack-card">
+              <div class="stack-media proof-media">
+                <div class="proof-panel">
+                  <p class="proof-label">Cloud platform architecture</p>
+                  <div class="cloud-grid">
+                    <div class="cloud-box">CloudFront + S3</div>
+                    <div class="cloud-box">API Gateway + BFF</div>
+                    <div class="cloud-box cloud-box-accent">EventBridge</div>
+                    <div class="cloud-services">
+                      <span>Order</span>
+                      <span>Payment</span>
+                      <span>Inventory</span>
+                      <span>Shipping</span>
+                      <span>Notification</span>
+                      <span>Product</span>
+                      <span>Cart</span>
+                    </div>
+                  </div>
+                  <div class="proof-stack">
+                    <div class="proof-chip">Saga orchestration</div>
+                    <div class="proof-chip">AWS CDK infrastructure</div>
+                    <div class="proof-chip">Polyglot services</div>
+                  </div>
+                </div>
               </div>
-              <a
-                href="https://github.com/yaochongchow/ecommerce-microservice"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="feature-link"
-              >
-                View repo
-              </a>
-            </div>
-            <p class="feature-summary">
-              A cloud-native, event-driven commerce platform with independently
-              deployable services and Saga-based coordination instead of pretending
-              distributed transactions are free.
+              <div class="stack-body">
+                <div class="feature-head">
+                  <div>
+                    <p class="feature-kicker">Cloud platform</p>
+                    <h3>ShopCloud E-Commerce Platform</h3>
+                  </div>
+                  <a
+                    href="https://github.com/yaochongchow/ecommerce-microservice"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="feature-link"
+                  >
+                    View repo
+                  </a>
+                </div>
+                <p class="feature-summary">
+                  A cloud-native commerce platform with independently deployable services
+                  and Saga-based coordination.
+                </p>
+                <ul class="feature-points">
+                  <li>Breaks the platform into services spanning Lambda, ECS Fargate, DynamoDB, SQS, and EventBridge.</li>
+                  <li>Uses the Order service as the Saga orchestrator for inventory, payment, and fulfillment workflows.</li>
+                  <li>Defines infrastructure in AWS CDK, making the architecture feel complete rather than diagram-only.</li>
+                </ul>
+                <div class="tag-row">
+                  <span>AWS</span>
+                  <span>EventBridge</span>
+                  <span>DynamoDB</span>
+                  <span>CDK</span>
+                  <span>Go</span>
+                  <span>TypeScript</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="stack-card">
+              <div class="stack-media image-media">
+                <img
+                  src="https://raw.githubusercontent.com/yaochongchow/interactive-sql-tutor/main/assets/demo.gif"
+                  alt="Interactive SQL Tutor demo"
+                  loading="lazy"
+                />
+              </div>
+              <div class="stack-body">
+                <div class="feature-head">
+                  <div>
+                    <p class="feature-kicker">Product engineering</p>
+                    <h3>Interactive SQL Tutor</h3>
+                  </div>
+                  <a
+                    href="https://github.com/yaochongchow/interactive-sql-tutor"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="feature-link"
+                  >
+                    View repo
+                  </a>
+                </div>
+                <p class="feature-summary">
+                  A SQL learning platform with browser-based problem solving, isolated query
+                  execution, instructor tooling, and scoped AI hints.
+                </p>
+                <ul class="feature-points">
+                  <li>Runs each student submission in its own temporary MySQL sandbox instead of touching shared state.</li>
+                  <li>Pairs a Django REST backend with a React frontend and role-based JWT auth.</li>
+                  <li>Treats AI as a focused product feature rather than a generic chatbot bolted onto the app.</li>
+                </ul>
+                <div class="tag-row">
+                  <span>Django</span>
+                  <span>React</span>
+                  <span>MySQL</span>
+                  <span>OpenAI API</span>
+                  <span>GCP</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="work-category reveal">
+          <div class="category-copy">
+            <p class="section-kicker">Machine Learning</p>
+            <h3>Applied ML and vision systems with clear pipelines.</h3>
+            <p>
+              I’m most interested in ML when it is attached to a real pipeline: live input,
+              system constraints, or decisions that have to work outside a notebook.
             </p>
-            <ul class="feature-points">
-              <li>Breaks the platform into independently deployable services spanning Lambda, ECS Fargate, DynamoDB, SQS, and EventBridge.</li>
-              <li>Uses the Order service as the Saga orchestrator for inventory, payment, and fulfillment workflows.</li>
-              <li>Defines infrastructure in AWS CDK, which makes the system feel more complete than a repo of isolated services.</li>
-            </ul>
-            <div class="tag-row">
-              <span>AWS</span>
-              <span>EventBridge</span>
-              <span>DynamoDB</span>
-              <span>CDK</span>
-              <span>Go</span>
-              <span>Python</span>
-              <span>TypeScript</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="feature-card reveal">
-          <div class="feature-media image-media">
-            <img
-              src="https://raw.githubusercontent.com/yaochongchow/interactive-sql-tutor/main/assets/demo.gif"
-              alt="Interactive SQL Tutor demo"
-              loading="lazy"
-            />
           </div>
 
-          <div class="feature-copy">
-            <div class="feature-head">
-              <div>
-                <p class="feature-kicker">Full-stack product build</p>
-                <h3>Interactive SQL Tutor</h3>
+          <div class="category-grid">
+            <article class="stack-card">
+              <div class="stack-media image-media">
+                <img
+                  src="https://raw.githubusercontent.com/yaochongchow/traffic-monitor/main/demo_small.gif"
+                  alt="Traffic Monitoring System demo"
+                  loading="lazy"
+                />
               </div>
-              <a
-                href="https://github.com/yaochongchow/interactive-sql-tutor"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="feature-link"
-              >
-                View repo
-              </a>
-            </div>
-            <p class="feature-summary">
-              A SQL practice platform with browser-based problem solving, isolated query
-              execution, instructor tooling, and scoped AI hints for students.
+              <div class="stack-body">
+                <div class="feature-head">
+                  <div>
+                    <p class="feature-kicker">Computer vision</p>
+                    <h3>Traffic Monitoring System</h3>
+                  </div>
+                  <a
+                    href="https://github.com/yaochongchow/traffic-monitor"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="feature-link"
+                  >
+                    View repo
+                  </a>
+                </div>
+                <p class="feature-summary">
+                  A real-time traffic pipeline combining perspective correction, lane
+                  analysis, and YOLO-based object detection.
+                </p>
+                <ul class="feature-points">
+                  <li>Combines multiple CV stages instead of treating detection as the whole system.</li>
+                  <li>Uses bird’s-eye transforms, lane fitting, and object tracking in one pipeline.</li>
+                  <li>Feels closer to a deployable monitoring workflow than a single-model demo.</li>
+                </ul>
+                <div class="tag-row">
+                  <span>Python</span>
+                  <span>OpenCV</span>
+                  <span>YOLOv8</span>
+                  <span>PyTorch</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="stack-card">
+              <div class="stack-media image-media">
+                <img
+                  src="https://raw.githubusercontent.com/yaochongchow/emoji-cam/main/demo.gif"
+                  alt="Emoji Cam demo"
+                  loading="lazy"
+                />
+              </div>
+              <div class="stack-body">
+                <div class="feature-head">
+                  <div>
+                    <p class="feature-kicker">Real-time ML</p>
+                    <h3>Emoji Cam</h3>
+                  </div>
+                  <a
+                    href="https://github.com/yaochongchow/emoji-cam"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="feature-link"
+                  >
+                    View repo
+                  </a>
+                </div>
+                <p class="feature-summary">
+                  A webcam-based emotion recognition system with live overlays and
+                  lightweight analytics.
+                </p>
+                <ul class="feature-points">
+                  <li>Pairs facial emotion detection with a responsive user-facing visualization layer.</li>
+                  <li>Tracks emotion trends over time instead of stopping at per-frame inference.</li>
+                  <li>Shows how I think about live input, UI feedback, and ML together.</li>
+                </ul>
+                <div class="tag-row">
+                  <span>Python</span>
+                  <span>OpenCV</span>
+                  <span>FER</span>
+                  <span>MTCNN</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="stack-card">
+              <div class="stack-media proof-media">
+                <div class="proof-panel">
+                  <p class="proof-label">Fraud detection workflow</p>
+                  <div class="proof-stack">
+                    <div class="proof-chip">Logistic Regression</div>
+                    <div class="proof-chip">Random Forest</div>
+                    <div class="proof-chip">SVM</div>
+                    <div class="proof-chip">XGBoost</div>
+                    <div class="proof-chip">SMOTE</div>
+                    <div class="proof-chip">Class weighting</div>
+                    <div class="proof-chip">GPU acceleration</div>
+                  </div>
+                </div>
+              </div>
+              <div class="stack-body">
+                <div class="feature-head">
+                  <div>
+                    <p class="feature-kicker">Applied machine learning</p>
+                    <h3>Credit Card Fraud Detection</h3>
+                  </div>
+                  <a
+                    href="https://github.com/yaochongchow/credit-card-fraud-detection"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="feature-link"
+                  >
+                    View repo
+                  </a>
+                </div>
+                <p class="feature-summary">
+                  A fraud detection project focused on model comparison for highly
+                  imbalanced transaction data.
+                </p>
+                <ul class="feature-points">
+                  <li>Compares multiple classifiers instead of betting the whole project on a single model choice.</li>
+                  <li>Tests balancing strategies like class weighting and SMOTE in a setup where evaluation choices matter.</li>
+                  <li>Uses GPU-accelerated tooling, which makes it feel practical rather than purely academic.</li>
+                </ul>
+                <div class="tag-row">
+                  <span>Python</span>
+                  <span>scikit-learn</span>
+                  <span>XGBoost</span>
+                  <span>cuML</span>
+                  <span>imbalanced-learn</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="work-category reveal">
+          <div class="category-copy">
+            <p class="section-kicker">Robotics</p>
+            <h3>Robot software with navigation, orchestration, and monitoring.</h3>
+            <p>
+              This is where the software, systems, and real-world constraint sides of my
+              background meet most directly.
             </p>
-            <ul class="feature-points">
-              <li>Each student submission runs in its own temporary MySQL sandbox instead of touching shared state.</li>
-              <li>Pairs a Django REST backend with a React frontend and role-based JWT auth.</li>
-              <li>Uses an LLM for SQL-only hinting, which is a more disciplined product choice than bolting on a generic chatbot.</li>
-            </ul>
-            <div class="tag-row">
-              <span>Django</span>
-              <span>React</span>
-              <span>MySQL</span>
-              <span>OpenAI API</span>
-              <span>GCP</span>
-            </div>
           </div>
-        </article>
 
-        <div class="mini-grid">
-          <article class="mini-card reveal">
-            <div class="mini-media">
-              <img
-                src="https://raw.githubusercontent.com/yaochongchow/traffic-monitor/main/demo_small.gif"
-                alt="Traffic Monitoring System demo"
-                loading="lazy"
-              />
-            </div>
-            <div class="mini-copy">
-              <div class="mini-head">
-                <h3>Traffic Monitoring System</h3>
-                <a
-                  href="https://github.com/yaochongchow/traffic-monitor"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="feature-link"
-                >
-                  Repo
-                </a>
+          <div class="category-grid">
+            <article class="stack-card">
+              <div class="stack-media proof-media">
+                <div class="proof-panel">
+                  <p class="proof-label">Warehouse delivery robot</p>
+                  <div class="pipeline">
+                    <div class="pipeline-box">Dashboard<span>Orders + status</span></div>
+                    <div class="pipeline-arrow" aria-hidden="true">→</div>
+                    <div class="pipeline-box">Task manager<span>Scheduling + battery logic</span></div>
+                    <div class="pipeline-arrow" aria-hidden="true">→</div>
+                    <div class="pipeline-box">Nav2 stack<span>Planning + control</span></div>
+                  </div>
+                  <div class="proof-stack">
+                    <div class="proof-chip">ROS2 Humble</div>
+                    <div class="proof-chip">Nav2 behavior trees</div>
+                    <div class="proof-chip">slam_toolbox</div>
+                    <div class="proof-chip">Gazebo warehouse simulation</div>
+                    <div class="proof-chip">Diagnostics + rosbag capture</div>
+                  </div>
+                </div>
               </div>
-              <p>
-                Combines perspective correction, lane detection, and YOLOv8-based object
-                detection in a real-time video pipeline.
-              </p>
-            </div>
-          </article>
-
-          <article class="mini-card reveal">
-            <div class="mini-media">
-              <img
-                src="https://raw.githubusercontent.com/yaochongchow/emoji-cam/main/demo.gif"
-                alt="Emoji Cam demo"
-                loading="lazy"
-              />
-            </div>
-            <div class="mini-copy">
-              <div class="mini-head">
-                <h3>Emoji Cam</h3>
-                <a
-                  href="https://github.com/yaochongchow/emoji-cam"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="feature-link"
-                >
-                  Repo
-                </a>
+              <div class="stack-body">
+                <div class="feature-head">
+                  <div>
+                    <p class="feature-kicker">Autonomous robotics</p>
+                    <h3>Warehouse Delivery Robot</h3>
+                  </div>
+                  <a
+                    href="https://github.com/yaochongchow/warehouse-delivery-robot"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="feature-link"
+                  >
+                    View repo
+                  </a>
+                </div>
+                <p class="feature-summary">
+                  A ROS2 mobile robot system for autonomous warehouse deliveries, with
+                  navigation, task orchestration, and monitoring tools tied together in one stack.
+                </p>
+                <ul class="feature-points">
+                  <li>Combines mapping, navigation, task prioritization, battery-aware scheduling, and status reporting.</li>
+                  <li>Uses Nav2 with behavior trees, slam_toolbox, and a custom Gazebo environment instead of a toy setup.</li>
+                  <li>Includes monitoring and fault recording, which makes the robot software feel operational rather than just simulated.</li>
+                </ul>
+                <div class="tag-row">
+                  <span>ROS2</span>
+                  <span>Nav2</span>
+                  <span>Gazebo</span>
+                  <span>slam_toolbox</span>
+                  <span>Python</span>
+                  <span>C++</span>
+                </div>
               </div>
-              <p>
-                Real-time facial expression recognition with webcam input, emoji overlays,
-                and lightweight emotion analytics.
-              </p>
-            </div>
-          </article>
+            </article>
+          </div>
         </div>
       </div>
     </section>
