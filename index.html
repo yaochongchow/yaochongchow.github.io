@@ -32,7 +32,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -42,8 +42,9 @@
       <a class="nav-logo" href="#top">Charles Chow</a>
       <ul class="nav-links" id="nav-links">
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">Approach</a></li>
+        <li><a href="#work">Flagship Work</a></li>
+        <li><a href="#additional-work">Additional Work</a></li>
+        <li><a href="#about">How I Work</a></li>
         <li><a href="#contact">Contact</a></li>
         <li>
           <a
@@ -92,25 +93,12 @@
 
         <aside class="hero-panel" aria-label="Role fit and recent production context">
           <div class="panel-card">
-            <p class="panel-label">Selected results</p>
-            <div class="panel-results">
-              <div class="panel-result">
-                <strong>900 req/sec</strong>
-                <span>Node.js APIs with Redis-backed coordination at NeuroLeap.</span>
-              </div>
-              <div class="panel-result">
-                <strong>420ms to 110ms p95</strong>
-                <span>PostgreSQL latency reduction on 8M+ rows after indexing and query-plan work.</span>
-              </div>
-              <div class="panel-result">
-                <strong>1.2M records/hour</strong>
-                <span>Telemetry ingestion across eight channels with PostgreSQL-backed analysis.</span>
-              </div>
-              <div class="panel-result">
-                <strong>9.2% to 1.8% packet loss</strong>
-                <span>BLE streaming stability improvement for uninterrupted test sessions.</span>
-              </div>
-            </div>
+            <p class="panel-label">What I bring</p>
+            <ul class="panel-list">
+              <li>I optimize for measurable system behavior, not vague “scale.”</li>
+              <li>I am comfortable debugging across APIs, databases, telemetry, and device integration.</li>
+              <li>I care about instrumentation, reliability, and architectures I can defend in detail.</li>
+            </ul>
           </div>
 
           <div class="panel-card">
@@ -127,6 +115,31 @@
             </div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section id="proof-strip">
+      <div class="container proof-strip reveal" aria-label="Selected engineering results">
+        <article class="proof-stat">
+          <span class="proof-stat-label">API throughput</span>
+          <strong>900 req/sec</strong>
+          <p>Node.js APIs with Redis-backed coordination at NeuroLeap.</p>
+        </article>
+        <article class="proof-stat">
+          <span class="proof-stat-label">Database latency</span>
+          <strong>420ms to 110ms p95</strong>
+          <p>PostgreSQL tuning across 8M+ rows with better indexing, plans, and ingestion flow.</p>
+        </article>
+        <article class="proof-stat">
+          <span class="proof-stat-label">Telemetry ingestion</span>
+          <strong>1.2M records/hour</strong>
+          <p>Real-time device data across eight channels with PostgreSQL-backed analysis.</p>
+        </article>
+        <article class="proof-stat">
+          <span class="proof-stat-label">BLE reliability</span>
+          <strong>9.2% to 1.8% packet loss</strong>
+          <p>Streaming stability improvements that enabled uninterrupted test sessions.</p>
+        </article>
       </div>
     </section>
 
@@ -204,152 +217,217 @@
     <section id="work">
       <div class="container section-shell">
         <div class="section-intro">
-          <p class="section-kicker">Selected Work</p>
-          <h2>Systems work that shows architecture, not just implementation.</h2>
+          <p class="section-kicker">Flagship Systems Work</p>
+          <h2>The projects that best show how I reason about systems.</h2>
           <p>
-            These are the projects I would hand to a hiring manager who wants to see how
-            I think about coordination, latency, observability, isolation, and real-world
-            constraints. The strongest infrastructure and systems work comes first.
+            These are the projects I would lead with for backend, infrastructure, cloud,
+            robotics software, and real-time systems roles. Each one has a clear systems
+            problem, explicit architecture, and evidence that the implementation holds up.
+          </p>
+        </div>
+        <div class="flagship-grid">
+          <article class="stack-card flagship-card reveal">
+            <div class="stack-media proof-media">
+              <div class="proof-panel">
+                <p class="proof-label">Distributed rate limiter</p>
+                <div class="pipeline">
+                  <div class="pipeline-box">Clients<span>HTTP / gRPC load</span></div>
+                  <div class="pipeline-arrow" aria-hidden="true">→</div>
+                  <div class="pipeline-box">Envoy<span>Stateless routing layer</span></div>
+                  <div class="pipeline-arrow" aria-hidden="true">→</div>
+                  <div class="pipeline-box">Go services<span>Shared Redis-backed limits</span></div>
+                </div>
+                <div class="proof-stack">
+                  <div class="proof-chip">12K req/sec</div>
+                  <div class="proof-chip">Redis Cluster shared state</div>
+                  <div class="proof-chip">Lua for atomic decisions</div>
+                  <div class="proof-chip">52 tests</div>
+                </div>
+              </div>
+            </div>
+            <div class="stack-body">
+              <div class="feature-head">
+                <div>
+                  <p class="feature-kicker">Distributed Systems</p>
+                  <h3>Distributed Rate Limiter</h3>
+                </div>
+                <a
+                  href="https://github.com/yaochongchow/distributed-rate-limiter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="feature-link"
+                >
+                  View repo
+                </a>
+              </div>
+              <p class="feature-summary">
+                A Go rate-limiting service for horizontally scaled backends, built so
+                shared limits stay correct even when traffic is spread across instances.
+              </p>
+              <ul class="feature-points">
+                <li>Moves coordination into Redis Cluster and keeps the Go layer stateless behind Envoy.</li>
+                <li>Implements token bucket and sliding window variants with atomic Lua scripts, so correctness does not depend on timing or instance affinity.</li>
+                <li>Backed by load tests, 52 tests, and Prometheus and Grafana instrumentation with sustained throughput of 12K req/sec.</li>
+              </ul>
+              <div class="tag-row">
+                <span>Go</span>
+                <span>Redis Cluster</span>
+                <span>gRPC</span>
+                <span>Envoy</span>
+                <span>Prometheus</span>
+                <span>Grafana</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="stack-card flagship-card reveal">
+            <div class="stack-media proof-media">
+              <div class="proof-panel">
+                <p class="proof-label">Cloud platform architecture</p>
+                <div class="cloud-grid">
+                  <div class="cloud-box">CloudFront + S3</div>
+                  <div class="cloud-box">API Gateway + BFF</div>
+                  <div class="cloud-box cloud-box-accent">EventBridge + SQS</div>
+                  <div class="cloud-services">
+                    <span>Order</span>
+                    <span>Payment</span>
+                    <span>Inventory</span>
+                    <span>Shipping</span>
+                    <span>Notification</span>
+                    <span>Product</span>
+                    <span>Cart</span>
+                  </div>
+                </div>
+                <div class="proof-stack">
+                  <div class="proof-chip">7 services</div>
+                  <div class="proof-chip">12 DynamoDB tables</div>
+                  <div class="proof-chip">70 tests</div>
+                  <div class="proof-chip">AWS CDK</div>
+                </div>
+              </div>
+            </div>
+            <div class="stack-body">
+              <div class="feature-head">
+                <div>
+                  <p class="feature-kicker">Cloud Infrastructure</p>
+                  <h3>ShopCloud E-Commerce Platform</h3>
+                </div>
+                <a
+                  href="https://github.com/yaochongchow/ecommerce-microservice"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="feature-link"
+                >
+                  View repo
+                </a>
+              </div>
+              <p class="feature-summary">
+                A cloud-native commerce platform built to explore service boundaries,
+                event-driven coordination, and distributed transaction handling on AWS.
+              </p>
+              <ul class="feature-points">
+                <li>Breaks the platform into seven deployable services across Lambda, ECS Fargate, DynamoDB, SQS, EventBridge, CloudFront, and a Node.js BFF.</li>
+                <li>Handles distributed transactions with Saga orchestration, compensation rollback, atomic inventory reservations, and idempotency protection.</li>
+                <li>Defines infrastructure in AWS CDK and validates behavior with 70 tests, so the architecture is backed by code instead of just a diagram.</li>
+              </ul>
+              <div class="tag-row">
+                <span>AWS</span>
+                <span>EventBridge</span>
+                <span>DynamoDB</span>
+                <span>SQS</span>
+                <span>CDK</span>
+                <span>Go</span>
+                <span>TypeScript</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="stack-card flagship-card reveal">
+            <div class="stack-media proof-media">
+              <div class="proof-panel">
+                <p class="proof-label">Warehouse delivery robot</p>
+                <div class="pipeline">
+                  <div class="pipeline-box">Dashboard<span>Orders and robot status</span></div>
+                  <div class="pipeline-arrow" aria-hidden="true">→</div>
+                  <div class="pipeline-box">Task manager<span>Scheduling and battery logic</span></div>
+                  <div class="pipeline-arrow" aria-hidden="true">→</div>
+                  <div class="pipeline-box">Nav2 stack<span>Planning and control</span></div>
+                </div>
+                <div class="proof-stack">
+                  <div class="proof-chip">ROS2 Humble</div>
+                  <div class="proof-chip">Nav2 behavior trees</div>
+                  <div class="proof-chip">slam_toolbox</div>
+                  <div class="proof-chip">rosbag2 diagnostics</div>
+                </div>
+              </div>
+            </div>
+            <div class="stack-body">
+              <div class="feature-head">
+                <div>
+                  <p class="feature-kicker">Robotics Software</p>
+                  <h3>Warehouse Delivery Robot</h3>
+                </div>
+                <a
+                  href="https://github.com/yaochongchow/warehouse-delivery-robot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="feature-link"
+                >
+                  View repo
+                </a>
+              </div>
+              <p class="feature-summary">
+                A ROS2 mobile robot stack for warehouse deliveries, built around
+                navigation, task orchestration, observability, and fault capture instead
+                of a one-path simulation demo.
+              </p>
+              <ul class="feature-points">
+                <li>Combines mapping, Nav2 waypoint navigation, behavior-tree control, task prioritization, battery-aware scheduling, and a status dashboard in one stack.</li>
+                <li>Uses launch-based bring-up, slam_toolbox, tf2, and a custom Gazebo environment so the system behaves like a real robot workflow instead of a toy example.</li>
+                <li>Adds rosbag2 logging and diagnostics so failures can be replayed and isolated, which is often the hardest part of robotics software in practice.</li>
+              </ul>
+              <div class="tag-row">
+                <span>ROS2</span>
+                <span>Nav2</span>
+                <span>Gazebo</span>
+                <span>slam_toolbox</span>
+                <span>Python</span>
+                <span>C++</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="additional-work">
+      <div class="container section-shell">
+        <div class="section-intro">
+          <p class="section-kicker">Additional Work</p>
+          <h2>Supporting projects that show range without diluting the systems story.</h2>
+          <p>
+            These projects still matter, but they work best as support for the main
+            narrative: real-time pipelines, applied ML systems, and product-minded
+            implementation with clear constraints.
           </p>
         </div>
 
         <div class="work-category reveal">
           <div class="category-copy">
-            <p class="section-kicker">Software Engineering</p>
-            <h3>Backend, distributed systems, and cloud architecture.</h3>
-            <p>
-              This is the highest-signal set for backend, infrastructure, and platform
-              roles: explicit architecture, visible failure modes, and evidence that the
-              system can be reasoned about under load.
-            </p>
+            <p class="section-kicker">Software + Product</p>
+            <h3>Application systems where isolation, UX, and data flow still matter.</h3>
           </div>
 
-          <div class="category-grid">
-            <article class="stack-card">
-              <div class="stack-media proof-media">
-                <div class="proof-panel">
-                  <p class="proof-label">Distributed rate limiter</p>
-                  <div class="pipeline">
-                    <div class="pipeline-box">Clients<span>HTTP / gRPC load</span></div>
-                    <div class="pipeline-arrow" aria-hidden="true">→</div>
-                    <div class="pipeline-box">Envoy<span>Stateless routing layer</span></div>
-                    <div class="pipeline-arrow" aria-hidden="true">→</div>
-                    <div class="pipeline-box">Go services<span>Shared Redis-backed limits</span></div>
-                  </div>
-                  <div class="proof-stack">
-                    <div class="proof-chip">12K req/sec</div>
-                    <div class="proof-chip">Redis Cluster shared state</div>
-                    <div class="proof-chip">Lua for atomic decisions</div>
-                    <div class="proof-chip">52 tests</div>
-                  </div>
-                </div>
-              </div>
-              <div class="stack-body">
-                <div class="feature-head">
-                  <div>
-                    <p class="feature-kicker">Distributed Systems</p>
-                    <h3>Distributed Rate Limiter</h3>
-                  </div>
-                  <a
-                    href="https://github.com/yaochongchow/distributed-rate-limiter"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="feature-link"
-                  >
-                    View repo
-                  </a>
-                </div>
-                <p class="feature-summary">
-                  A Go rate-limiting service for horizontally scaled backends, built so
-                  shared limits stay correct even when traffic is spread across instances.
-                </p>
-                <ul class="feature-points">
-                  <li>Solves the coordination problem by moving shared state into Redis Cluster and keeping the Go layer stateless behind Envoy.</li>
-                  <li>Implements token bucket and sliding window variants with atomic Lua scripts, so correctness does not depend on request timing or instance affinity.</li>
-                  <li>Backed by load tests, 52 tests, and Prometheus and Grafana instrumentation, with sustained throughput of 12K req/sec under concurrent load.</li>
-                </ul>
-                <div class="tag-row">
-                  <span>Go</span>
-                  <span>Redis Cluster</span>
-                  <span>gRPC</span>
-                  <span>Envoy</span>
-                  <span>Prometheus</span>
-                  <span>Grafana</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="stack-card">
-              <div class="stack-media proof-media">
-                <div class="proof-panel">
-                  <p class="proof-label">Cloud platform architecture</p>
-                  <div class="cloud-grid">
-                    <div class="cloud-box">CloudFront + S3</div>
-                    <div class="cloud-box">API Gateway + BFF</div>
-                    <div class="cloud-box cloud-box-accent">EventBridge + SQS</div>
-                    <div class="cloud-services">
-                      <span>Order</span>
-                      <span>Payment</span>
-                      <span>Inventory</span>
-                      <span>Shipping</span>
-                      <span>Notification</span>
-                      <span>Product</span>
-                      <span>Cart</span>
-                    </div>
-                  </div>
-                  <div class="proof-stack">
-                    <div class="proof-chip">7 services</div>
-                    <div class="proof-chip">12 DynamoDB tables</div>
-                    <div class="proof-chip">70 tests</div>
-                    <div class="proof-chip">AWS CDK</div>
-                  </div>
-                </div>
-              </div>
-              <div class="stack-body">
-                <div class="feature-head">
-                  <div>
-                    <p class="feature-kicker">Cloud Infrastructure</p>
-                    <h3>ShopCloud E-Commerce Platform</h3>
-                  </div>
-                  <a
-                    href="https://github.com/yaochongchow/ecommerce-microservice"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="feature-link"
-                  >
-                    View repo
-                  </a>
-                </div>
-                <p class="feature-summary">
-                  A cloud-native commerce platform built to explore service boundaries,
-                  event-driven coordination, and distributed transaction handling on AWS.
-                </p>
-                <ul class="feature-points">
-                  <li>Breaks the platform into seven deployable services spanning Lambda, ECS Fargate, DynamoDB, SQS, EventBridge, CloudFront, and a Node.js BFF.</li>
-                  <li>Treats distributed transactions as a real systems problem by implementing Saga orchestration, compensation rollback, atomic inventory reservations, and idempotency protection.</li>
-                  <li>Defines the infrastructure in AWS CDK and validates behavior with 70 tests, so the architecture is backed by code instead of just a diagram.</li>
-                </ul>
-                <div class="tag-row">
-                  <span>AWS</span>
-                  <span>EventBridge</span>
-                  <span>DynamoDB</span>
-                  <span>SQS</span>
-                  <span>CDK</span>
-                  <span>Go</span>
-                  <span>TypeScript</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="stack-card">
-              <div class="stack-media image-media">
+          <div class="support-grid">
+            <article class="support-card reveal">
+              <div class="support-media image-media">
                 <img
                   src="https://raw.githubusercontent.com/yaochongchow/interactive-sql-tutor/main/assets/demo.gif"
                   alt="Interactive SQL Tutor demo"
                   loading="lazy"
                 />
               </div>
-              <div class="stack-body">
+              <div class="support-body">
                 <div class="feature-head">
                   <div>
                     <p class="feature-kicker">Product Systems</p>
@@ -365,90 +443,13 @@
                   </a>
                 </div>
                 <p class="feature-summary">
-                  A full-stack SQL learning platform where the interesting engineering
-                  problem is safe execution and product-grade isolation, not just UI.
+                  A SQL learning platform where the hard part is safe execution and product-grade isolation, not just the interface.
                 </p>
-                <ul class="feature-points">
-                  <li>Runs each student submission in its own temporary MySQL sandbox so untrusted queries do not touch shared state.</li>
-                  <li>Combines a Django REST backend, React frontend, role-based auth, and structured analytics storage around a real product workflow.</li>
-                  <li>Keeps AI scoped to SQL-specific hints with caching, retries, and structured outputs, which makes the feature more reliable and easier to explain.</li>
+                <ul class="feature-points compact-points">
+                  <li>Runs each student submission in its own temporary MySQL sandbox.</li>
+                  <li>Combines Django REST APIs, React, role-based auth, and analytics storage.</li>
+                  <li>Keeps AI scoped to structured SQL hints instead of generic chatbot behavior.</li>
                 </ul>
-                <div class="tag-row">
-                  <span>Django</span>
-                  <span>React</span>
-                  <span>MySQL</span>
-                  <span>PostgreSQL</span>
-                  <span>OpenAI API</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="work-category reveal">
-          <div class="category-copy">
-            <p class="section-kicker">Robotics</p>
-            <h3>Real-time robot software with monitoring and orchestration.</h3>
-            <p>
-              This is where the backend, real-time, and hardware-adjacent parts of my
-              background meet most clearly. I care less about demos and more about robot
-              software that can be monitored, replayed, and debugged.
-            </p>
-          </div>
-
-          <div class="category-grid">
-            <article class="stack-card">
-              <div class="stack-media proof-media">
-                <div class="proof-panel">
-                  <p class="proof-label">Warehouse delivery robot</p>
-                  <div class="pipeline">
-                    <div class="pipeline-box">Dashboard<span>Orders and robot status</span></div>
-                    <div class="pipeline-arrow" aria-hidden="true">→</div>
-                    <div class="pipeline-box">Task manager<span>Scheduling and battery logic</span></div>
-                    <div class="pipeline-arrow" aria-hidden="true">→</div>
-                    <div class="pipeline-box">Nav2 stack<span>Planning and control</span></div>
-                  </div>
-                  <div class="proof-stack">
-                    <div class="proof-chip">ROS2 Humble</div>
-                    <div class="proof-chip">Nav2 behavior trees</div>
-                    <div class="proof-chip">slam_toolbox</div>
-                    <div class="proof-chip">rosbag2 diagnostics</div>
-                  </div>
-                </div>
-              </div>
-              <div class="stack-body">
-                <div class="feature-head">
-                  <div>
-                    <p class="feature-kicker">Robotics Software</p>
-                    <h3>Warehouse Delivery Robot</h3>
-                  </div>
-                  <a
-                    href="https://github.com/yaochongchow/warehouse-delivery-robot"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="feature-link"
-                  >
-                    View repo
-                  </a>
-                </div>
-                <p class="feature-summary">
-                  A ROS2 mobile robot stack for warehouse deliveries, built around
-                  navigation, task orchestration, observability, and fault capture instead
-                  of a one-path simulation demo.
-                </p>
-                <ul class="feature-points">
-                  <li>Combines mapping, Nav2 waypoint navigation, behavior-tree control, task prioritization, battery-aware scheduling, and a status dashboard in one stack.</li>
-                  <li>Uses launch-based bring-up, slam_toolbox, tf2, and a custom Gazebo environment so the system behaves like a real robot workflow instead of a toy example.</li>
-                  <li>Adds rosbag2 logging and diagnostics so failures can be replayed and isolated, which is the part of robotics software that often matters most in practice.</li>
-                </ul>
-                <div class="tag-row">
-                  <span>ROS2</span>
-                  <span>Nav2</span>
-                  <span>Gazebo</span>
-                  <span>slam_toolbox</span>
-                  <span>Python</span>
-                  <span>C++</span>
-                </div>
               </div>
             </article>
           </div>
@@ -457,24 +458,19 @@
         <div class="work-category reveal">
           <div class="category-copy">
             <p class="section-kicker">Applied AI Systems</p>
-            <h3>ML work where the system around the model matters.</h3>
-            <p>
-              I am most interested in ML when it is attached to a real pipeline, a
-              performance constraint, or an operational workflow. These projects stay on
-              the page because the systems framing is stronger than the model hype.
-            </p>
+            <h3>ML work where the surrounding pipeline matters as much as the model.</h3>
           </div>
 
-          <div class="category-grid">
-            <article class="stack-card">
-              <div class="stack-media image-media">
+          <div class="support-grid">
+            <article class="support-card reveal">
+              <div class="support-media image-media">
                 <img
                   src="https://raw.githubusercontent.com/yaochongchow/traffic-monitor/main/demo_small.gif"
                   alt="Traffic Monitoring System demo"
                   loading="lazy"
                 />
               </div>
-              <div class="stack-body">
+              <div class="support-body">
                 <div class="feature-head">
                   <div>
                     <p class="feature-kicker">Real-Time Pipeline</p>
@@ -490,14 +486,12 @@
                   </a>
                 </div>
                 <p class="feature-summary">
-                  A real-time traffic analysis pipeline combining geometry, lane modeling,
-                  object detection, and scene interpretation instead of treating inference
-                  as the entire product.
+                  A real-time traffic analysis pipeline combining geometry, lane modeling, object detection, and scene interpretation.
                 </p>
-                <ul class="feature-points">
-                  <li>Uses perspective correction, lane fitting, and YOLO-based detection in a coordinated pipeline rather than a single-model demo.</li>
-                  <li>Interesting mainly because the hard part is stage-to-stage stability, output consistency, and processing live video fast enough to stay useful.</li>
-                  <li>The architecture maps well to monitoring and analytics use cases where model output has to plug into a larger decision system.</li>
+                <ul class="feature-points compact-points">
+                  <li>Coordinates perspective correction, lane fitting, and YOLO detection in one live pipeline.</li>
+                  <li>Useful because the real challenge is stage-to-stage stability, not just model choice.</li>
+                  <li>Maps cleanly to monitoring and analytics workflows where inference plugs into a larger system.</li>
                 </ul>
                 <div class="tag-row">
                   <span>Python</span>
@@ -508,15 +502,15 @@
               </div>
             </article>
 
-            <article class="stack-card">
-              <div class="stack-media image-media">
+            <article class="support-card reveal">
+              <div class="support-media image-media">
                 <img
                   src="https://raw.githubusercontent.com/yaochongchow/credit-card-fraud-detection/main/outputs/streamlit_demo.gif"
                   alt="Credit Card Fraud Detection demo"
                   loading="lazy"
                 />
               </div>
-              <div class="stack-body">
+              <div class="support-body">
                 <div class="feature-head">
                   <div>
                     <p class="feature-kicker">Applied Machine Learning</p>
@@ -532,14 +526,12 @@
                   </a>
                 </div>
                 <p class="feature-summary">
-                  A fraud detection project focused on model choice, class imbalance, and
-                  evaluation discipline for transaction data where false confidence is easy
-                  to fake.
+                  A fraud detection project focused on model choice, class imbalance, and evaluation discipline for transaction data.
                 </p>
-                <ul class="feature-points">
-                  <li>Compares several classifiers instead of betting the whole system story on one model that happened to score well once.</li>
-                  <li>Tests class weighting and SMOTE explicitly, which matters more here than squeezing out a shallow benchmark win.</li>
-                  <li>Uses GPU-accelerated tooling to make experimentation practical and to show the project as an engineering workflow, not just a notebook exercise.</li>
+                <ul class="feature-points compact-points">
+                  <li>Compares several classifiers instead of relying on one benchmark-friendly model.</li>
+                  <li>Tests class weighting and SMOTE where evaluation choices actually matter.</li>
+                  <li>Uses GPU-accelerated tooling to keep experimentation practical.</li>
                 </ul>
                 <div class="tag-row">
                   <span>Python</span>
@@ -551,15 +543,15 @@
               </div>
             </article>
 
-            <article class="stack-card">
-              <div class="stack-media image-media">
+            <article class="support-card reveal">
+              <div class="support-media image-media">
                 <img
                   src="https://raw.githubusercontent.com/yaochongchow/emoji-cam/main/demo.gif"
                   alt="Emoji Cam demo"
                   loading="lazy"
                 />
               </div>
-              <div class="stack-body">
+              <div class="support-body">
                 <div class="feature-head">
                   <div>
                     <p class="feature-kicker">Real-Time Inference</p>
@@ -575,13 +567,12 @@
                   </a>
                 </div>
                 <p class="feature-summary">
-                  A webcam-based emotion recognition app that combines live inference,
-                  lightweight analytics, and user-facing feedback in one responsive loop.
+                  A webcam-based emotion recognition app that combines live inference, lightweight analytics, and user-facing feedback.
                 </p>
-                <ul class="feature-points">
-                  <li>Connects facial emotion detection to a live overlay system, so the project is about the full interaction loop rather than isolated model output.</li>
-                  <li>Tracks emotion trends over time and presents them in a form that is easy to inspect, which makes the system feel closer to a product than a notebook demo.</li>
-                  <li>Useful here as a smaller proof point that I can wire real-time input, inference, and interface behavior together cleanly.</li>
+                <ul class="feature-points compact-points">
+                  <li>Wires real-time input, inference, and a live overlay loop together.</li>
+                  <li>Tracks emotion trends over time instead of stopping at single-frame output.</li>
+                  <li>Works well as a smaller proof point for responsive ML interface work.</li>
                 </ul>
                 <div class="tag-row">
                   <span>Python</span>
@@ -599,43 +590,50 @@
     <section id="about">
       <div class="container section-shell">
         <div class="section-intro">
-          <p class="section-kicker">Approach</p>
-          <h2>I build across APIs, infrastructure, and real-world constraints.</h2>
+          <p class="section-kicker">How I Work</p>
+          <h2>Clear systems thinking is part of the product.</h2>
           <p>
-            The thread through this portfolio is not a list of technologies. It is a way
-            of working: measure the system, instrument the edges, understand the failure
-            modes, and keep the architecture legible enough that other engineers can
-            reason about it.
+            I work best on systems where the hard part is not just shipping code, but
+            understanding behavior under load, narrowing failures quickly, and making
+            the architecture easy to reason about for the next engineer.
           </p>
         </div>
 
         <div class="about-grid">
           <article class="about-card reveal">
-            <h3>Cross-layer ownership</h3>
+            <h3>Measure before optimizing</h3>
             <p>
-              I am comfortable moving between API design, database performance, telemetry
-              pipelines, firmware-adjacent debugging, dashboards, and cloud deployment.
-              That matters when the bottleneck is not isolated to one layer.
+              I trust latency distributions, throughput numbers, packet loss, and incident
+              patterns more than intuition. The best engineering decisions usually start
+              with visibility.
             </p>
           </article>
 
           <article class="about-card reveal">
-            <h3>What I look for</h3>
+            <h3>Instrument before guessing</h3>
             <p>
-              I tend to care most about behavior that can be measured and explained:
-              latency, throughput, packet loss, MTTR, queueing, retries, and the small
-              design decisions that make systems reliable or painful.
+              Observability is not cleanup work after the fact. I want the traces,
+              logs, metrics, and replay paths that make debugging faster when the system
+              stops behaving the way it should.
             </p>
           </article>
 
           <article class="about-card reveal">
-            <h3>How I think</h3>
-            <ul class="check-list">
-              <li>Measure before optimizing.</li>
-              <li>Instrument before guessing.</li>
-              <li>Design around failure modes, not just happy paths.</li>
-              <li>Keep systems explainable enough to debug under pressure.</li>
-            </ul>
+            <h3>Design for failure modes</h3>
+            <p>
+              I care about what happens when requests race, devices drop packets, services
+              drift out of sync, or state becomes stale. That is usually where systems
+              engineering stops being generic.
+            </p>
+          </article>
+
+          <article class="about-card reveal">
+            <h3>Keep systems explainable</h3>
+            <p>
+              The architecture should be simple enough to defend in an interview and clear
+              enough that a teammate can debug it without folklore. Complexity only earns
+              its place when it solves a real constraint.
+            </p>
           </article>
         </div>
       </div>

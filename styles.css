@@ -258,10 +258,6 @@ section {
   gap: 0.9rem;
 }
 
-.hero-proof {
-  margin-top: 1.8rem;
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -338,6 +334,45 @@ section {
   display: block;
   color: var(--muted);
   font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.proof-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: -0.4rem;
+}
+
+.proof-stat {
+  padding: 1rem 1.05rem;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.proof-stat-label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  color: var(--accent);
+}
+
+.proof-stat strong {
+  display: block;
+  font-size: 1.1rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.proof-stat p {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
   line-height: 1.5;
 }
 
@@ -492,7 +527,7 @@ section {
 
 .about-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -621,6 +656,47 @@ section {
 .category-grid {
   display: grid;
   gap: 1rem;
+}
+
+.flagship-grid {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.flagship-card {
+  border-color: rgba(24, 32, 40, 0.16);
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.support-card {
+  overflow: hidden;
+  border-radius: calc(var(--radius-lg) + 2px);
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(245, 239, 230, 0.96));
+  box-shadow: var(--shadow);
+}
+
+.support-media {
+  min-height: 14rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.support-body {
+  padding: 1.15rem;
+}
+
+.compact-points {
+  margin-top: 0.85rem;
+}
+
+.compact-points li + li {
+  margin-top: 0.6rem;
 }
 
 .stack-card {
@@ -953,6 +1029,7 @@ footer {
     order: initial;
   }
 
+  .proof-strip,
   .about-grid,
   .experience-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -960,6 +1037,10 @@ footer {
 
   .hero-highlights {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .support-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1013,9 +1094,12 @@ footer {
   }
 
   .hero-panel,
+  .proof-strip,
   .about-grid,
   .experience-grid,
   .category-grid,
+  .flagship-grid,
+  .support-grid,
   .mini-grid,
   .contact-grid {
     grid-template-columns: 1fr;
