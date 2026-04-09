@@ -12,12 +12,16 @@
   <nav id="navbar">
     <div class="nav-inner">
       <span class="nav-logo">CC</span>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
         <li><a href="https://github.com/yaochongchow" target="_blank" class="nav-cta">GitHub</a></li>
       </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -26,14 +30,14 @@
     <div class="hero-content">
       <p class="hero-eyebrow">Hi, I'm</p>
       <h1 class="hero-name">Charles Chow</h1>
-      <h2 class="hero-title">Software &amp; Robotics Engineer</h2>
+      <h2 class="hero-title"><span id="typing-text"></span><span class="cursor">|</span></h2>
       <p class="hero-sub">
         Building end-to-end systems — from embedded firmware and robotics<br />
         to distributed backends and real-time ML pipelines.
       </p>
       <div class="hero-btns">
         <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="https://github.com/yaochongchow" target="_blank" class="btn btn-outline">GitHub Profile</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
       </div>
     </div>
     <div class="hero-bg"></div>
@@ -76,72 +80,107 @@
       <div class="projects-grid">
 
         <div class="project-card">
-          <div class="project-header">
-            <span class="project-icon">⚡</span>
-            <div class="project-links">
-              <a href="https://github.com/yaochongchow/distributed-rate-limiter" target="_blank">GitHub →</a>
+          <div class="project-preview" style="--preview-color: #7c6fff;">
+            <div class="preview-placeholder">
+              <span>⚡</span>
+              <!-- Replace with: <img src="images/rate-limiter.png" alt="Distributed Rate Limiter" /> -->
             </div>
           </div>
-          <h3>Distributed Rate Limiter</h3>
-          <p>Distributed gRPC rate limiter using Redis Cluster and Lua scripting for atomic token bucket and sliding-window enforcement. Load balanced across 10 stateless nodes. Sustains 12,000 req/sec with fault-tolerant failover.</p>
-          <div class="tags">
-            <span>Go</span><span>Redis</span><span>gRPC</span><span>Docker</span><span>Envoy</span>
+          <div class="project-body">
+            <div class="project-header">
+              <h3>Distributed Rate Limiter</h3>
+              <div class="project-links">
+                <a href="https://github.com/yaochongchow/distributed-rate-limiter" target="_blank">GitHub →</a>
+              </div>
+            </div>
+            <p>Distributed gRPC rate limiter using Redis Cluster and Lua scripting for atomic token bucket and sliding-window enforcement. Load balanced across 10 stateless nodes. Sustains 12,000 req/sec with fault-tolerant failover.</p>
+            <div class="tags">
+              <span>Go</span><span>Redis</span><span>gRPC</span><span>Docker</span><span>Envoy</span>
+            </div>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-header">
-            <span class="project-icon">📚</span>
-            <div class="project-links">
-              <a href="https://github.com/yaochongchow/interactive-sql-tutor" target="_blank">GitHub →</a>
+          <div class="project-preview" style="--preview-color: #4fc3f7;">
+            <div class="preview-placeholder">
+              <span>📚</span>
+              <!-- Replace with: <img src="images/sql-tutor.png" alt="Interactive SQL Tutor" /> -->
             </div>
           </div>
-          <h3>Interactive SQL Tutor</h3>
-          <p>Full-stack web platform for interactive SQL education with real-time query validation and GPT-4-powered feedback. Built for scale to support concurrent learners.</p>
-          <div class="tags">
-            <span>Python</span><span>PostgreSQL</span><span>GPT-4</span><span>REST</span>
+          <div class="project-body">
+            <div class="project-header">
+              <h3>Interactive SQL Tutor</h3>
+              <div class="project-links">
+                <a href="https://github.com/yaochongchow/interactive-sql-tutor" target="_blank">GitHub →</a>
+              </div>
+            </div>
+            <p>Full-stack web platform for interactive SQL education with real-time query validation and GPT-4-powered feedback. Built for scale to support concurrent learners.</p>
+            <div class="tags">
+              <span>Python</span><span>PostgreSQL</span><span>GPT-4</span><span>REST</span>
+            </div>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-header">
-            <span class="project-icon">😎</span>
-            <div class="project-links">
-              <a href="https://github.com/yaochongchow/emoji-cam" target="_blank">GitHub →</a>
+          <div class="project-preview" style="--preview-color: #f97316;">
+            <div class="preview-placeholder">
+              <span>😎</span>
+              <!-- Replace with: <img src="images/emoji-cam.png" alt="Emoji Cam" /> -->
             </div>
           </div>
-          <h3>Emoji Cam</h3>
-          <p>Real-time video conferencing enhancement that detects facial emotions and overlays context-aware graphics. Includes an analytics dashboard for session emotion tracking.</p>
-          <div class="tags">
-            <span>Python</span><span>OpenCV</span><span>ML</span>
+          <div class="project-body">
+            <div class="project-header">
+              <h3>Emoji Cam</h3>
+              <div class="project-links">
+                <a href="https://github.com/yaochongchow/emoji-cam" target="_blank">GitHub →</a>
+              </div>
+            </div>
+            <p>Real-time video conferencing enhancement that detects facial emotions and overlays context-aware graphics. Includes an analytics dashboard for session emotion tracking.</p>
+            <div class="tags">
+              <span>Python</span><span>OpenCV</span><span>ML</span>
+            </div>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-header">
-            <span class="project-icon">🚦</span>
-            <div class="project-links">
-              <a href="https://github.com/yaochongchow/traffic-monitor" target="_blank">GitHub →</a>
+          <div class="project-preview" style="--preview-color: #22c55e;">
+            <div class="preview-placeholder">
+              <span>🚦</span>
+              <!-- Replace with: <img src="images/traffic-monitor.png" alt="Traffic Monitor" /> -->
             </div>
           </div>
-          <h3>Traffic Monitor</h3>
-          <p>Real-time traffic analysis combining lane detection with YOLOv8 object detection. Processes live video feeds for vehicle classification and traffic flow monitoring.</p>
-          <div class="tags">
-            <span>Python</span><span>YOLOv8</span><span>OpenCV</span>
+          <div class="project-body">
+            <div class="project-header">
+              <h3>Traffic Monitor</h3>
+              <div class="project-links">
+                <a href="https://github.com/yaochongchow/traffic-monitor" target="_blank">GitHub →</a>
+              </div>
+            </div>
+            <p>Real-time traffic analysis combining lane detection with YOLOv8 object detection. Processes live video feeds for vehicle classification and traffic flow monitoring.</p>
+            <div class="tags">
+              <span>Python</span><span>YOLOv8</span><span>OpenCV</span>
+            </div>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-header">
-            <span class="project-icon">🛒</span>
-            <div class="project-links">
-              <a href="https://github.com/yaochongchow/ecommerce-microservice" target="_blank">GitHub →</a>
+          <div class="project-preview" style="--preview-color: #a855f7;">
+            <div class="preview-placeholder">
+              <span>🛒</span>
+              <!-- Replace with: <img src="images/ecommerce.png" alt="E-Commerce Microservice" /> -->
             </div>
           </div>
-          <h3>E-Commerce Microservice</h3>
-          <p>Microservice architecture for e-commerce operations, designed for modularity and independent deployability across services.</p>
-          <div class="tags">
-            <span>Python</span><span>Microservices</span>
+          <div class="project-body">
+            <div class="project-header">
+              <h3>E-Commerce Microservice</h3>
+              <div class="project-links">
+                <a href="https://github.com/yaochongchow/ecommerce-microservice" target="_blank">GitHub →</a>
+              </div>
+            </div>
+            <p>Microservice architecture for e-commerce operations, designed for modularity and independent deployability across services.</p>
+            <div class="tags">
+              <span>Python</span><span>Microservices</span>
+            </div>
           </div>
         </div>
 
@@ -190,6 +229,44 @@
             <span>PyTorch</span><span>OpenCV</span><span>YOLOv8</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-sub">Open to full-time roles, internships, and interesting projects.</p>
+      <div class="contact-grid">
+        <a href="mailto:your@email.com" class="contact-card">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">your@email.com</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/your-profile" target="_blank" class="contact-card">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/your-profile</div>
+          </div>
+        </a>
+        <a href="https://github.com/yaochongchow" target="_blank" class="contact-card">
+          <div class="contact-icon">🐙</div>
+          <div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">github.com/yaochongchow</div>
+          </div>
+        </a>
+        <a href="your-resume.pdf" target="_blank" class="contact-card contact-card-resume">
+          <div class="contact-icon">📄</div>
+          <div>
+            <div class="contact-label">Resume</div>
+            <div class="contact-value">Download PDF</div>
+          </div>
+        </a>
       </div>
     </div>
   </section>
