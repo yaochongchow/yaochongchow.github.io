@@ -344,60 +344,6 @@
             </div>
           </article>
 
-          <article class="stack-card flagship-card reveal">
-            <div class="stack-media proof-media">
-              <div class="proof-panel">
-                <p class="proof-label">Warehouse delivery robot</p>
-                <div class="pipeline">
-                  <div class="pipeline-box">Dashboard<span>Orders and robot status</span></div>
-                  <div class="pipeline-arrow" aria-hidden="true">→</div>
-                  <div class="pipeline-box">Task manager<span>Scheduling and battery logic</span></div>
-                  <div class="pipeline-arrow" aria-hidden="true">→</div>
-                  <div class="pipeline-box">Nav2 stack<span>Planning and control</span></div>
-                </div>
-                <div class="proof-stack">
-                  <div class="proof-chip">ROS2 Humble</div>
-                  <div class="proof-chip">Nav2 behavior trees</div>
-                  <div class="proof-chip">slam_toolbox</div>
-                  <div class="proof-chip">rosbag2 diagnostics</div>
-                </div>
-              </div>
-            </div>
-            <div class="stack-body">
-              <div class="feature-head">
-                <div>
-                  <p class="feature-kicker">Robotics Software</p>
-                  <h3>Warehouse Delivery Robot</h3>
-                </div>
-                <a
-                  href="https://github.com/yaochongchow/warehouse-delivery-robot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="feature-link"
-                >
-                  View repo
-                </a>
-              </div>
-              <p class="feature-summary">
-                A ROS2 mobile robot stack for warehouse deliveries, built around
-                navigation, task orchestration, observability, and fault capture instead
-                of a one-path simulation demo.
-              </p>
-              <ul class="feature-points">
-                <li>Combines mapping, Nav2 waypoint navigation, behavior-tree control, task prioritization, battery-aware scheduling, and a status dashboard in one stack.</li>
-                <li>Uses launch-based bring-up, slam_toolbox, tf2, and a custom Gazebo environment so the system behaves like a real robot workflow instead of a toy example.</li>
-                <li>Adds rosbag2 logging and diagnostics so failures can be replayed and isolated, which is where robotics software often becomes hard in practice.</li>
-              </ul>
-              <div class="tag-row">
-                <span>ROS2</span>
-                <span>Nav2</span>
-                <span>Gazebo</span>
-                <span>slam_toolbox</span>
-                <span>Python</span>
-                <span>C++</span>
-              </div>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -409,8 +355,8 @@
           <h2>Supporting projects that extend the same systems story.</h2>
           <p>
             These projects are smaller signals, but they still reinforce the same themes:
-            real-time pipelines, product-grade isolation, and ML work where the system
-            around the model matters.
+            real-time pipelines, robotics software, product-grade isolation, and ML work
+            where the system around the model matters.
           </p>
         </div>
 
@@ -451,6 +397,60 @@
                   <li>Runs each student submission in its own temporary MySQL sandbox so untrusted queries do not touch shared state.</li>
                   <li>Combines Django REST APIs, React, role-based auth, and analytics storage around a real product workflow.</li>
                   <li>Keeps AI scoped to structured SQL hints, which makes the feature more reliable and easier to reason about.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="work-category reveal">
+          <div class="category-copy">
+            <p class="section-kicker">Robotics</p>
+            <h3>Robot software where observability and orchestration still matter.</h3>
+          </div>
+
+          <div class="support-grid">
+            <article class="support-card reveal">
+              <div class="support-media proof-media">
+                <div class="proof-panel">
+                  <p class="proof-label">Warehouse delivery robot</p>
+                  <div class="pipeline">
+                    <div class="pipeline-box">Dashboard<span>Orders and robot status</span></div>
+                    <div class="pipeline-arrow" aria-hidden="true">→</div>
+                    <div class="pipeline-box">Task manager<span>Scheduling and battery logic</span></div>
+                    <div class="pipeline-arrow" aria-hidden="true">→</div>
+                    <div class="pipeline-box">Nav2 stack<span>Planning and control</span></div>
+                  </div>
+                  <div class="proof-stack">
+                    <div class="proof-chip">ROS2 Humble</div>
+                    <div class="proof-chip">Nav2 behavior trees</div>
+                    <div class="proof-chip">slam_toolbox</div>
+                    <div class="proof-chip">rosbag2 diagnostics</div>
+                  </div>
+                </div>
+              </div>
+              <div class="support-body">
+                <div class="feature-head">
+                  <div>
+                    <p class="feature-kicker">Robotics Software</p>
+                    <h3>Warehouse Delivery Robot</h3>
+                  </div>
+                  <a
+                    href="https://github.com/yaochongchow/warehouse-delivery-robot"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="feature-link"
+                  >
+                    View repo
+                  </a>
+                </div>
+                <p class="feature-summary">
+                  A ROS2 mobile robot stack for warehouse deliveries, built around navigation, task orchestration, observability, and fault capture instead of a one-path simulation demo.
+                </p>
+                <ul class="feature-points compact-points">
+                  <li>Combines mapping, Nav2 waypoint navigation, behavior-tree control, task prioritization, battery-aware scheduling, and a status dashboard.</li>
+                  <li>Uses launch-based bring-up, slam_toolbox, tf2, and a custom Gazebo environment so the system behaves like a real robot workflow.</li>
+                  <li>Adds rosbag2 logging and diagnostics so failures can be replayed and isolated when robot behavior drifts.</li>
                 </ul>
               </div>
             </article>
