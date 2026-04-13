@@ -699,6 +699,11 @@ section {
   color: var(--accent-strong);
 }
 
+.feature-head .experience-tags {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+}
+
 .experience-points {
   margin: 1rem 0 0;
   padding: 0;
@@ -1107,6 +1112,38 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0.9rem;
+}
+
+.contact-block + .contact-block {
+  margin-top: 1.45rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.contact-block h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.resume-list {
+  margin: 0.8rem 0 0;
+  padding: 0 0 0 1.2rem;
+}
+
+.resume-list li + li {
+  margin-top: 0.5rem;
+}
+
+.resume-list a {
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.resume-list a:hover,
+.resume-list a:focus-visible {
+  color: var(--accent-warm);
 }
 
 .contact-card {
