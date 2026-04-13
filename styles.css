@@ -253,29 +253,17 @@ section {
 
 .hero-impact {
   margin: 1.1rem 0 0;
-  padding: 0;
-  list-style: none;
   max-width: 44rem;
+  display: grid;
+  gap: 0.5rem;
 }
 
-.hero-impact li {
-  position: relative;
-  padding-left: 1.2rem;
+.hero-impact p {
+  margin: 0;
   color: var(--muted);
   font-size: 0.97rem;
   line-height: 1.55;
-}
-
-.hero-impact li + li {
-  margin-top: 0.6rem;
-}
-
-.hero-impact li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent-warm);
+  padding: 0.2rem 0;
 }
 
 .hero-impact strong {
@@ -460,6 +448,10 @@ section {
 }
 
 .skill-group {
+  display: grid;
+  grid-template-columns: minmax(128px, 148px) minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
   padding-bottom: 0.68rem;
   border-bottom: 1px solid var(--line);
 }
@@ -471,17 +463,24 @@ section {
 
 .skill-label {
   margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--accent);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  color: var(--text);
+  background: var(--accent-soft);
+  border: 1px solid rgba(15, 118, 110, 0.22);
+  border-radius: 999px;
+  padding: 0.34rem 0.62rem;
+  display: inline-flex;
+  width: fit-content;
 }
 
 .skill-value {
-  margin: 0.4rem 0 0;
+  margin: 0;
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   line-height: 1.45;
 }
 
@@ -1184,6 +1183,11 @@ footer {
 
   .hero-highlights {
     grid-template-columns: 1fr;
+  }
+
+  .skill-group {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
   }
 
   .pipeline {

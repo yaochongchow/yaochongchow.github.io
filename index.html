@@ -78,11 +78,11 @@
           <p class="hero-sub">
             Systems engineer focused on measurable performance, reliability, and observability across device, backend, and cloud boundaries.
           </p>
-          <ul class="hero-impact">
-            <li>Sustained <strong>900 req/sec</strong> API throughput at sub-<strong>180ms</strong> p95 latency.</li>
-            <li>Reduced PostgreSQL p95 latency from <strong>420ms to 110ms</strong> on datasets over <strong>8M rows</strong>.</li>
-            <li>Cut BLE packet loss from <strong>9.2% to 1.8%</strong>, enabling stable <strong>8-hour</strong> validation sessions.</li>
-          </ul>
+          <div class="hero-impact" aria-label="Impact metrics">
+            <p>Sustained <strong>900 req/sec</strong> API throughput at sub-<strong>180ms</strong> p95 latency.</p>
+            <p>Reduced PostgreSQL p95 latency from <strong>420ms to 110ms</strong> on datasets over <strong>8M rows</strong>.</p>
+            <p>Cut BLE packet loss from <strong>9.2% to 1.8%</strong>, enabling stable <strong>8-hour</strong> validation sessions.</p>
+          </div>
           <div class="hero-actions">
             <a href="#experience" class="btn btn-primary">View experience</a>
             <a href="assets/resumes/Charles_Chow_Software_Resume.pdf" class="btn btn-secondary">Open resume</a>
@@ -104,15 +104,15 @@
             <div class="panel-results">
               <div class="panel-result">
                 <strong>End-to-end systems ownership</strong>
-                <span>Embedded firmware, backend services, and real-time pipelines in one architecture.</span>
+                <span>I design and ship complete systems, from embedded firmware to backend infrastructure, built to operate reliably in real-world environments.</span>
               </div>
               <div class="panel-result">
                 <strong>Performance and reliability mindset</strong>
-                <span>Throughput, latency, MTTR, and packet loss tracked and improved with instrumentation.</span>
+                <span>I focus on throughput, latency, and system stability, using instrumentation and metrics to identify bottlenecks and improve performance under load.</span>
               </div>
               <div class="panel-result">
-                <strong>Production-ready systems design</strong>
-                <span>Distributed systems, observability, cloud infrastructure, and failure-oriented debugging.</span>
+                <strong>Production systems and debugging</strong>
+                <span>Experienced with distributed systems, observability, and failure-oriented debugging across both hardware and software layers.</span>
               </div>
             </div>
           </div>
@@ -179,12 +179,10 @@
       <div class="container section-shell">
         <div class="section-intro">
           <p class="section-kicker">Experience</p>
-          <h2>Production work where system behavior actually mattered.</h2>
+          <h2>Production systems where behavior mattered.</h2>
           <p>
-            My strongest experience is production work where system behavior was visible
-            and had to improve. The point is not that I used a lot of tools. The point
-            is that latency, packet loss, MTTR, and throughput were measurable, and I
-            was responsible for moving them.
+            I have worked on systems where latency, throughput, and reliability were measurable,
+            and I was responsible for improving them.
           </p>
         </div>
 
@@ -193,27 +191,26 @@
             <div class="experience-head">
               <div>
                 <p class="experience-role">NeuroLeap</p>
-                <h3>Software and Robotics Intern</h3>
+                <h3>Software &amp; Robotics Intern</h3>
               </div>
               <span class="experience-date">2025</span>
             </div>
             <div class="experience-tags">
-              <span>Node.js APIs</span>
+              <span>Node.js</span>
               <span>Redis</span>
               <span>PostgreSQL</span>
-              <span>BLE Streaming</span>
+              <span>BLE</span>
               <span>CloudWatch</span>
             </div>
             <p class="experience-summary">
-              Built backend and telemetry systems for AI-driven devices across Node.js
-              APIs, Redis coordination, PostgreSQL performance, dashboard latency, and
-              BLE data paths.
+              Built backend and telemetry systems for AI-driven devices, spanning embedded
+              data streaming to real-time dashboards.
             </p>
             <ul class="experience-points">
-              <li>Architected Node.js REST APIs with Redis-backed coordination and request deduplication that sustained 900 req/sec at sub-180ms p95 latency.</li>
-              <li>Cut PostgreSQL p95 latency from 420ms to 110ms and increased ingestion throughput 2.8x on 8M+ rows by reworking indexes, query plans, connection handling, and ingestion flow.</li>
-              <li>Cut dashboard latency from 280ms to 65ms with virtualization and off-thread parsing, then added CloudWatch instrumentation to make the device-to-UI path debuggable under load.</li>
-              <li>Reduced BLE packet loss from 9.2% to 1.8%, enabling stable eight-hour test sessions and cutting recalibration time 60%.</li>
+              <li>Scaled Node.js APIs to ~900 req/sec at &lt;180ms p95 using Redis-backed coordination and request deduplication.</li>
+              <li>Reduced PostgreSQL latency from 420ms &rarr; 110ms and increased ingestion throughput 2.8x on 8M+ rows.</li>
+              <li>Cut dashboard latency from 280ms &rarr; 65ms and added instrumentation to trace issues across device &rarr; backend &rarr; UI.</li>
+              <li>Reduced BLE packet loss from 9.2% &rarr; 1.8%, enabling stable 8-hour sessions and cutting recalibration time 60%.</li>
             </ul>
           </article>
 
@@ -227,19 +224,17 @@
             </div>
             <div class="experience-tags">
               <span>Node.js</span>
-              <span>JWT Auth</span>
+              <span>JWT</span>
               <span>RBAC</span>
-              <span>Redis Sessions</span>
-              <span>API Reliability</span>
+              <span>Redis</span>
             </div>
             <p class="experience-summary">
-              Worked on authentication and API reliability for a production Node.js
-              platform, with a focus on reducing incidents and making backend behavior more predictable.
+              Worked on authentication and API reliability for a production backend system.
             </p>
             <ul class="experience-points">
-              <li>Cut recurring production incidents 32% and lowered MTTR 60% from 45 to 18 minutes by standardizing Joi request validation across backend APIs.</li>
-              <li>Built authentication APIs supporting roughly 2K daily logins and tightened session lifecycle behavior with JWT auth, refresh rotation, and Redis session invalidation.</li>
-              <li>Implemented multi-tier RBAC and authorization rules that hardened platform access control without turning the system into brittle one-off logic.</li>
+              <li>Reduced recurring production incidents by 32% and lowered MTTR from 45 &rarr; 18 minutes.</li>
+              <li>Built authentication system supporting ~2K daily logins with JWT, refresh rotation, and Redis session invalidation.</li>
+              <li>Implemented RBAC and authorization rules to strengthen access control without increasing system complexity.</li>
             </ul>
           </article>
         </div>
