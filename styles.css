@@ -369,6 +369,19 @@ section {
   margin-top: -0.4rem;
 }
 
+.proof-shell {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.proof-shell .section-kicker {
+  margin: 0;
+}
+
+.proof-shell .proof-strip {
+  margin-top: 0;
+}
+
 .proof-stat {
   padding: 1rem 1.05rem;
   border-radius: var(--radius-md);
@@ -719,6 +732,52 @@ section {
   margin-top: 1rem;
 }
 
+.work-toggle {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.work-toggle summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+}
+
+.work-toggle summary::-webkit-details-marker {
+  display: none;
+}
+
+.work-toggle summary::after {
+  content: "+";
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--accent-warm);
+}
+
+.work-toggle[open] summary::after {
+  content: "−";
+}
+
+.toggle-title {
+  margin: 0;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.toggle-content {
+  padding: 0 1.2rem 1.2rem;
+}
+
 .category-copy {
   max-width: 42rem;
 }
@@ -1002,6 +1061,14 @@ section {
   color: var(--accent-strong);
   font-size: 0.9rem;
   font-weight: 700;
+}
+
+.stack-tech {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
 }
 
 .feature-link:hover,
