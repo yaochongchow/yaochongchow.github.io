@@ -489,12 +489,13 @@
               <article class="support-card reveal">
                 <div class="support-media proof-media">
                   <div class="proof-panel">
-                    <p class="proof-label">IMU interface + firmware</p>
+                    <p class="proof-label">Witmotion IMU Integration</p>
                     <div class="proof-stack">
                       <div class="proof-chip">C</div>
+                      <div class="proof-chip">Zephyr RTOS</div>
                       <div class="proof-chip">nRF52</div>
                       <div class="proof-chip">BLE</div>
-                      <div class="proof-chip">Python</div>
+                      <div class="proof-chip">UART/Serial</div>
                     </div>
                   </div>
                 </div>
@@ -503,11 +504,12 @@
                     <div>
                       <div class="experience-tags">
                         <span>C</span>
+                        <span>Zephyr RTOS</span>
                         <span>nRF52</span>
                         <span>BLE</span>
-                        <span>Python</span>
+                        <span>UART/Serial</span>
                       </div>
-                      <h3>Witmotion</h3>
+                      <h3>Witmotion IMU Integration</h3>
                     </div>
                     <a
                       href="https://github.com/yaochongchow/Witmotion"
@@ -519,9 +521,9 @@
                     </a>
                   </div>
                   <ul class="feature-points compact-points">
-                    <li>Python interface and nRF52 firmware work for the Witmotion WT9011DCL BLE IMU sensor.</li>
-                    <li>Focuses on reading motion data from embedded hardware and making it usable in a lightweight software pipeline.</li>
-                    <li>Good fit with the rest of the robotics work because it sits close to the device and the data path.</li>
+                    <li>Engineered real-time IMU data pipeline at 20-100 Hz using Zephyr RTOS on nRF52.</li>
+                    <li>Built resilient binary parser handling misaligned packets and stream corruption for continuous streaming.</li>
+                    <li>Delivered structured motion data across accel, gyro, and orientation for robotics and real-time telemetry pipelines.</li>
                   </ul>
                 </div>
               </article>
