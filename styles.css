@@ -466,28 +466,36 @@ section {
   gap: 0.7rem;
 }
 
-.skill-sections {
-  margin-top: 1rem;
-  display: grid;
+.skills-toggle summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 1rem;
 }
 
-.skill-section + .skill-section {
-  padding-top: 1rem;
-  border-top: 1px dashed var(--line);
+.skills-toggle summary::-webkit-details-marker {
+  display: none;
 }
 
-.skill-section-title {
+.skills-toggle summary::after {
+  content: "+";
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--accent-warm);
+}
+
+.skills-toggle[open] summary::after {
+  content: "−";
+}
+
+.skills-toggle .panel-label {
   margin: 0;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.74rem;
-  color: var(--accent);
 }
 
-.skill-section .skill-groups {
-  margin-top: 0.7rem;
+.skills-toggle-content {
+  margin-top: 0.75rem;
 }
 
 .skill-group {
