@@ -251,23 +251,29 @@ section {
   font-size: 0.95rem;
 }
 
-.hero-impact {
+.hero-core {
   margin: 1.1rem 0 0;
   max-width: 44rem;
-  display: grid;
-  gap: 0.5rem;
 }
 
-.hero-impact p {
+.hero-core-title {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.hero-core .panel-result {
+  padding-bottom: 0.72rem;
+}
+
+.hero-core .panel-result span {
   margin: 0;
   color: var(--muted);
-  font-size: 0.97rem;
+  font-size: 0.93rem;
   line-height: 1.55;
-  padding: 0.2rem 0;
-}
-
-.hero-impact strong {
-  color: var(--text);
 }
 
 .hero-actions {
