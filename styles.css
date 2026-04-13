@@ -1072,6 +1072,30 @@ section {
   font-weight: 700;
 }
 
+.demo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--accent-strong);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  letter-spacing: 0.01em;
+  transition: opacity 0.15s;
+  width: fit-content;
+}
+
+.demo-link::after {
+  content: "→";
+  font-size: 0.9em;
+}
+
+.demo-link:hover {
+  opacity: 0.85;
+}
+
 .stack-tech {
   margin: 0;
   font-family: var(--font-mono);
