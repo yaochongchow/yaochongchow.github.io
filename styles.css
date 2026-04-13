@@ -251,6 +251,37 @@ section {
   font-size: 0.95rem;
 }
 
+.hero-impact {
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: 44rem;
+}
+
+.hero-impact li {
+  position: relative;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+
+.hero-impact li + li {
+  margin-top: 0.6rem;
+}
+
+.hero-impact li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-warm);
+}
+
+.hero-impact strong {
+  color: var(--text);
+}
+
 .hero-actions {
   margin-top: 2rem;
   display: flex;
