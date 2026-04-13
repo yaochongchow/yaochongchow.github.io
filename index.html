@@ -319,13 +319,12 @@
                 </a>
               </div>
               <p class="feature-summary">
-                A fault-tolerant rate limiting service for horizontally scaled backends.
+                A fault-tolerant system for enforcing global request limits in horizontally scaled environments.
               </p>
               <ul class="feature-points">
-                <li>Sustains ~12K req/sec at ~12ms p95 latency under concurrent load.</li>
-                <li>Moves coordination into Redis Cluster with atomic Lua scripts to guarantee correctness.</li>
-                <li>Keeps service layer stateless behind Envoy for horizontal scalability.</li>
-                <li>Validated with 52 tests, load testing, and full observability stack.</li>
+                <li>Sustains ~12K req/sec at ~12ms p95 latency under concurrent load with stateless services behind Envoy for horizontal scalability</li>
+                <li>Coordinates distributed state via Redis Cluster using atomic Lua scripts, ensuring correctness under concurrency and partial failures</li>
+                <li>SStreams real-time system metrics via a distributed pipeline, powering observability dashboards and debugging under failure scenarios</li>
               </ul>
             </div>
           </article>
@@ -368,7 +367,7 @@
                     <span>Go</span>
                     <span>TypeScript</span>
                   </div>
-                  <h3>ShopCloud E-Commerce Platform</h3>
+                  <h3>Cloud-Native E-Commerce System (Microservices + Distributed Transactions)</h3>
                 </div>
                 <a
                   href="https://github.com/yaochongchow/ecommerce-microservice"
@@ -380,13 +379,12 @@
                 </a>
               </div>
               <p class="feature-summary">
-                A cloud-native platform exploring service boundaries and distributed transactions.
+                A fault-tolerant platform exploring service boundaries, consistency, and failure recovery in distributed systems.
               </p>
               <ul class="feature-points">
-                <li>Designed 7 microservices + 12 DynamoDB tables across Lambda, ECS, and event-driven architecture.</li>
-                <li>Implemented Saga orchestration + compensation rollback for distributed transactions.</li>
-                <li>Ensured consistency with idempotency + atomic inventory reservations.</li>
-                <li>Infrastructure fully defined in CDK with 70 tests validating system behavior.</li>
+                <li>Designed 7 microservices with event-driven communication across Lambda and ECS, backed by 12 DynamoDB tables for scalable, decoupled data management</li>
+                <li>Implemented Saga orchestration with compensation logic, idempotency, and atomic inventory reservations to ensure consistency under partial failures</li>
+                <li>Instrumented system with observability, testing, and failure scenarios to validate transaction flows, debug distributed state, and ensure reliability under production-like conditions</li>
               </ul>
             </div>
           </article>
@@ -395,7 +393,7 @@
             <div class="stack-media image-media">
               <img
                 src="https://raw.githubusercontent.com/yaochongchow/interactive-sql-tutor/main/assets/demo.gif"
-                alt="Interactive SQL Tutor demo"
+                alt="LLM-Augmented SQL Execution Platform"
                 loading="lazy"
               />
             </div>
@@ -420,12 +418,12 @@
                 </a>
               </div>
               <p class="feature-summary">
-                A product-focused system emphasizing isolation, safety, and reliable feedback.
+                A production-grade system for safe query execution and intelligent feedback.
               </p>
               <ul class="feature-points">
-                <li>Executes queries in isolated MySQL sandboxes to safely handle untrusted user input.</li>
-                <li>Built full-stack system with authentication, analytics, and structured learning workflows.</li>
-                <li>Integrated LLMs for structured SQL hints with guardrails, improving reliability over free-form outputs.</li>
+                <li>Executes untrusted SQL in isolated MySQL sandboxes, ensuring strict safety and fault containment.</li>
+                <li>Integrated LLM-based hint generation with validation layers, guardrails, and fallback logic for reliable outputs.</li>
+                <li>Built end-to-end system with analytics, observability, and performance optimizations to maintain low-latency responses under load.</li>
               </ul>
             </div>
           </article>
@@ -648,7 +646,12 @@
 
               <article class="support-card reveal">
                 <div class="support-media proof-media">
-                  <div class="proof-panel">
+                  <img
+                    src="https://raw.githubusercontent.com/yaochongchow/rl-robot-navigation-live-dashboard/main/dashboard/public/demo_robot_safety_run.gif"
+                    alt="RL Robot Navigation Live Dashboard demo"
+                    loading="lazy"
+                    />
+                  </div>
                     <p class="proof-label">RL navigation + live dashboard</p>
                     <div class="proof-stack">
                       <div class="proof-chip">RL</div>
