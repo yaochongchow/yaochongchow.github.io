@@ -734,6 +734,8 @@
     const grid = document.querySelector(".experience-grid");
     const cards = Array.from(grid?.querySelectorAll(".experience-card") || []);
     const timelineSteps = Array.from(document.querySelectorAll(".timeline-step[data-job-index]"));
+    const scrollbar = document.querySelector(".experience-scrollbar");
+    const scrollbarThumb = scrollbar?.querySelector(".experience-scrollbar-thumb");
 
     if (!grid || !cards.length) {
       return;
@@ -783,6 +785,34 @@
       grid.style.setProperty("--wheel-edge-gutter", `${gutter.toFixed(1)}px`);
     };
 
+    const updateScrollIndicator = () => {
+      if (!scrollbar || !scrollbarThumb) {
+        return;
+      }
+
+      const maxLeft = Math.max(grid.scrollWidth - grid.clientWidth, 0);
+      if (maxLeft <= 1 || grid.clientWidth <= 0) {
+        scrollbar.classList.add("is-hidden");
+        return;
+      }
+
+      scrollbar.classList.remove("is-hidden");
+
+      const trackWidth = scrollbar.clientWidth;
+      if (trackWidth <= 0) {
+        return;
+      }
+
+      const viewportRatio = Math.min(grid.clientWidth / grid.scrollWidth, 1);
+      const thumbWidth = Math.max(Math.round(trackWidth * viewportRatio), 34);
+      const travel = Math.max(trackWidth - thumbWidth, 0);
+      const progress = maxLeft > 0 ? grid.scrollLeft / maxLeft : 0;
+      const x = travel * progress;
+
+      scrollbarThumb.style.width = `${thumbWidth}px`;
+      scrollbarThumb.style.transform = `translateX(${x.toFixed(1)}px)`;
+    };
+
     const applyWheelState = () => {
       cards.forEach((card, index) => {
         card.classList.remove(...wheelClasses);
@@ -816,10 +846,6 @@
     };
 
     const centerCard = (index, behavior = "auto") => {
-      if (!desktopLayout.matches) {
-        return;
-      }
-
       updateEdgeGutters();
 
       const card = cards[clampIndex(index)];
@@ -831,6 +857,7 @@
       const maxLeft = Math.max(grid.scrollWidth - grid.clientWidth, 0);
       const nextLeft = Math.min(Math.max(rawLeft, 0), maxLeft);
       grid.scrollTo({ left: nextLeft, behavior });
+      updateScrollIndicator();
     };
 
     const findCenteredIndex = () => {
@@ -854,10 +881,7 @@
     };
 
     const syncFromScroll = () => {
-      if (!desktopLayout.matches) {
-        return;
-      }
-
+      updateScrollIndicator();
       const centeredIndex = findCenteredIndex();
       if (centeredIndex === activeIndex) {
         return;
@@ -871,45 +895,37 @@
       activeIndex = clampIndex(index);
       applyWheelState();
 
-      if (desktopLayout.matches) {
-        lockedActiveIndex = activeIndex;
-        if (unlockTimerId !== null) {
-          window.clearTimeout(unlockTimerId);
-        }
-        unlockTimerId = window.setTimeout(() => {
+      lockedActiveIndex = activeIndex;
+      if (unlockTimerId !== null) {
+        window.clearTimeout(unlockTimerId);
+      }
+      unlockTimerId = window.setTimeout(() => {
+        lockedActiveIndex = null;
+        unlockTimerId = null;
+      }, 900);
+
+      centerCard(activeIndex, behavior);
+      if (behavior === "auto") {
+        requestAnimationFrame(() => {
           lockedActiveIndex = null;
-          unlockTimerId = null;
-        }, 900);
-
-        centerCard(activeIndex, behavior);
-        if (behavior === "auto") {
-          requestAnimationFrame(() => {
-            lockedActiveIndex = null;
-            if (unlockTimerId !== null) {
-              window.clearTimeout(unlockTimerId);
-              unlockTimerId = null;
-            }
-            syncFromScroll();
-          });
-        }
-        return;
+          if (unlockTimerId !== null) {
+            window.clearTimeout(unlockTimerId);
+            unlockTimerId = null;
+          }
+          syncFromScroll();
+        });
       }
-
-      const card = cards[activeIndex];
-      if (!card) {
-        return;
-      }
-
-      card.scrollIntoView({ behavior, block: "nearest", inline: "nearest" });
     };
 
     const onGridScroll = () => {
-      if (!desktopLayout.matches || scrollTicking) {
+      if (scrollTicking) {
         return;
       }
 
       scrollTicking = true;
       requestAnimationFrame(() => {
+        updateScrollIndicator();
+
         if (lockedActiveIndex !== null) {
           const centeredIndex = findCenteredIndex();
           if (centeredIndex !== lockedActiveIndex) {
@@ -932,10 +948,8 @@
     const initializeWheel = () => {
       activeIndex = latestIndex;
       applyWheelState();
-      if (desktopLayout.matches) {
-        updateEdgeGutters();
-        centerCard(activeIndex);
-      }
+      updateEdgeGutters();
+      centerCard(activeIndex);
       requestAnimationFrame(syncFromScroll);
     };
 
@@ -963,6 +977,8 @@
       if (!event.matches) {
         updateEdgeGutters();
         applyWheelState();
+        centerCard(activeIndex, "auto");
+        syncFromScroll();
         return;
       }
 
@@ -978,26 +994,16 @@
     }
 
     window.addEventListener("resize", () => {
-      if (!desktopLayout.matches) {
-        updateEdgeGutters();
-        return;
-      }
-
       updateEdgeGutters();
-      centerCard(activeIndex);
+      centerCard(activeIndex, "auto");
       syncFromScroll();
     });
 
     window.addEventListener(
       "load",
       () => {
-        if (!desktopLayout.matches) {
-          updateEdgeGutters();
-          return;
-        }
-
         updateEdgeGutters();
-        centerCard(activeIndex);
+        centerCard(activeIndex, "auto");
         syncFromScroll();
       },
       { once: true }

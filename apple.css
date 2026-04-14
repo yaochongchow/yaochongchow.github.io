@@ -1123,6 +1123,42 @@ section {
   scrollbar-color: rgba(134, 146, 161, 0.58) transparent;
 }
 
+.experience-grid::-webkit-scrollbar {
+  height: 9px;
+}
+
+.experience-grid::-webkit-scrollbar-track {
+  background: rgba(167, 176, 188, 0.24);
+  border-radius: 999px;
+}
+
+.experience-grid::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #8ebde8, #2ea8ff);
+  border-radius: 999px;
+}
+
+.experience-scrollbar {
+  margin-top: 0.55rem;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(157, 168, 182, 0.32);
+  overflow: hidden;
+}
+
+.experience-scrollbar.is-hidden {
+  opacity: 0;
+}
+
+.experience-scrollbar-thumb {
+  display: block;
+  height: 100%;
+  width: 30%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8ecaff, #2ea8ff);
+  transform: translateX(0px);
+  transition: transform 120ms linear, width 160ms ease;
+}
+
 .experience-card {
   flex: 0 0 min(36rem, 84vw);
   border-radius: var(--radius-lg);
@@ -2119,29 +2155,37 @@ footer {
 
   .experience-timeline {
     padding: 0.8rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   .timeline-track {
-    display: flex;
-    gap: 0.58rem;
-    min-width: max-content;
+    grid-template-columns: 1fr;
+    gap: 0.72rem;
   }
 
   .timeline-track::before {
-    display: none;
+    left: 0.35rem;
+    right: auto;
+    top: 1rem;
+    bottom: 1rem;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, rgba(160, 170, 184, 0.35), rgba(46, 168, 255, 0.5), rgba(160, 170, 184, 0.35));
   }
 
   .timeline-step {
-    min-width: 12.2rem;
-    justify-items: stretch;
-    padding-left: 0;
+    justify-items: start;
+    padding-left: 1.15rem;
   }
 
   .timeline-step::before {
-    position: static;
-    margin-inline: auto;
+    position: absolute;
+    left: 0;
+    top: 0.24rem;
+  }
+
+  .experience-scrollbar {
+    margin-top: 0.4rem;
+    height: 7px;
   }
 
   .contact-quick-actions .btn {
