@@ -288,7 +288,7 @@
       document.querySelectorAll(".nav-links a[href^='#'], .section-rail-link[href^='#']")
     );
     const rail = document.querySelector(".section-rail");
-    const darkToneSections = new Set(["hero", "work", "contact"]);
+    const darkToneSections = new Set(["hero", "experience", "contact"]);
 
     const sectionMap = new Map();
     navLinks.forEach((link) => {
