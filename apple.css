@@ -1119,22 +1119,13 @@ section {
   overflow-x: auto;
   overscroll-behavior-x: contain;
   padding: 0.2rem var(--wheel-edge-gutter) 0.8rem;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(134, 146, 161, 0.58) transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .experience-grid::-webkit-scrollbar {
-  height: 9px;
-}
-
-.experience-grid::-webkit-scrollbar-track {
-  background: rgba(167, 176, 188, 0.24);
-  border-radius: 999px;
-}
-
-.experience-grid::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #8ebde8, #2ea8ff);
-  border-radius: 999px;
+  display: none;
+  height: 0;
 }
 
 .experience-scrollbar {
