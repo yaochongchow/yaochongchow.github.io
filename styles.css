@@ -833,7 +833,6 @@ section {
 }
 
 .support-media {
-  min-height: 14rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -874,7 +873,8 @@ section {
 }
 
 .stack-media {
-  min-height: 18rem;
+  min-height: 0;
+  align-self: start;
   border-radius: calc(var(--radius-lg) - 6px);
   overflow: hidden;
   border: 1px solid var(--line);
@@ -1053,6 +1053,8 @@ section {
 .mini-media img[src*=".gif" i] {
   display: block;
   margin: 0 auto;
+  width: auto;
+  max-width: 100%;
   height: auto;
   max-height: 24rem;
   object-fit: contain;
