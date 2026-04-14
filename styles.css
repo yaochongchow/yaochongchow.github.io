@@ -757,6 +757,20 @@ section {
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 1.2rem;
+  min-height: 4.1rem;
+  background:
+    linear-gradient(90deg, rgba(15, 118, 110, 0.08), rgba(15, 118, 110, 0.02) 55%, rgba(255, 255, 255, 0.55));
+  transition: background 0.18s ease;
+}
+
+.work-toggle summary:hover {
+  background:
+    linear-gradient(90deg, rgba(15, 118, 110, 0.14), rgba(15, 118, 110, 0.04) 58%, rgba(255, 255, 255, 0.7));
+}
+
+.work-toggle summary:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.32);
+  outline-offset: -3px;
 }
 
 .work-toggle summary::-webkit-details-marker {
@@ -765,13 +779,34 @@ section {
 
 .work-toggle summary::after {
   content: "+";
-  font-size: 1.2rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(180, 83, 9, 0.28);
+  background: rgba(250, 235, 215, 0.9);
+  display: grid;
+  place-items: center;
+  font-size: 1.28rem;
+  font-weight: 700;
   line-height: 1;
   color: var(--accent-warm);
 }
 
 .work-toggle[open] summary::after {
   content: "−";
+  background: rgba(15, 118, 110, 0.14);
+  border-color: rgba(15, 118, 110, 0.28);
+  color: var(--accent-strong);
+}
+
+.work-toggle[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.toggle-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
 }
 
 .toggle-title {
@@ -781,6 +816,20 @@ section {
   letter-spacing: 0.12em;
   font-size: 0.75rem;
   color: var(--accent);
+}
+
+.toggle-hint {
+  font-size: 0.77rem;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+.toggle-hint::before {
+  content: "Click to expand";
+}
+
+.work-toggle[open] .toggle-hint::before {
+  content: "Click to collapse";
 }
 
 .toggle-content {
@@ -874,7 +923,7 @@ section {
 
 .stack-media {
   min-height: 0;
-  align-self: start;
+  align-self: center;
   border-radius: calc(var(--radius-lg) - 6px);
   overflow: hidden;
   border: 1px solid var(--line);
