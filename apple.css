@@ -2255,8 +2255,11 @@ footer {
     perspective: none;
     align-items: stretch;
     gap: 0.8rem;
-    overflow-x: hidden;
-    overscroll-behavior-x: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: none;
+    touch-action: pan-x;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding: 0 8vw 0.35rem;
