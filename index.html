@@ -29,10 +29,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="apple.css?v=12" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -69,8 +69,23 @@
     </div>
   </nav>
 
+  <aside class="section-rail" aria-label="Section progress">
+    <a class="section-rail-link" href="#hero"><span>Intro</span></a>
+    <a class="section-rail-link" href="#proof-strip"><span>Metrics</span></a>
+    <a class="section-rail-link" href="#experience"><span>Experience</span></a>
+    <a class="section-rail-link" href="#work"><span>Work</span></a>
+    <a class="section-rail-link" href="#additional-work"><span>Additional</span></a>
+    <a class="section-rail-link" href="#about"><span>About</span></a>
+    <a class="section-rail-link" href="#contact"><span>Contact</span></a>
+  </aside>
+
   <main id="main">
     <section id="hero">
+      <div class="section-motion section-motion-hero" aria-hidden="true">
+        <span class="motion-shape motion-shape-a" data-depth="22"></span>
+        <span class="motion-shape motion-shape-b" data-depth="16"></span>
+        <span class="motion-shape motion-shape-c" data-depth="28"></span>
+      </div>
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="hero-eyebrow">Backend, Embedded, Applied AI</p>
@@ -82,43 +97,101 @@
             <p class="hero-core-title">What I Focus On</p>
             <div class="panel-results">
               <div class="panel-result">
-                <strong>Reliability under real conditions</strong>
-                <span>Designing systems that remain stable when requests race, data arrives out of order, and components fail under load.</span>
+                <div class="panel-result-head">
+                  <span class="panel-result-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z"></path>
+                      <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                  </span>
+                  <strong>Reliability under real conditions</strong>
                 </div>
+                <p class="panel-result-copy">Designing systems that remain stable when requests race, data arrives out of order, and components fail under load.</p>
+              </div>
 
-                <div class="panel-result">
-                <strong>Latency and performance</strong>
-                <span>Optimizing for tail latency and throughput so systems stay responsive during peak traffic and real-time workloads.</span>
+              <div class="panel-result">
+                <div class="panel-result-head">
+                  <span class="panel-result-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 12a8 8 0 1 1 16 0"></path>
+                      <path d="M12 12l4-3"></path>
+                      <path d="M12 12l-3 4"></path>
+                    </svg>
+                  </span>
+                  <strong>Latency and performance</strong>
                 </div>
+                <p class="panel-result-copy">Optimizing for tail latency and throughput so systems stay responsive during peak traffic and real-time workloads.</p>
+              </div>
 
-                <div class="panel-result">
-                <strong>Observability and debugging</strong>
-                <span>Instrumenting systems with metrics, logs, and traces to understand behavior in production and resolve issues at the root cause.</span>
+              <div class="panel-result">
+                <div class="panel-result-head">
+                  <span class="panel-result-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="8"></circle>
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <path d="M12 4v2"></path>
+                      <path d="M20 12h-2"></path>
+                      <path d="M12 20v-2"></path>
+                      <path d="M4 12h2"></path>
+                    </svg>
+                  </span>
+                  <strong>Observability and debugging</strong>
                 </div>
+                <p class="panel-result-copy">Instrumenting systems with metrics, logs, and traces to understand behavior in production and resolve issues at the root cause.</p>
+              </div>
 
-                <div class="panel-result">
-                <strong>Real-world system integration</strong>
-                <span>Working across embedded devices, distributed backends, and cloud services where inputs are unreliable and conditions are unpredictable.</span>
+              <div class="panel-result">
+                <div class="panel-result-head">
+                  <span class="panel-result-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="5.5" cy="7" r="2"></circle>
+                      <circle cx="18.5" cy="7" r="2"></circle>
+                      <circle cx="12" cy="18" r="2"></circle>
+                      <path d="M7.4 8.2l3.1 7.3"></path>
+                      <path d="M16.6 8.2l-3.1 7.3"></path>
+                      <path d="M7.5 7h9"></path>
+                    </svg>
+                  </span>
+                  <strong>Real-world system integration</strong>
                 </div>
+                <p class="panel-result-copy">Working across embedded devices, distributed backends, and cloud services where inputs are unreliable and conditions are unpredictable.</p>
+              </div>
             </div>
-          </div>
-          <div class="hero-actions">
-            <a href="#experience" class="btn btn-primary">View experience</a>
-            <a href="assets/resumes/Charles_Chow_Software_Resume.pdf" class="btn btn-secondary">Open resume</a>
           </div>
         </div>
 
-        <aside class="hero-panel" aria-label="Role fit and recent production context">
-          <div class="panel-card">
-            <p class="panel-label">Profile Snapshot</p>
-            <ul class="panel-list">
-              <li>MS in Computer Science from Northeastern University.</li>
-              <li>MS in Electrical and Computer Engineering from Purdue University with embedded systems focus (In Progress).</li>
-              <li>BS in Mechanical Engineering from The Ohio State University.</li>
-            </ul>
-          </div>
+        <div class="hero-actions hero-actions-bridge reveal">
+          <a href="#experience" class="btn btn-primary">View experience</a>
+          <a href="assets/resumes/Charles_Chow_Software_Resume.pdf" class="btn btn-secondary">Open resume</a>
+        </div>
 
-          <details class="work-toggle skills-menu" open>
+        <aside class="hero-panel" aria-label="Role fit and recent production context">
+          <details class="work-toggle skills-menu profile-menu reveal" open>
+            <summary>
+              <span class="toggle-copy">
+                <span class="toggle-title">Profile Snapshot</span>
+                <span class="toggle-hint" aria-hidden="true"></span>
+              </span>
+            </summary>
+            <div class="toggle-content">
+              <div class="skill-groups">
+                <div class="skill-group">
+                  <p class="skill-label">Education</p>
+                  <p class="skill-value">MS in Computer Science from Northeastern University.</p>
+                </div>
+                <div class="skill-group">
+                  <p class="skill-label">Education</p>
+                  <p class="skill-value">MS in Electrical and Computer Engineering from Purdue University with embedded systems focus (In Progress).</p>
+                </div>
+                <div class="skill-group">
+                  <p class="skill-label">Education</p>
+                  <p class="skill-value">BS in Mechanical Engineering from The Ohio State University.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="work-toggle skills-menu reveal" open>
             <summary>
               <span class="toggle-copy">
                 <span class="toggle-title">Software Skills</span>
@@ -155,7 +228,7 @@
             </div>
           </details>
 
-          <details class="work-toggle skills-menu">
+          <details class="work-toggle skills-menu reveal">
             <summary>
               <span class="toggle-copy">
                 <span class="toggle-title">Robotics Skills</span>
@@ -192,25 +265,32 @@
     </section>
 
     <section id="proof-strip">
-      <div class="container proof-shell reveal">
+      <div class="section-motion section-motion-metrics" aria-hidden="true">
+        <span class="motion-shape motion-shape-d" data-depth="14"></span>
+        <span class="motion-shape motion-shape-e" data-depth="10"></span>
+      </div>
+      <div class="container proof-shell">
         <p class="section-kicker">Metrics</p>
-        <div class="proof-strip" aria-label="Selected engineering results">
-          <article class="proof-stat">
+        <div class="proof-strip metrics-strip" aria-label="Selected engineering results">
+          <article class="proof-stat metrics-node reveal">
             <span class="proof-stat-label">API throughput</span>
             <strong>900 req/sec</strong>
             <p>Sustained using Redis-backed coordination and request deduplication.</p>
           </article>
-          <article class="proof-stat">
+          <span class="metrics-link" aria-hidden="true"></span>
+          <article class="proof-stat metrics-node reveal">
             <span class="proof-stat-label">Database latency</span>
-            <strong>420ms to 110ms p95</strong>
+            <strong>420ms to 110ms<br />p95</strong>
             <p>PostgreSQL optimization on 8M+ rows through indexing and query plan refactoring.</p>
           </article>
-          <article class="proof-stat">
+          <span class="metrics-link" aria-hidden="true"></span>
+          <article class="proof-stat metrics-node reveal">
             <span class="proof-stat-label">Ingestion throughput</span>
             <strong>2.8x increase</strong>
             <p>Throughput gains from pipeline redesign and better database write strategy.</p>
           </article>
-          <article class="proof-stat">
+          <span class="metrics-link" aria-hidden="true"></span>
+          <article class="proof-stat metrics-node reveal">
             <span class="proof-stat-label">Incident response</span>
             <strong>45 to 18 min MTTR</strong>
             <p>Lowered incident recovery time with stronger validation and observability.</p>
@@ -230,14 +310,139 @@
           </p>
         </div>
 
+        <div class="experience-timeline reveal" aria-label="Experience timeline">
+          <div class="timeline-track">
+            <button class="timeline-step" type="button" data-job-index="0">
+              <span class="timeline-year">Mar 2021 - May 2022</span>
+              <span class="timeline-chip"><span class="timeline-logo">EIS</span>Engineering and Industrial Services</span>
+            </button>
+            <button class="timeline-step" type="button" data-job-index="1">
+              <span class="timeline-year">Jun 2022 - Mar 2023</span>
+              <span class="timeline-chip"><span class="timeline-logo">KT</span>Keystone Tower Systems</span>
+            </button>
+            <button class="timeline-step" type="button" data-job-index="2">
+              <span class="timeline-year">Apr 2023 - Jan 2024</span>
+              <span class="timeline-chip"><span class="timeline-logo">CE</span>Campos EPC</span>
+            </button>
+            <button class="timeline-step" type="button" data-job-index="3">
+              <span class="timeline-year">May 2024 - Aug 2024</span>
+              <span class="timeline-chip"><span class="timeline-logo">IO</span>Infinite Option</span>
+            </button>
+            <button class="timeline-step" type="button" data-job-index="4">
+              <span class="timeline-year">May 2025 - Dec 2025</span>
+              <span class="timeline-chip"><span class="timeline-logo">NL</span>NeuroLeap</span>
+            </button>
+          </div>
+        </div>
+
         <div class="experience-grid">
-          <article class="experience-card reveal">
+          <article class="experience-card past-role wheel-slot-1 reveal">
+            <div class="experience-head">
+              <div>
+                <p class="experience-role">Engineering and Industrial Services</p>
+                <h3>Mechanical Design Engineer / Project Manager</h3>
+              </div>
+              <span class="experience-date">Mar 2021 - May 2022</span>
+            </div>
+            <div class="experience-tags">
+              <span>Coordination</span>
+              <span>Execution</span>
+              <span>Prototyping</span>
+              <span>Ownership</span>
+            </div>
+            <p class="experience-summary">
+              Led machine design and project execution across industrial machinery and fabrication projects.
+            </p>
+            <ul class="experience-points">
+              <li>Led engineering design and project execution across industrial machinery and fabrication projects, balancing technical requirements with delivery constraints.</li>
+              <li>Directed prototype and machine design from concept to production readiness with a focus on feasibility, manufacturability, and execution.</li>
+              <li>Managed stakeholder discussions, vendor coordination, and project workflows across multiple concurrent efforts.</li>
+              <li>Built early experience in ownership, coordination, and moving complex systems from design into real-world implementation.</li>
+            </ul>
+          </article>
+
+          <article class="experience-card past-role wheel-slot-2 reveal">
+            <div class="experience-head">
+              <div>
+                <p class="experience-role">Keystone Tower Systems</p>
+                <h3>Mechanical Engineer</h3>
+              </div>
+              <span class="experience-date">Jun 2022 - Mar 2023</span>
+            </div>
+            <div class="experience-tags">
+              <span>Design</span>
+              <span>Optimization</span>
+              <span>Integration</span>
+              <span>Validation</span>
+            </div>
+            <p class="experience-summary">
+              Designed electro-mechanical systems for automated industrial equipment with a focus on precision, manufacturability, and deployment readiness.
+            </p>
+            <ul class="experience-points">
+              <li>Designed electro-mechanical systems for automated industrial equipment in an environment where precision, manufacturability, and deployment readiness all mattered.</li>
+              <li>Improved system performance through iterative design, structural analysis, and optimization under real-world engineering constraints.</li>
+              <li>Worked closely with controls and manufacturing teams to ensure designs could be integrated, built, and deployed effectively.</li>
+              <li>Strengthened my ability to think in terms of full-system behavior, cross-functional execution, and practical engineering tradeoffs.</li>
+            </ul>
+          </article>
+
+          <article class="experience-card past-role wheel-slot-3 reveal">
+            <div class="experience-head">
+              <div>
+                <p class="experience-role">Campos EPC</p>
+                <h3>Integrity Engineer</h3>
+              </div>
+              <span class="experience-date">Apr 2023 - Jan 2024</span>
+            </div>
+            <div class="experience-tags">
+              <span>Reliability</span>
+              <span>Compliance</span>
+              <span>Investigation</span>
+              <span>Reporting</span>
+            </div>
+            <p class="experience-summary">
+              Worked on reliability, compliance, and risk mitigation for safety-critical infrastructure systems.
+            </p>
+            <ul class="experience-points">
+              <li>Worked on reliability, compliance, and risk mitigation for safety-critical infrastructure systems where failure analysis and corrective action were central to engineering decisions.</li>
+              <li>Conducted investigations into system failures, identified root causes, and developed corrective actions to reduce repeat issues and improve operational reliability.</li>
+              <li>Produced technical reports and engineering documentation that translated complex findings into clear actions for clients, leadership, and regulatory stakeholders.</li>
+              <li>Built a strong foundation in structured problem solving, reliability thinking, and communicating technical risk in high-consequence environments.</li>
+            </ul>
+          </article>
+
+          <article class="experience-card past-role wheel-slot-4 reveal">
+            <div class="experience-head">
+              <div>
+                <p class="experience-role">Infinite Option</p>
+                <h3>Software Engineer Intern</h3>
+              </div>
+              <span class="experience-date">May 2024 - Aug 2024</span>
+            </div>
+            <div class="experience-tags">
+              <span>Node.js</span>
+              <span>JWT</span>
+              <span>RBAC</span>
+              <span>Redis</span>
+            </div>
+            <p class="experience-summary">
+              Built backend authentication and reliability improvements for a production system handling daily user traffic.
+            </p>
+            <ul class="experience-points">
+              <li>Worked on backend authentication and API reliability for a production system serving daily user traffic.</li>
+              <li>Built secure authentication flows with stronger session handling, helping reduce recurring incidents and improve operational stability.</li>
+              <li>Implemented authorization logic and access-control rules that strengthened security while keeping the system maintainable.</li>
+              <li>Contributed to a more reliable backend by improving how authentication, session state, and incident response were handled in production.</li>
+            </ul>
+          </article>
+
+          <article class="experience-card current-role wheel-slot-5 reveal">
             <div class="experience-head">
               <div>
                 <p class="experience-role">NeuroLeap</p>
-                <h3>Software &amp; Robotics Intern</h3>
+                <h3>Software &amp; Embedded Intern</h3>
               </div>
-              <span class="experience-date">2025</span>
+              <span class="experience-date">May 2025 - Dec 2025</span>
             </div>
             <div class="experience-tags">
               <span>Node.js</span>
@@ -247,38 +452,13 @@
               <span>CloudWatch</span>
             </div>
             <p class="experience-summary">
-              Built backend and telemetry systems for AI-driven devices, spanning embedded
-              data streaming to real-time dashboards.
+              Built backend and telemetry systems for AI-driven devices, spanning real-time data ingestion, observability, and user-facing performance.
             </p>
             <ul class="experience-points">
-              <li>Scaled Node.js APIs to ~900 req/sec at &lt;180ms p95 using Redis-backed coordination and request deduplication.</li>
-              <li>Reduced PostgreSQL latency from 420ms &rarr; 110ms and increased ingestion throughput 2.8x on 8M+ rows.</li>
-              <li>Cut dashboard latency from 280ms &rarr; 65ms and added instrumentation to trace issues across device &rarr; backend &rarr; UI.</li>
-              <li>Reduced BLE packet loss from 9.2% &rarr; 1.8%, enabling stable 8-hour sessions and cutting recalibration time 60%.</li>
-            </ul>
-          </article>
-
-          <article class="experience-card reveal">
-            <div class="experience-head">
-              <div>
-                <p class="experience-role">Infinite Option</p>
-                <h3>Software Engineer Intern</h3>
-              </div>
-              <span class="experience-date">2024</span>
-            </div>
-            <div class="experience-tags">
-              <span>Node.js</span>
-              <span>JWT</span>
-              <span>RBAC</span>
-              <span>Redis</span>
-            </div>
-            <p class="experience-summary">
-              Worked on authentication and API reliability for a production backend system.
-            </p>
-            <ul class="experience-points">
-              <li>Reduced recurring production incidents by 32% and lowered MTTR from 45 &rarr; 18 minutes.</li>
-              <li>Built authentication system supporting ~2K daily logins with JWT, refresh rotation, and Redis session invalidation.</li>
-              <li>Implemented RBAC and authorization rules to strengthen access control without increasing system complexity.</li>
+              <li>Built backend and telemetry systems for AI-driven devices, spanning real-time data ingestion, observability, and production performance.</li>
+              <li>Optimized APIs and database performance on high-volume workloads to improve throughput, latency, and system reliability.</li>
+              <li>Reduced dashboard latency to deliver device data more quickly and consistently to end users.</li>
+              <li>Added instrumentation across device, backend, and UI layers to make failures easier to trace and debug.</li>
             </ul>
           </article>
         </div>
@@ -309,9 +489,14 @@
                   <div class="experience-tags">
                     <span>Go</span>
                     <span>Redis Cluster</span>
+                    <span>Lua</span>
                     <span>gRPC</span>
+                    <span>Protocol Buffers</span>
                     <span>Envoy</span>
                     <span>Prometheus</span>
+                    <span>Grafana</span>
+                    <span>Docker Compose</span>
+                    <span>HTTP gateway/Web UI</span>
                   </div>
                   <h3>Distributed Rate Limiting System</h3>
                 </div>
@@ -408,6 +593,7 @@
                     <span>Django</span>
                     <span>React</span>
                     <span>MySQL</span>
+                    <span>GCP</span>
                     <span>LLM Integration</span>
                   </div>
                   <h3>SQL Execution &amp; Intelligence Platform</h3>
@@ -721,7 +907,7 @@
         </div>
 
         <div class="about-grid">
-          <article class="about-card reveal">
+          <article class="about-card reveal" tabindex="0" data-about-card="build">
             <h3>What I build</h3>
             <p>
               Backend services, real-time data pipelines, and distributed systems that
@@ -729,7 +915,7 @@
             </p>
           </article>
 
-          <article class="about-card reveal">
+          <article class="about-card reveal" tabindex="0" data-about-card="work">
             <h3>How I work</h3>
             <ul class="check-list">
               <li>Measure before optimizing</li>
@@ -739,7 +925,7 @@
             </ul>
           </article>
 
-          <article class="about-card reveal">
+          <article class="about-card reveal" tabindex="0" data-about-card="attention">
             <h3>What I pay attention to</h3>
             <p>
               Latency distributions, packet loss, retries, stale state, queueing behavior,
@@ -759,6 +945,29 @@
           best fit. If your team is working on problems where system behavior is visible and has
           to be improved, I&rsquo;d be glad to connect.
         </p>
+        <p class="contact-meta">Open to full-time and internship roles. Usually replies within 24 hours.</p>
+
+        <div class="contact-quick-actions">
+          <a href="mailto:yaochong.chow.20@gmail.com" class="btn btn-primary">Email me</a>
+          <a
+            href="https://www.linkedin.com/in/charles-chow-yc/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            LinkedIn
+          </a>
+          <button
+            type="button"
+            class="btn btn-copy"
+            id="copy-email-btn"
+            data-email="yaochong.chow.20@gmail.com"
+            aria-describedby="copy-email-feedback"
+          >
+            Copy email
+          </button>
+        </div>
+        <p class="copy-email-feedback" id="copy-email-feedback" aria-live="polite"></p>
 
         <div class="contact-block">
           <h3>Get in touch</h3>
@@ -796,16 +1005,18 @@
         </div>
 
         <div class="contact-block">
-          <h3>Resume</h3>
+          <h3>Choose Resume</h3>
           <ul class="resume-list">
             <li>
               <a href="assets/resumes/Charles_Chow_Software_Resume.pdf" target="_blank" rel="noopener noreferrer">
-                Software Engineering (PDF)
+                <span class="resume-title">Software Engineering (PDF)</span>
+                <span class="resume-note">Backend and distributed systems focus.</span>
               </a>
             </li>
             <li>
               <a href="assets/resumes/Charles_Chow_Robotics_Resume.pdf" target="_blank" rel="noopener noreferrer">
-                Robotics (PDF)
+                <span class="resume-title">Robotics (PDF)</span>
+                <span class="resume-note">Embedded and robotics systems focus.</span>
               </a>
             </li>
           </ul>
@@ -822,5 +1033,6 @@
   </footer>
 
   <script src="script.js?v=2"></script>
+  <script src="apple.js?v=10"></script>
 </body>
 </html>
