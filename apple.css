@@ -731,7 +731,7 @@ section {
 }
 
 .toggle-content {
-  padding: 0 1rem 1rem;
+  padding: 0.42rem 1rem 1rem;
   overflow: hidden;
   contain: layout paint;
   backface-visibility: hidden;
@@ -913,6 +913,10 @@ section {
 
 #experience .section-intro p {
   color: #c3c9d6;
+}
+
+#experience .container {
+  width: min(1380px, calc(100% - 1.2rem));
 }
 
 #additional-work .section-kicker {
@@ -1198,8 +1202,11 @@ section {
   justify-content: flex-start;
   gap: 0.82rem;
   perspective: 1800px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+  touch-action: pan-y pinch-zoom;
   padding: 0.2rem var(--wheel-edge-gutter) 0.8rem;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -1587,6 +1594,14 @@ section {
   color: var(--blue-strong);
   border-color: rgba(0, 113, 227, 0.34);
   background: rgba(0, 113, 227, 0.08);
+}
+
+#additional-work .toggle-content {
+  padding-top: 0.92rem;
+}
+
+#additional-work .support-grid {
+  margin-top: 0.1rem;
 }
 
 #additional-work .feature-head h3,
@@ -2240,8 +2255,8 @@ footer {
     perspective: none;
     align-items: stretch;
     gap: 0.8rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding: 0 8vw 0.35rem;
