@@ -2089,20 +2089,27 @@ footer {
   }
 
   .experience-grid {
-    flex-direction: column;
+    flex-direction: row;
     perspective: none;
     align-items: stretch;
     gap: 0.8rem;
-    overflow-x: visible;
-    padding: 0 0 0.2rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 8vw 0.35rem;
+    scrollbar-width: thin;
   }
 
-  .experience-card,
-  .experience-card.past-role {
-    width: 100%;
+  .experience-grid .experience-card,
+  .experience-grid .experience-card.past-role,
+  .experience-grid .experience-card.current-role {
+    flex: 0 0 min(88vw, 24rem);
+    width: min(88vw, 24rem);
+    scroll-snap-align: center;
     transform: none;
     opacity: 1;
-    box-shadow: none;
+    box-shadow: 0 10px 22px rgba(13, 26, 45, 0.1);
   }
 
   .js .experience-card.reveal.visible {
@@ -2112,32 +2119,29 @@ footer {
 
   .experience-timeline {
     padding: 0.8rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .timeline-track {
-    grid-template-columns: 1fr;
-    gap: 0.72rem;
+    display: flex;
+    gap: 0.58rem;
+    min-width: max-content;
   }
 
   .timeline-track::before {
-    left: 0.35rem;
-    right: auto;
-    top: 1rem;
-    bottom: 1rem;
-    width: 2px;
-    height: auto;
-    background: linear-gradient(180deg, rgba(160, 170, 184, 0.35), rgba(46, 168, 255, 0.5), rgba(160, 170, 184, 0.35));
+    display: none;
   }
 
   .timeline-step {
-    justify-items: start;
-    padding-left: 1.15rem;
+    min-width: 12.2rem;
+    justify-items: stretch;
+    padding-left: 0;
   }
 
   .timeline-step::before {
-    position: absolute;
-    left: 0;
-    top: 0.24rem;
+    position: static;
+    margin-inline: auto;
   }
 
   .contact-quick-actions .btn {
