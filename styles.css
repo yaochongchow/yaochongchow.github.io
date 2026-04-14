@@ -1049,6 +1049,16 @@ section {
   object-fit: cover;
 }
 
+.image-media img[src*=".gif" i],
+.mini-media img[src*=".gif" i] {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  max-height: 24rem;
+  object-fit: contain;
+  background: rgba(247, 243, 236, 0.92);
+}
+
 .feature-copy {
   display: flex;
   flex-direction: column;
