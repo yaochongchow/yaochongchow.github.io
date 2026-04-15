@@ -281,7 +281,10 @@
           </p>
         </div>
         <div class="flagship-grid">
-          <article class="stack-card flagship-card reveal">
+          <article
+            class="stack-card flagship-card reveal"
+            data-project-glance="Distributed service for enforcing request limits across scaled backend systems."
+          >
             <div class="stack-media image-media">
               <img
                 src="https://raw.githubusercontent.com/yaochongchow/distributed-rate-limiter/main/artifacts/demo.gif?v=20260412"
@@ -321,20 +324,23 @@
                   rel="noopener noreferrer"
                   class="feature-link demo-link"
                 >
-                  Demo link
+                  Demo Link
                 </a>
               <p class="feature-summary">
-                Infrastructure service for enforcing global request limits across stateless services in horizontally scaled environments.
+                Global rate-limiting service for stateless systems in horizontally scaled environments.
               </p>
               <ul class="feature-points">
-                <li>Sustains ~12K req/sec at ~12ms p95 latency with stateless Go services behind Envoy while preserving consistent limiting behavior as instances scale out.</li>
-                <li>Coordinates shared limiter state through Redis Cluster with atomic Lua scripts, maintaining correctness under concurrency and high-contention traffic.</li>
-                <li>Implements fault-tolerant request handling and exposes observability data in Prometheus and Grafana for debugging behavior under partial failure scenarios.</li>
+                <li>Sustains ~12K req/sec at ~12ms p95 with stateless Go services behind Envoy.</li>
+                <li>Uses Redis Cluster and atomic Lua scripts to keep limiting correct under concurrency.</li>
+                <li>Adds fault-tolerant request handling with Prometheus and Grafana observability.</li>
               </ul>
             </div>
           </article>
 
-          <article class="stack-card flagship-card reveal">
+          <article
+            class="stack-card flagship-card reveal"
+            data-project-glance="Service-based commerce backend designed to keep core workflows consistent."
+          >
             <div class="stack-media image-media">
               <img
                 src="https://raw.githubusercontent.com/yaochongchow/ecommerce-microservice/main/docs/demo/observability-demo-v2.gif"
@@ -362,7 +368,7 @@
                   rel="noopener noreferrer"
                   class="feature-link"
                 >
-                  View repo
+                  View Repo
                 </a>
               </div>
               <a
@@ -371,20 +377,23 @@
                 rel="noopener noreferrer"
                 class="feature-link demo-link"
               >
-                Demo link
+                Demo Link
               </a>
               <p class="feature-summary">
-                Cloud-native backend architecture with clear service boundaries, event-driven coordination, and strong consistency controls for core commerce flows.
+                Cloud-native commerce backend with clear service boundaries and consistency controls.
               </p>
               <ul class="feature-points">
-                <li>Designed 7 backend microservices with explicit service boundaries and API contracts, deployed on Lambda and ECS with 12 DynamoDB tables for decoupled domain ownership.</li>
-                <li>Implemented distributed transaction coordination with Saga orchestration, compensation logic, idempotency safeguards, and atomic inventory reservations to preserve consistency under partial failures.</li>
-                <li>Built event-driven workflows with SQS and EventBridge, then validated reliability and scalability through observability instrumentation and failure testing across service-to-service paths.</li>
+                <li>Designed 7 microservices on Lambda and ECS with 12 DynamoDB tables and explicit API contracts.</li>
+                <li>Implemented Saga orchestration, compensation logic, idempotency, and atomic inventory reservations.</li>
+                <li>Used SQS, EventBridge, and observability instrumentation to validate reliability under failures.</li>
               </ul>
             </div>
           </article>
 
-          <article class="stack-card flagship-card reveal">
+          <article
+            class="stack-card flagship-card reveal"
+            data-project-glance="Protected SQL execution environment for running user queries safely."
+          >
             <div class="stack-media image-media">
               <img
                 src="https://raw.githubusercontent.com/yaochongchow/interactive-sql-tutor/main/assets/demo.gif"
@@ -411,7 +420,7 @@
                   rel="noopener noreferrer"
                   class="feature-link"
                 >
-                  View repo
+                  View Repo
                 </a>
               </div>
                   <a
@@ -420,15 +429,15 @@
                   rel="noopener noreferrer"
                   class="feature-link demo-link"
                 >
-                  Demo link
+                  Demo Link
                 </a>
               <p class="feature-summary">
-                Production backend system for safe execution of untrusted SQL with isolation, strict validation, and reliable structured responses.
+                Backend platform for safe SQL execution with isolation, validation, and structured responses.
               </p>
               <ul class="feature-points">
-                <li>Executes untrusted SQL in isolated MySQL sandboxes to enforce fault containment and protect shared backend infrastructure.</li>
-                <li>Implements backend API flows for query submission, execution state, and result delivery with predictable system behavior under load.</li>
-                <li>Applies validation, guardrails, and fallback logic to keep outputs structured and reliable, with analytics and observability for performance tuning and debugging.</li>
+                <li>Runs untrusted SQL in isolated MySQL sandboxes to protect shared infrastructure.</li>
+                <li>Built Django API flows for submission, execution state, and result delivery under load.</li>
+                <li>Applies validation, guardrails, fallback logic, and observability for reliable outputs.</li>
               </ul>
             </div>
           </article>
@@ -444,7 +453,7 @@
           <h2>Production systems where behavior mattered.</h2>
           <p>
             I have worked on systems where latency, throughput, and reliability were measurable,
-            and I was responsible for improving them.
+            and I was expected to improve them.
           </p>
         </div>
 
@@ -489,7 +498,7 @@
               <span>Ownership</span>
             </div>
             <p class="experience-summary">
-              Led machine design and project execution across industrial machinery and fabrication projects.
+              Led machine design and project delivery across industrial machinery and fabrication projects.
             </p>
             <ul class="experience-points">
               <li>Led engineering design and project execution across industrial machinery and fabrication projects, balancing technical requirements with delivery constraints.</li>
@@ -514,7 +523,7 @@
               <span>Validation</span>
             </div>
             <p class="experience-summary">
-              Designed electro-mechanical systems for automated industrial equipment with a focus on precision, manufacturability, and deployment readiness.
+              Designed electro-mechanical systems for automated equipment with a focus on precision and manufacturability.
             </p>
             <ul class="experience-points">
               <li>Designed electro-mechanical systems for automated industrial equipment in an environment where precision, manufacturability, and deployment readiness all mattered.</li>
@@ -539,7 +548,7 @@
               <span>Reporting</span>
             </div>
             <p class="experience-summary">
-              Worked on reliability, compliance, and risk mitigation for safety-critical infrastructure systems.
+              Focused on reliability, compliance, and risk mitigation for safety-critical infrastructure.
             </p>
             <ul class="experience-points">
               <li>Worked on reliability, compliance, and risk mitigation for safety-critical infrastructure systems where failure analysis and corrective action were central to engineering decisions.</li>
@@ -564,7 +573,7 @@
               <span>Redis</span>
             </div>
             <p class="experience-summary">
-              Built backend authentication and reliability improvements for a production system handling daily user traffic.
+              Built authentication and reliability improvements for a production system with daily user traffic.
             </p>
             <ul class="experience-points">
               <li>Worked on backend authentication and API reliability for a production system serving daily user traffic.</li>
@@ -591,7 +600,7 @@
               <span>CloudWatch</span>
             </div>
             <p class="experience-summary">
-              Built production backend APIs and telemetry pipelines that carried real-time device data through ingestion, PostgreSQL, and user-facing dashboards with strong observability.
+              Built backend APIs and telemetry pipelines that moved real-time device data through ingestion, PostgreSQL, and dashboards with strong observability.
             </p>
             <ul class="experience-points">
               <li>Designed backend API and ingestion paths that moved real-time telemetry from devices into backend services and persisted it reliably for downstream dashboard reads.</li>
@@ -664,7 +673,11 @@
           </summary>
           <div class="toggle-content">
             <div class="support-grid">
-              <article class="support-card reveal">
+              <article
+                class="support-card reveal"
+                data-project-glance="Autonomous robotics platform for mapping, navigation, and live operational visibility."
+                data-project-summary="Autonomous robotics stack for real-time navigation, task orchestration, and telemetry visibility."
+              >
                 <div class="support-media image-media">
                   <img
                     src="https://raw.githubusercontent.com/yaochongchow/warehouse-delivery-robot/main/docs/demo/dashboard-demo.gif"
@@ -689,16 +702,20 @@
                       rel="noopener noreferrer"
                       class="feature-link"
                     >
-                      View repo
+                      View Repo
                     </a>
                   </div>
                   <ul class="feature-points compact-points">
-                    <li>Built a real-time ROS2 pipeline with task orchestration and behavior-tree control tied to predictable system behavior.</li>
-                    <li>Added rosbag2 logging and diagnostics to replay failures and accelerate debugging across robotics and backend telemetry workflows.</li>
+                    <li>Built a ROS2 pipeline with task orchestration and behavior-tree control.</li>
+                    <li>Added rosbag2 logging and diagnostics to replay failures and speed debugging.</li>
                   </ul>
                 </div>
               </article>
-              <article class="support-card reveal">
+              <article
+                class="support-card reveal"
+                data-project-glance="Embedded telemetry integration for ingesting and normalizing IMU data reliably."
+                data-project-summary="Embedded firmware integration for streaming IMU telemetry from noisy serial data."
+              >
                 <div class="support-media image-media">
                   <img
                     src="https://raw.githubusercontent.com/yaochongchow/Witmotion/master/assets/demo.gif"
@@ -724,12 +741,12 @@
                       rel="noopener noreferrer"
                       class="feature-link"
                     >
-                      View repo
+                      View Repo
                     </a>
                   </div>
                   <ul class="feature-points compact-points">
-                    <li>Engineered a resilient real-time IMU ingestion pipeline at 20-100 Hz on Zephyr RTOS with continuous streaming under noisy inputs.</li>
-                    <li>Built a fault-tolerant binary parser for misaligned packets and stream corruption, producing structured motion telemetry for downstream systems.</li>
+                    <li>Built a Zephyr RTOS IMU pipeline at 20-100 Hz for continuous streaming.</li>
+                    <li>Added a fault-tolerant binary parser for misaligned packets and stream corruption.</li>
                   </ul>
                 </div>
               </article>
@@ -746,7 +763,11 @@
           </summary>
           <div class="toggle-content">
             <div class="support-grid">
-              <article class="support-card reveal">
+              <article
+                class="support-card reveal"
+                data-project-glance="Real-time traffic monitoring pipeline built on computer vision."
+                data-project-summary="Computer vision pipeline for traffic monitoring with stable frame processing and event extraction."
+              >
                 <div class="support-media image-media">
                   <img
                     src="https://raw.githubusercontent.com/yaochongchow/traffic-monitor/main/demo_small.gif"
@@ -771,17 +792,21 @@
                       rel="noopener noreferrer"
                       class="feature-link"
                     >
-                      View repo
+                      View Repo
                     </a>
                   </div>
                   <ul class="feature-points compact-points">
-                    <li>Built a real-time perception pipeline with deterministic stage-to-stage behavior and stable frame processing under load.</li>
-                    <li>Designed outputs and integration points for monitoring and analytics systems, with emphasis on observability over model-only metrics.</li>
+                    <li>Built a real-time perception pipeline with deterministic stage behavior under load.</li>
+                    <li>Designed outputs for monitoring and analytics with strong observability.</li>
                   </ul>
                 </div>
               </article>
 
-              <article class="support-card reveal">
+              <article
+                class="support-card reveal"
+                data-project-glance="Machine learning workflow for identifying potentially fraudulent card activity."
+                data-project-summary="Applied ML system for fraud detection with reproducible evaluation and imbalance handling."
+              >
                 <div class="support-media image-media">
                   <img
                     src="https://raw.githubusercontent.com/yaochongchow/credit-card-fraud-detection/main/outputs/streamlit_demo.gif"
@@ -806,17 +831,21 @@
                       rel="noopener noreferrer"
                       class="feature-link"
                     >
-                      View repo
+                      View Repo
                     </a>
                   </div>
                   <ul class="feature-points compact-points">
-                    <li>Built a reproducible inference and evaluation workflow focused on reliability under class imbalance and production-style data drift.</li>
-                    <li>Validated SMOTE and class-weighting strategies with instrumentation and repeatable experiments to improve real-world decision quality.</li>
+                    <li>Built a reproducible inference and evaluation workflow for class imbalance and data drift.</li>
+                    <li>Validated SMOTE and class-weighting with instrumentation and repeatable experiments.</li>
                   </ul>
                 </div>
               </article>
 
-              <article class="support-card reveal">
+              <article
+                class="support-card reveal"
+                data-project-glance="Real-time vision interface that maps facial expressions to emoji feedback."
+                data-project-summary="Real-time vision app that maps facial emotion inference into responsive camera feedback."
+              >
                 <div class="support-media image-media">
                   <img
                     src="https://raw.githubusercontent.com/yaochongchow/emoji-cam/main/demo.gif"
@@ -841,18 +870,22 @@
                       rel="noopener noreferrer"
                       class="feature-link"
                     >
-                      View repo
+                      View Repo
                     </a>
                   </div>
                   <ul class="feature-points compact-points">
-                    <li>Implemented a low-latency real-time inference loop with stable processing, rendering, and feedback behavior.</li>
-                    <li>Exposed tracked outputs through an interface designed for consistent updates and debuggable runtime behavior.</li>
+                    <li>Implemented a low-latency inference loop with stable processing and rendering.</li>
+                    <li>Exposed tracked outputs through a debuggable interface with consistent updates.</li>
                   </ul>
                 </div>
               </article>
 
 
-              <article class="support-card reveal">
+              <article
+                class="support-card reveal"
+                data-project-glance="Live telemetry dashboard for monitoring reinforcement-learning robot navigation runs."
+                data-project-summary="Live robotics dashboard for reinforcement-learning runs with telemetry and state visibility."
+              >
                 <div class="support-media image-media">
                   <img
                     src="https://raw.githubusercontent.com/yaochongchow/rl-robot-navigation-live-dashboard/main/dashboard/public/demo_robot_safety_run.gif"
@@ -876,12 +909,12 @@
                       rel="noopener noreferrer"
                       class="feature-link"
                     >
-                      View repo
+                      View Repo
                     </a>
                   </div>
                   <ul class="feature-points compact-points">
-                    <li>Built a live telemetry dashboard for robot navigation experiments with real-time state visibility and event tracking.</li>
-                    <li>Kept navigation behavior observable in production-like runs to support faster debugging and system-level analysis.</li>
+                    <li>Built a live telemetry dashboard for navigation experiments with state and event tracking.</li>
+                    <li>Kept navigation behavior observable in production-like runs for faster debugging.</li>
                   </ul>
                 </div>
               </article>
@@ -897,10 +930,10 @@
           <p class="section-kicker">About</p>
           <h2>Backend systems that stay predictable in production.</h2>
           <p>
-            I build backend systems that have to stay reliable when things start going wrong. I care about latency, failure modes, observability, and the debugging work required to make systems trustworthy in production.
+            I build backend systems that stay reliable when things go wrong. I care about latency, failure modes, observability, and the debugging needed to keep systems trustworthy in production.
           </p>
           <p>
-            I work across device telemetry, backend services, and cloud infrastructure, which helps me reason about the full path from data generation to system behavior. Embedded experience improves how I design backend systems under real-world constraints, while backend and real-time systems remain my core focus.
+            I work across device telemetry, backend services, and cloud infrastructure, so I can reason about the full path from data generation to system behavior. Embedded experience helps me design backend systems under real-world constraints, while backend and real-time systems remain my core focus.
           </p>
         </div>
 
@@ -908,7 +941,7 @@
           <article class="about-card reveal" tabindex="0" data-about-card="build">
             <h3>What I build</h3>
             <p>
-              Backend APIs, telemetry ingestion pipelines, and distributed services with clear boundaries and predictable production behavior.
+              Backend APIs, telemetry pipelines, and distributed services with clear boundaries and predictable production behavior.
             </p>
           </article>
 
@@ -925,7 +958,7 @@
           <article class="about-card reveal" tabindex="0" data-about-card="attention">
             <h3>What I pay attention to</h3>
             <p>
-              Tail latency, retries, stale state, queueing, data ordering, and the architectural choices that determine whether a system is reliable and debuggable at scale.
+              Tail latency, retries, stale state, queueing, data ordering, and the architectural choices that shape reliability and debuggability at scale.
             </p>
           </article>
         </div>

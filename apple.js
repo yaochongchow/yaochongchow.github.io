@@ -535,6 +535,7 @@
     }
 
     const groups = Array.from(document.querySelectorAll(".hero-core .panel-results"));
+    const mobileLayout = window.matchMedia("(max-width: 720px)");
     if (!groups.length) {
       return;
     }
@@ -659,7 +660,13 @@
         transitionToIndex((activeIndex + 1) % cards.length);
       };
 
-      const stopRotation = () => {
+      const shouldKeepRotatingOnMobile = () => mobileLayout.matches;
+
+      const stopRotation = (force = false) => {
+        if (!force && shouldKeepRotatingOnMobile()) {
+          return;
+        }
+
         if (rotationTimer !== null) {
           window.clearInterval(rotationTimer);
           rotationTimer = null;
@@ -716,14 +723,206 @@
 
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-          stopRotation();
+          stopRotation(true);
           return;
         }
 
         startRotation();
       });
 
+      const handleMobileLayoutChange = (event) => {
+        if (event.matches) {
+          startRotation();
+        }
+      };
+
+      if (typeof mobileLayout.addEventListener === "function") {
+        mobileLayout.addEventListener("change", handleMobileLayoutChange);
+      } else if (typeof mobileLayout.addListener === "function") {
+        mobileLayout.addListener(handleMobileLayoutChange);
+      }
+
       startRotation();
+    });
+  }
+
+  function setupProjectInfoCards() {
+    const projectCards = Array.from(
+      document.querySelectorAll("#work .stack-card, #additional-work .support-card")
+    );
+
+    if (!projectCards.length) {
+      return;
+    }
+
+    const overlay = document.createElement("div");
+    overlay.className = "project-reading-overlay";
+    overlay.setAttribute("aria-hidden", "true");
+    overlay.innerHTML = `
+      <div
+        class="project-reading-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-reading-title"
+        tabindex="-1"
+      >
+        <div class="project-reading-header">
+          <div>
+            <p class="project-reading-kicker">Project Description</p>
+            <h3 class="project-reading-title" id="project-reading-title"></h3>
+          </div>
+          <button type="button" class="project-reading-close" aria-label="Close project description">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="project-reading-tags"></div>
+        <div class="project-reading-actions"></div>
+        <div class="project-reading-body"></div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const closeButton = overlay.querySelector(".project-reading-close");
+    const titleSlot = overlay.querySelector(".project-reading-title");
+    const tagsSlot = overlay.querySelector(".project-reading-tags");
+    const actionsSlot = overlay.querySelector(".project-reading-actions");
+    const bodySlot = overlay.querySelector(".project-reading-body");
+
+    let restoreFocusTarget = null;
+
+    const clearNode = (node) => {
+      while (node.firstChild) {
+        node.removeChild(node.firstChild);
+      }
+    };
+
+    const isOpen = () => overlay.classList.contains("is-open");
+
+    const closeOverlay = () => {
+      if (!isOpen()) {
+        return;
+      }
+
+      overlay.classList.remove("is-open");
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("project-reading-open");
+
+      const nextFocusTarget = restoreFocusTarget;
+      restoreFocusTarget = null;
+
+      if (nextFocusTarget instanceof HTMLElement) {
+        nextFocusTarget.focus();
+      }
+    };
+
+    const openOverlay = (card, trigger) => {
+      const title =
+        card.querySelector("h3")?.textContent?.trim() ||
+        card.querySelector(".feature-link[href]")?.textContent?.trim() ||
+        "Project";
+      const tagSource = card.querySelector(".experience-tags");
+      const summarySource = card.querySelector(".feature-summary");
+      const summaryText = card.dataset.projectSummary?.trim() || "";
+      const pointsSource = card.querySelector(".feature-points");
+      const actionLinks = Array.from(card.querySelectorAll(".feature-link[href]"));
+
+      restoreFocusTarget = trigger;
+
+      titleSlot.textContent = title;
+      clearNode(tagsSlot);
+      clearNode(actionsSlot);
+      clearNode(bodySlot);
+
+      if (tagSource) {
+        tagsSlot.appendChild(tagSource.cloneNode(true));
+      }
+
+      actionLinks.forEach((link) => {
+        actionsSlot.appendChild(link.cloneNode(true));
+      });
+
+      if (summarySource) {
+        const summaryClone = summarySource.cloneNode(true);
+        summaryClone.className = "project-reading-summary";
+        bodySlot.appendChild(summaryClone);
+      } else if (summaryText) {
+        const summaryClone = document.createElement("p");
+        summaryClone.className = "project-reading-summary";
+        summaryClone.textContent = summaryText;
+        bodySlot.appendChild(summaryClone);
+      }
+
+      if (pointsSource) {
+        const pointsClone = pointsSource.cloneNode(true);
+        pointsClone.className = "project-reading-points";
+        bodySlot.appendChild(pointsClone);
+      }
+
+      overlay.classList.add("is-open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.classList.add("project-reading-open");
+
+      requestAnimationFrame(() => {
+        closeButton.focus();
+      });
+    };
+
+    projectCards.forEach((card) => {
+      const descriptionAnchor = card.querySelector(".feature-summary, .feature-points");
+      const glanceText = card.dataset.projectGlance?.trim() || "";
+      const title = card.querySelector("h3")?.textContent?.trim() || "project";
+      const existingActionLinks = Array.from(card.querySelectorAll(".feature-link[href]"));
+
+      if (!descriptionAnchor) {
+        return;
+      }
+
+      card.setAttribute("data-project-info-ready", "true");
+
+      const infoButton = document.createElement("button");
+      infoButton.type = "button";
+      infoButton.className = "feature-link project-info-trigger";
+      infoButton.textContent = "Description";
+      infoButton.setAttribute("aria-haspopup", "dialog");
+      infoButton.setAttribute("aria-label", `Open description for ${title}`);
+
+      const actionsRow = document.createElement("div");
+      actionsRow.className = "project-card-actions";
+
+      existingActionLinks.forEach((link) => {
+        actionsRow.appendChild(link);
+      });
+
+      actionsRow.appendChild(infoButton);
+
+      if (glanceText) {
+        const glance = document.createElement("p");
+        glance.className = "project-glance";
+        glance.textContent = glanceText;
+        descriptionAnchor.insertAdjacentElement("beforebegin", glance);
+        glance.insertAdjacentElement("afterend", actionsRow);
+      } else {
+        descriptionAnchor.insertAdjacentElement("beforebegin", actionsRow);
+      }
+
+      infoButton.addEventListener("click", () => {
+        openOverlay(card, infoButton);
+      });
+    });
+
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) {
+        closeOverlay();
+      }
+    });
+
+    closeButton.addEventListener("click", closeOverlay);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && isOpen()) {
+        closeOverlay();
+      }
     });
   }
 
@@ -950,6 +1149,10 @@
     let scrollTicking = false;
     let lockedActiveIndex = null;
     let unlockTimerId = null;
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let lastTouchY = 0;
+    let touchIntent = null;
 
     const clampIndex = (index) => Math.min(Math.max(index, 0), cards.length - 1);
     const resolveStepIndex = (step, fallbackIndex) => {
@@ -1156,7 +1359,84 @@
       });
     });
 
+    const onGridWheel = (event) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
+        return;
+      }
+
+      event.preventDefault();
+      window.scrollBy({
+        top: event.deltaY,
+        left: 0,
+        behavior: "auto",
+      });
+    };
+
+    const resetTouchTracking = () => {
+      touchStartX = 0;
+      touchStartY = 0;
+      lastTouchY = 0;
+      touchIntent = null;
+    };
+
+    const onGridTouchStart = (event) => {
+      const touch = event.touches[0];
+      if (!touch) {
+        return;
+      }
+
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      lastTouchY = touch.clientY;
+      touchIntent = null;
+    };
+
+    const onGridTouchMove = (event) => {
+      if (desktopLayout.matches) {
+        return;
+      }
+
+      const touch = event.touches[0];
+      if (!touch) {
+        return;
+      }
+
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+
+      if (touchIntent === null) {
+        const distance = Math.max(Math.abs(deltaX), Math.abs(deltaY));
+        if (distance < 10) {
+          return;
+        }
+
+        touchIntent = Math.abs(deltaY) > Math.abs(deltaX) ? "vertical" : "horizontal";
+      }
+
+      if (touchIntent !== "vertical") {
+        return;
+      }
+
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+
+      const scrollDelta = lastTouchY - touch.clientY;
+      lastTouchY = touch.clientY;
+
+      window.scrollBy({
+        top: scrollDelta,
+        left: 0,
+        behavior: "auto",
+      });
+    };
+
     grid.addEventListener("scroll", onGridScroll, { passive: true });
+    grid.addEventListener("wheel", onGridWheel, { passive: false });
+    grid.addEventListener("touchstart", onGridTouchStart, { passive: true });
+    grid.addEventListener("touchmove", onGridTouchMove, { passive: false });
+    grid.addEventListener("touchend", resetTouchTracking, { passive: true });
+    grid.addEventListener("touchcancel", resetTouchTracking, { passive: true });
 
     const handleLayoutChange = (event) => {
       lockedActiveIndex = null;
@@ -1164,6 +1444,7 @@
         window.clearTimeout(unlockTimerId);
         unlockTimerId = null;
       }
+      resetTouchTracking();
 
       if (!event.matches) {
         updateEdgeGutters();
@@ -1329,6 +1610,7 @@
   setupMetricCountUp();
   setupFocusCardTilt();
   setupHeroFocusRotation();
+  setupProjectInfoCards();
   setupAboutInteractive();
   setupExperienceWheel();
   setupRevealStagger();
