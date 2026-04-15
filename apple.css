@@ -2832,12 +2832,12 @@ footer {
   }
 
   .project-reading-overlay {
-    align-items: flex-end;
-    padding: 0.85rem;
+    align-items: center;
+    padding: 1rem;
   }
 
   .project-reading-card {
-    width: 100%;
+    width: min(100%, 34rem);
     max-height: min(82svh, 46rem);
     border-radius: 1.2rem;
     padding: 0.95rem;
