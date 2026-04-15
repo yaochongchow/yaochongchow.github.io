@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "root": "assets/keyword-shots-16x9",
+  "categories": [
+    {
+      "slug": "distributed-services",
+      "title": "Distributed Services",
+      "path": "assets/keyword-shots-16x9/distributed-services"
+    },
+    {
+      "slug": "telemetry-pipelines",
+      "title": "Telemetry Pipelines",
+      "path": "assets/keyword-shots-16x9/telemetry-pipelines"
+    },
+    {
+      "slug": "production-infrastructure",
+      "title": "Production Infrastructure",
+      "path": "assets/keyword-shots-16x9/production-infrastructure"
+    },
+    {
+      "slug": "latency",
+      "title": "Latency",
+      "path": "assets/keyword-shots-16x9/latency"
+    },
+    {
+      "slug": "reliability",
+      "title": "Reliability",
+      "path": "assets/keyword-shots-16x9/reliability"
+    },
+    {
+      "slug": "observability",
+      "title": "Observability",
+      "path": "assets/keyword-shots-16x9/observability"
+    },
+    {
+      "slug": "performance",
+      "title": "Performance",
+      "path": "assets/keyword-shots-16x9/performance"
+    },
+    {
+      "slug": "debugging",
+      "title": "Debugging",
+      "path": "assets/keyword-shots-16x9/debugging"
+    }
+  ]
+}

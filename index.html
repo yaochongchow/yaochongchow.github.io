@@ -32,7 +32,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="apple.css?v=19" />
+  <link rel="stylesheet" href="apple.css?v=20" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -41,6 +41,7 @@
     <div class="nav-inner">
       <a class="nav-logo" href="#top">Charles Chow</a>
       <ul class="nav-links" id="nav-links">
+        <li><a href="#core-skill">Core Skill</a></li>
         <li><a href="#work">Flagship Project</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#proof-strip">Backend Skills</a></li>
@@ -72,6 +73,7 @@
 
   <aside class="section-rail" aria-label="Section progress">
     <a class="section-rail-link" href="#hero"><span>Intro</span></a>
+    <a class="section-rail-link" href="#core-skill"><span>Core Skill</span></a>
     <a class="section-rail-link" href="#work"><span>Flagship</span></a>
     <a class="section-rail-link" href="#experience"><span>Experience</span></a>
     <a class="section-rail-link" href="#proof-strip"><span>Backend Skills</span></a>
@@ -89,11 +91,13 @@
       </div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="hero-eyebrow">Backend and Real-Time Systems</p>
           <h1 class="hero-title">Backend and Real-Time Systems Engineer</h1>
-          <p class="hero-sub">
-            I build backend APIs, distributed services, telemetry pipelines, and production infrastructure with a focus on latency, reliability, observability, performance, and debugging. My embedded background strengthens how I design backend systems under real-world constraints.
-          </p>
+          <div class="hero-sub hero-preview">
+            <img
+              src="assets/keyword-shots-16x9/sample-keyword-shots.gif"
+              alt="Animated reel highlighting distributed services, telemetry pipelines, production infrastructure, low latency, reliability, observability, performance, and debugging."
+            />
+          </div>
           <div class="hero-core" aria-label="What I focus on">
             <p class="hero-core-title">What I Focus On</p>
             <div class="panel-results">
@@ -167,7 +171,9 @@
         </div>
 
         <aside class="hero-panel" aria-label="Role fit and recent production context">
-          <details class="work-toggle skills-menu reveal" open>
+          <p id="core-skill" class="section-kicker hero-panel-kicker reveal">Core Skill</p>
+
+          <details class="work-toggle skills-menu reveal">
             <summary>
               <span class="toggle-copy">
                 <span class="toggle-title">Software Skills</span>
@@ -237,7 +243,7 @@
             </div>
           </details>
 
-          <details class="work-toggle skills-menu profile-menu reveal" open>
+          <details class="work-toggle skills-menu profile-menu reveal">
             <summary>
               <span class="toggle-copy">
                 <span class="toggle-title">Profile Snapshot</span>

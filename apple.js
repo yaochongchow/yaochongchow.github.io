@@ -288,7 +288,7 @@
       document.querySelectorAll(".nav-links a[href^='#'], .section-rail-link[href^='#']")
     );
     const rail = document.querySelector(".section-rail");
-    const darkToneSections = new Set(["hero", "experience", "contact"]);
+    const darkToneSections = new Set(["hero", "core-skill", "experience", "contact"]);
 
     const sectionMap = new Map();
     navLinks.forEach((link) => {
@@ -534,6 +534,204 @@
     } else if (typeof finePointer.addListener === "function") {
       finePointer.addListener(handlePointerModeChange);
     }
+  }
+
+  function setupHeroFocusRotation() {
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    const groups = Array.from(document.querySelectorAll(".hero-core .panel-results"));
+    if (!groups.length) {
+      return;
+    }
+
+    const ROTATE_INTERVAL_MS = 4200;
+    const EXIT_DURATION_MS = 980;
+
+    groups.forEach((group) => {
+      const cards = Array.from(group.querySelectorAll(".panel-result"));
+      if (cards.length < 2) {
+        return;
+      }
+
+      group.classList.add("focus-rotator");
+
+      const indicator = document.createElement("div");
+      indicator.className = "focus-rotation-indicator";
+
+      const dots = document.createElement("div");
+      dots.className = "focus-rotation-dots";
+      dots.setAttribute("role", "tablist");
+      dots.setAttribute("aria-label", "Focus highlight navigation");
+
+      const cardTitles = cards.map((card, index) => {
+        const heading = card.querySelector("strong");
+        const title = heading?.textContent?.trim() || `Focus ${index + 1}`;
+        card.dataset.focusTitle = title;
+        return title;
+      });
+
+      const dotNodes = cards.map((_, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "focus-rotation-dot";
+        dot.dataset.dotIndex = String(index);
+        dot.setAttribute("aria-label", cardTitles[index]);
+        dot.setAttribute("aria-controls", `focus-card-${index}`);
+        dot.setAttribute("role", "tab");
+        dots.appendChild(dot);
+        return dot;
+      });
+
+      cards.forEach((card, index) => {
+        card.id = card.id || `focus-card-${index}`;
+      });
+
+      indicator.append(dots);
+      group.insertAdjacentElement("beforebegin", indicator);
+
+      let activeIndex = 0;
+      let rotationTimer = null;
+      let exitTimer = null;
+
+      const updateIndicatorDots = (currentIndex, previewIndex) => {
+        dotNodes.forEach((dot, index) => {
+          dot.classList.toggle("is-active", index === currentIndex);
+          dot.classList.toggle("is-next", index === previewIndex && index !== currentIndex);
+          dot.setAttribute("aria-selected", String(index === currentIndex));
+          dot.tabIndex = index === currentIndex ? 0 : -1;
+        });
+      };
+
+      const syncSteadyState = () => {
+        const previewIndex = (activeIndex + 1) % cards.length;
+
+        cards.forEach((card, index) => {
+          const isActive = index === activeIndex;
+          const isPreview = index === previewIndex && !isActive;
+          card.classList.toggle("is-active", isActive);
+          card.classList.toggle("is-next", isPreview);
+          card.classList.remove("is-exiting");
+          card.setAttribute("aria-hidden", String(!isActive));
+        });
+
+        updateIndicatorDots(activeIndex, previewIndex);
+      };
+
+      syncSteadyState();
+
+      const transitionToIndex = (targetIndex) => {
+        if (targetIndex === activeIndex) {
+          return;
+        }
+
+        const currentIndex = activeIndex;
+        const current = cards[currentIndex];
+        const next = cards[targetIndex];
+        const previewIndex = (targetIndex + 1) % cards.length;
+        const preview = cards[previewIndex];
+
+        cards.forEach((card, index) => {
+          card.classList.remove("is-next");
+          if (index !== currentIndex) {
+            card.classList.remove("is-exiting");
+          }
+        });
+
+        current.classList.remove("is-active");
+        current.classList.add("is-exiting");
+        current.setAttribute("aria-hidden", "true");
+
+        next.classList.remove("is-exiting");
+        next.classList.add("is-active");
+        next.setAttribute("aria-hidden", "false");
+        preview.classList.add("is-next");
+        preview.setAttribute("aria-hidden", "true");
+        updateIndicatorDots(targetIndex, previewIndex);
+
+        if (exitTimer !== null) {
+          window.clearTimeout(exitTimer);
+        }
+
+        exitTimer = window.setTimeout(() => {
+          current.classList.remove("is-exiting");
+          exitTimer = null;
+        }, EXIT_DURATION_MS);
+
+        activeIndex = targetIndex;
+      };
+
+      const rotate = () => {
+        transitionToIndex((activeIndex + 1) % cards.length);
+      };
+
+      const stopRotation = () => {
+        if (rotationTimer !== null) {
+          window.clearInterval(rotationTimer);
+          rotationTimer = null;
+        }
+      };
+
+      const startRotation = () => {
+        if (rotationTimer !== null) {
+          return;
+        }
+
+        rotationTimer = window.setInterval(rotate, ROTATE_INTERVAL_MS);
+      };
+
+      group.addEventListener("pointerenter", stopRotation);
+      group.addEventListener("pointerleave", startRotation);
+      group.addEventListener("focusin", stopRotation);
+      group.addEventListener("focusout", (event) => {
+        if (group.contains(event.relatedTarget)) {
+          return;
+        }
+
+        startRotation();
+      });
+
+      indicator.addEventListener("pointerenter", stopRotation);
+      indicator.addEventListener("pointerleave", () => {
+        startRotation();
+      });
+      indicator.addEventListener("focusin", stopRotation);
+      indicator.addEventListener("focusout", (event) => {
+        if (indicator.contains(event.relatedTarget)) {
+          return;
+        }
+
+        startRotation();
+      });
+
+      dotNodes.forEach((dot, index) => {
+        dot.addEventListener("pointerenter", () => {
+          transitionToIndex(index);
+        });
+
+        dot.addEventListener("focus", () => {
+          transitionToIndex(index);
+        });
+
+        dot.addEventListener("click", () => {
+          transitionToIndex(index);
+          stopRotation();
+          startRotation();
+        });
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          stopRotation();
+          return;
+        }
+
+        startRotation();
+      });
+
+      startRotation();
+    });
   }
 
   function setupAboutInteractive() {
@@ -1137,6 +1335,7 @@
   setupActiveNav();
   setupMetricCountUp();
   setupFocusCardTilt();
+  setupHeroFocusRotation();
   setupAboutInteractive();
   setupExperienceWheel();
   setupRevealStagger();

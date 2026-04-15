@@ -432,6 +432,23 @@ section {
   text-wrap: pretty;
 }
 
+.hero-preview {
+  max-width: min(980px, 100%);
+  padding: 0.7rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 22px 42px rgba(4, 12, 24, 0.26);
+}
+
+.hero-preview img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: calc(var(--radius-lg) - 10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .hero-core {
   margin: 1.2rem auto 0;
   max-width: 900px;
@@ -450,6 +467,54 @@ section {
   color: #d7d7dc;
 }
 
+.focus-rotation-indicator {
+  margin-top: 0.48rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.focus-rotation-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.34rem;
+}
+
+.focus-rotation-dot {
+  appearance: none;
+  width: 0.52rem;
+  height: 0.52rem;
+  padding: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  opacity: 0.5;
+  transform: scale(1);
+  transition: transform 220ms ease, opacity 220ms ease, background 220ms ease;
+}
+
+.focus-rotation-dot:hover {
+  opacity: 0.85;
+  transform: scale(1.2);
+}
+
+.focus-rotation-dot:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+.focus-rotation-dot.is-next {
+  opacity: 0.75;
+  background: rgba(215, 216, 224, 0.46);
+}
+
+.focus-rotation-dot.is-active {
+  opacity: 1;
+  background: #ffffff;
+  transform: scale(1.35);
+}
+
 .panel-results {
   margin-top: 0.56rem;
   display: grid;
@@ -466,15 +531,86 @@ section {
   transform-style: preserve-3d;
   transform:
     perspective(920px)
-    rotateX(var(--tilt-x, 0deg))
-    rotateY(var(--tilt-y, 0deg))
-    translateY(var(--lift, 0px));
+    rotateX(calc(var(--tilt-x, 0deg) + var(--focus-rotate-x, 0deg)))
+    rotateY(calc(var(--tilt-y, 0deg) + var(--focus-rotate-y, 0deg)))
+    rotateZ(var(--focus-rotate-z, 0deg))
+    translateY(calc(var(--focus-shift, 0px) + var(--lift, 0px)))
+    translateZ(var(--focus-depth, 0px))
+    scale(var(--focus-scale, 1));
+  opacity: var(--focus-opacity, 1);
+  filter: blur(var(--focus-blur, 0px));
   transition:
-    transform 340ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 900ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 260ms ease,
     background 260ms ease,
     box-shadow 260ms ease;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.015);
+}
+
+.panel-results.focus-rotator {
+  position: relative;
+  isolation: isolate;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.panel-results.focus-rotator .panel-result {
+  grid-area: 1 / 1;
+  position: relative;
+  --focus-opacity: 0;
+  --focus-scale: 0.96;
+  --focus-shift: 18px;
+  --focus-depth: -70px;
+  --focus-rotate-x: 8deg;
+  --focus-rotate-y: -4deg;
+  --focus-rotate-z: -0.9deg;
+  --focus-blur: 2.2px;
+  pointer-events: none;
+}
+
+.panel-results.focus-rotator .panel-result.is-active {
+  --focus-opacity: 1;
+  --focus-scale: 1;
+  --focus-shift: 0px;
+  --focus-depth: 0px;
+  --focus-rotate-x: 0deg;
+  --focus-rotate-y: 0deg;
+  --focus-rotate-z: 0deg;
+  --focus-blur: 0px;
+  pointer-events: auto;
+  z-index: 3;
+}
+
+.panel-results.focus-rotator .panel-result.is-next {
+  --focus-opacity: 0.2;
+  --focus-scale: 0.95;
+  --focus-shift: 26px;
+  --focus-depth: -96px;
+  --focus-rotate-x: 6deg;
+  --focus-rotate-y: -3deg;
+  --focus-rotate-z: -0.45deg;
+  --focus-blur: 1.8px;
+  clip-path: inset(56% 0 0 0 round 14px);
+  z-index: 1;
+}
+
+.panel-results.focus-rotator .panel-result.is-next .panel-result-copy {
+  opacity: 0;
+}
+
+.panel-results.focus-rotator .panel-result.is-next .panel-result-head {
+  opacity: 0.72;
+}
+
+.panel-results.focus-rotator .panel-result.is-exiting {
+  --focus-shift: -20px;
+  --focus-depth: -80px;
+  --focus-rotate-x: -8deg;
+  --focus-rotate-y: 4deg;
+  --focus-rotate-z: 0.9deg;
+  --focus-blur: 2.4px;
+  z-index: 1;
 }
 
 .panel-result-head {
@@ -505,7 +641,7 @@ section {
 
 .panel-result strong {
   display: block;
-  font-size: 1rem;
+  font-size: 1.08rem;
   letter-spacing: -0.01em;
   margin-top: 0.05rem;
   color: #f6f6fa;
@@ -516,7 +652,7 @@ section {
   margin: 0.42rem 0 0;
   display: block;
   color: #c9c9cf;
-  font-size: 0.88rem;
+  font-size: 0.94rem;
   line-height: 1.4;
   transform: translateZ(8px);
 }
@@ -596,7 +732,7 @@ section {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 1.2rem;
   will-change: transform;
 }
 
@@ -612,6 +748,17 @@ section {
 .panel-card {
   grid-column: span 3;
   padding: 1rem;
+}
+
+.hero-panel-kicker {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #d5d5da;
+  margin-bottom: 0.25rem;
+}
+
+.section-kicker.hero-panel-kicker {
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
 }
 
 .panel-label,

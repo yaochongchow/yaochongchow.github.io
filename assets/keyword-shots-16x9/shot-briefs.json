@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "notes": "Shot brief captured from the portfolio asset planning conversation. These are the target visual directions for categories 4 through 8.",
+  "categories": [
+    {
+      "slug": "latency",
+      "title": "Latency",
+      "focus": "performance metrics, speed",
+      "shots": [
+        {
+          "order": 1,
+          "title": "p95 latency graph",
+          "direction": "before vs after",
+          "notes": "Use strong measured numbers and show them prominently."
+        },
+        {
+          "order": 2,
+          "title": "Load test results",
+          "direction": "req/sec vs latency",
+          "notes": "Prefer real benchmark tooling such as k6, wrk, or ghz."
+        },
+        {
+          "order": 3,
+          "title": "Grafana dashboard",
+          "direction": "latency panels",
+          "notes": "Use real panel titles and metrics where possible."
+        },
+        {
+          "order": 4,
+          "title": "Terminal benchmark output",
+          "direction": "k6 / wrk / ghz",
+          "notes": "Show real commands and results if available."
+        },
+        {
+          "order": 5,
+          "title": "Real-time delay dashboard",
+          "direction": "telemetry lag / refresh time",
+          "notes": "Use live dashboard or streaming update visuals."
+        }
+      ]
+    },
+    {
+      "slug": "reliability",
+      "title": "Reliability",
+      "focus": "stability, fault tolerance",
+      "shots": [
+        {
+          "order": 1,
+          "title": "Failover / redundancy diagram",
+          "direction": "multiple instances + load balancer",
+          "notes": "Best fit: distributed rate limiter replicas behind Envoy."
+        },
+        {
+          "order": 2,
+          "title": "Retry / backoff logic flow",
+          "direction": "LLM + backend retry path",
+          "notes": "Highlight graceful retries instead of brittle failure."
+        },
+        {
+          "order": 3,
+          "title": "Chaos testing screenshot",
+          "direction": "killing containers, restarting services",
+          "notes": "Best fit: chaos controls in the rate limiter debug dashboard."
+        },
+        {
+          "order": 4,
+          "title": "Error handling logs",
+          "direction": "graceful failures instead of crashes",
+          "notes": "Prefer structured logs with fallback / retry context."
+        },
+        {
+          "order": 5,
+          "title": "Queue buffering",
+          "direction": "Redis / SQS handling spikes",
+          "notes": "Use Redis Streams or SQS where possible."
+        }
+      ]
+    },
+    {
+      "slug": "observability",
+      "title": "Observability",
+      "focus": "logs, metrics, monitoring",
+      "shots": [
+        {
+          "order": 1,
+          "title": "Amazon CloudWatch dashboard",
+          "direction": "metrics + alarms",
+          "notes": "Very strong fit for AWS / logger work."
+        },
+        {
+          "order": 2,
+          "title": "Structured logs",
+          "direction": "JSON logger output",
+          "notes": "Prefer Lambda or backend logger output."
+        },
+        {
+          "order": 3,
+          "title": "Metrics dashboard",
+          "direction": "request rate, errors, throughput",
+          "notes": "Can use Prometheus or Grafana if CloudWatch is not the only source."
+        },
+        {
+          "order": 4,
+          "title": "Tracing",
+          "direction": "request path across services",
+          "notes": "Use Tempo or trace-like flow if available."
+        },
+        {
+          "order": 5,
+          "title": "Custom metrics",
+          "direction": "TotalObjectSize metric example",
+          "notes": "Use explicit metric names rather than generic labels."
+        }
+      ]
+    },
+    {
+      "slug": "performance",
+      "title": "Performance",
+      "focus": "throughput, efficiency",
+      "shots": [
+        {
+          "order": 1,
+          "title": "Throughput graph",
+          "direction": "req/sec",
+          "notes": "Best fit: the 12K rps rate limiter."
+        },
+        {
+          "order": 2,
+          "title": "DB query optimization",
+          "direction": "EXPLAIN ANALYZE before / after",
+          "notes": "Prefer real SQL or PostgreSQL optimization output."
+        },
+        {
+          "order": 3,
+          "title": "Redis hit rate / cache usage",
+          "direction": "optimization impact",
+          "notes": "Use Redis stats if available."
+        },
+        {
+          "order": 4,
+          "title": "CPU / memory improvements",
+          "direction": "before vs after",
+          "notes": "Use runtime or profiling output where possible."
+        },
+        {
+          "order": 5,
+          "title": "Streaming performance metrics",
+          "direction": "1.2M records/hour",
+          "notes": "Visualize sustained throughput clearly."
+        }
+      ]
+    },
+    {
+      "slug": "debugging",
+      "title": "Debugging",
+      "focus": "how you find and fix problems",
+      "shots": [
+        {
+          "order": 1,
+          "title": "Debug logs showing issue",
+          "direction": "before fix",
+          "notes": "Show the failure signal clearly."
+        },
+        {
+          "order": 2,
+          "title": "Wireshark / packet inspection",
+          "direction": "network-level debugging",
+          "notes": "Very strong fit if real captures exist."
+        },
+        {
+          "order": 3,
+          "title": "Step-by-step trace",
+          "direction": "request flow breakdown",
+          "notes": "Use service trace or explicit sequence path."
+        },
+        {
+          "order": 4,
+          "title": "Console debugging session",
+          "direction": "Node logs / backend tracing",
+          "notes": "Prefer real terminal context over generic code snippets."
+        },
+        {
+          "order": 5,
+          "title": "Flame graph / profiler",
+          "direction": "performance debugging",
+          "notes": "Huge bonus if a real profiler artifact exists."
+        }
+      ]
+    }
+  ]
+}
