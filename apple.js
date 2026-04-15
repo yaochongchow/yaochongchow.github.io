@@ -345,51 +345,44 @@
       updateRailTone(id);
     };
 
-    const pickInitialId = () => {
-      const anchorY = window.innerHeight * 0.35;
-      const nearest = sectionLinks.reduce(
-        (best, entry) => {
-          const distance = Math.abs(entry.section.getBoundingClientRect().top - anchorY);
-          if (distance < best.distance) {
-            return { id: entry.id, distance };
-          }
-
-          return best;
-        },
-        { id: sectionLinks[0].id, distance: Number.POSITIVE_INFINITY }
-      );
-
-      return nearest.id;
+    const getOrderedSections = () => {
+      return sectionLinks
+        .map((entry) => ({
+          ...entry,
+          top: entry.section.getBoundingClientRect().top + window.scrollY,
+        }))
+        .sort((a, b) => a.top - b.top);
     };
 
-    let activeId = pickInitialId();
-    setActive(activeId);
+    const findActiveId = () => {
+      const orderedSections = getOrderedSections();
+      const activationOffset = Math.min(160, window.innerHeight * 0.2);
+      const scrollAnchor = window.scrollY + activationOffset;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      let currentId = orderedSections[0].id;
 
-        if (!visible.length) {
-          return;
+      orderedSections.forEach(({ id, top }) => {
+        if (top <= scrollAnchor) {
+          currentId = id;
         }
+      });
 
-        const nextId = visible[0].target.id;
-        if (nextId !== activeId) {
-          activeId = nextId;
-          setActive(activeId);
-        }
-      },
-      {
-        rootMargin: "-45% 0px -45% 0px",
-        threshold: 0,
+      return currentId;
+    };
+
+    let activeId = "";
+
+    const syncActive = () => {
+      const nextId = findActiveId();
+      if (nextId !== activeId) {
+        activeId = nextId;
       }
-    );
+      setActive(activeId);
+    };
 
-    sectionLinks.forEach(({ section }) => observer.observe(section));
-    window.addEventListener("resize", () => setActive(activeId));
-
+    syncActive();
+    window.addEventListener("scroll", syncActive, { passive: true });
+    window.addEventListener("resize", syncActive);
   }
 
   function setupMetricCountUp() {
