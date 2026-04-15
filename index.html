@@ -173,100 +173,294 @@
         <aside class="hero-panel" aria-label="Role fit and recent production context">
           <p id="core-skill" class="section-kicker hero-panel-kicker reveal">Core Skill</p>
 
-          <details class="work-toggle skills-menu reveal">
-            <summary>
-              <span class="toggle-copy">
-                <span class="toggle-title">Software Skills</span>
-                <span class="toggle-hint" aria-hidden="true"></span>
-              </span>
-            </summary>
-            <div class="toggle-content">
-                <div class="skill-groups">
-                  <div class="skill-group">
-                    <p class="skill-label">Backend</p>
-                    <p class="skill-value">Node.js, Go, Python, REST APIs, gRPC, WebSockets</p>
-                  </div>
-                  <div class="skill-group">
-                    <p class="skill-label">Data &amp; Infrastructure</p>
-                    <p class="skill-value">PostgreSQL, Redis, MySQL, DynamoDB, Docker, Kubernetes, Apache Kafka</p>
-                  </div>
-                  <div class="skill-group">
-                    <p class="skill-label">Cloud &amp; Observability</p>
-                    <p class="skill-value">AWS, Linux, CloudWatch, Prometheus, Grafana, Git, CI/CD</p>
-                  </div>
-                  <div class="skill-group">
-                    <p class="skill-label">Core Strengths</p>
-                    <p class="skill-value">Distributed Systems, Microservices, API Design, Real-time Streaming, Performance Tuning, Database Optimization, Observability</p>
-                  </div>
-                  <div class="skill-group">
-                    <p class="skill-label">Additional Depth</p>
-                    <p class="skill-value">Django, React.js, Java, TypeScript, JavaScript, SQL, C</p>
-                  </div>
-                  <div class="skill-group">
-                    <p class="skill-label">Applied ML</p>
-                    <p class="skill-value">PyTorch, TensorFlow, scikit-learn, Pandas, NumPy, CUDA, cuML, Jupyter</p>
-                  </div>
-                </div>
-            </div>
-          </details>
-
-          <details class="work-toggle skills-menu reveal">
-            <summary>
-              <span class="toggle-copy">
-                <span class="toggle-title">Robotics Skills</span>
-                <span class="toggle-hint" aria-hidden="true"></span>
-              </span>
-            </summary>
-            <div class="toggle-content">
-                <div class="skill-groups">
-                  <div class="skill-group">
-                    <p class="skill-label">Robotics and Systems</p>
-                    <p class="skill-value">ROS2, Nav2, Gazebo, RViz, URDF/xacro, tf2, rosbag2, waypoint navigation, kinematics, PID control, diagnostics (rqt robot monitor, diagnostic updater), digital filtering</p>
-                  </div>
-                  <div class="skill-group">
-                    <p class="skill-label">Embedded and Firmware</p>
-                    <p class="skill-value">C/C++, BLE, RTOS concepts, on-device instrumentation, UART/RTT logging</p>
-                  </div>
-                  <div class="skill-group">
-                    <p class="skill-label">Backend and Data Pipelines</p>
-                    <p class="skill-value">Node.js, WebSockets, PostgreSQL, real-time telemetry ingestion, time-series schema design, sensor data logging/visualization</p>
-                  </div>
-                  <div class="skill-group">
-                    <p class="skill-label">Perception</p>
-                    <p class="skill-value">OpenCV, PyTorch, real-time vision pipelines</p>
-                  </div>
-                  <div class="skill-group">
-                    <p class="skill-label">Mechanical and Integration</p>
-                    <p class="skill-value">SolidWorks (FEA, GD&amp;T), NX, Fusion 360, prototyping, lathe/mill operation</p>
-                  </div>
-                </div>
-            </div>
-          </details>
-
-          <details class="work-toggle skills-menu profile-menu reveal">
-            <summary>
-              <span class="toggle-copy">
-                <span class="toggle-title">Profile Snapshot</span>
-                <span class="toggle-hint" aria-hidden="true"></span>
-              </span>
-            </summary>
-            <div class="toggle-content">
-              <div class="skill-groups">
-                <div class="skill-group">
-                  <p class="skill-label">Education</p>
-                  <p class="skill-value">MS in Computer Science from Northeastern University.</p>
-                </div>
-                <div class="skill-group">
-                  <p class="skill-label">Education</p>
-                  <p class="skill-value">MS in Electrical and Computer Engineering from Purdue University with embedded systems focus (In Progress).</p>
-                </div>
-                <div class="skill-group">
-                  <p class="skill-label">Education</p>
-                  <p class="skill-value">BS in Mechanical Engineering from The Ohio State University.</p>
-                </div>
+          <section class="panel-card skill-explorer reveal" aria-label="Core skill explorer">
+            <div class="skill-explorer-head">
+              <div>
+                <p class="skill-explorer-kicker">Skill Explorer</p>
+                <p class="skill-explorer-intro">
+                  Choose a lane, then open a category for the tools and systems behind it.
+                </p>
               </div>
             </div>
-          </details>
+
+            <div class="skill-segmented" role="tablist" aria-label="Core skill categories">
+              <button
+                class="skill-segment is-active"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="skill-panel-software"
+                tabindex="0"
+                data-skill-target="software"
+              >
+                Software
+              </button>
+              <button
+                class="skill-segment"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="skill-panel-robotics"
+                tabindex="-1"
+                data-skill-target="robotics"
+              >
+                Robotics
+              </button>
+              <button
+                class="skill-segment"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="skill-panel-education"
+                tabindex="-1"
+                data-skill-target="education"
+              >
+                Education
+              </button>
+            </div>
+
+            <div class="skill-panel-stage">
+              <section
+                class="skill-panel is-active"
+                id="skill-panel-software"
+                role="tabpanel"
+                data-skill-panel="software"
+                aria-hidden="false"
+              >
+                <div class="skill-card-grid">
+                  <button class="skill-card is-active" type="button" data-skill-card="software-backend">
+                    <span class="skill-card-icon">API</span>
+                    <span class="skill-card-label">Backend</span>
+                    <span class="skill-card-glance">Services, APIs, and real-time transport.</span>
+                  </button>
+                  <button class="skill-card" type="button" data-skill-card="software-data">
+                    <span class="skill-card-icon">DB</span>
+                    <span class="skill-card-label">Data &amp; Infra</span>
+                    <span class="skill-card-glance">Storage, messaging, containers, and runtime plumbing.</span>
+                  </button>
+                  <button class="skill-card" type="button" data-skill-card="software-observability">
+                    <span class="skill-card-icon">OBS</span>
+                    <span class="skill-card-label">Cloud &amp; Ops</span>
+                    <span class="skill-card-glance">Cloud deployment, Linux, metrics, and delivery.</span>
+                  </button>
+                  <button class="skill-card" type="button" data-skill-card="software-systems">
+                    <span class="skill-card-icon">SYS</span>
+                    <span class="skill-card-label">Systems Design</span>
+                    <span class="skill-card-glance">Reliability, performance, and distributed behavior.</span>
+                  </button>
+                  <button class="skill-card" type="button" data-skill-card="software-app">
+                    <span class="skill-card-icon">APP</span>
+                    <span class="skill-card-label">App Depth</span>
+                    <span class="skill-card-glance">Frameworks and languages used around the core stack.</span>
+                  </button>
+                  <button class="skill-card" type="button" data-skill-card="software-ml">
+                    <span class="skill-card-icon">ML</span>
+                    <span class="skill-card-label">Applied ML</span>
+                    <span class="skill-card-glance">Model tooling used in production-oriented workflows.</span>
+                  </button>
+                </div>
+                <div class="skill-detail-stage">
+                  <article class="skill-detail is-active" data-skill-detail="software-backend">
+                    <p class="skill-detail-kicker">Backend systems</p>
+                    <div class="skill-chip-row">
+                      <span>Node.js</span>
+                      <span>Go</span>
+                      <span>Python</span>
+                      <span>REST APIs</span>
+                      <span>gRPC</span>
+                      <span>WebSockets</span>
+                    </div>
+                  </article>
+                  <article class="skill-detail" data-skill-detail="software-data" aria-hidden="true">
+                    <p class="skill-detail-kicker">Data and infrastructure</p>
+                    <div class="skill-chip-row">
+                      <span>PostgreSQL</span>
+                      <span>Redis</span>
+                      <span>MySQL</span>
+                      <span>DynamoDB</span>
+                      <span>Docker</span>
+                      <span>Kubernetes</span>
+                      <span>Apache Kafka</span>
+                    </div>
+                  </article>
+                  <article class="skill-detail" data-skill-detail="software-observability" aria-hidden="true">
+                    <p class="skill-detail-kicker">Cloud and observability</p>
+                    <div class="skill-chip-row">
+                      <span>AWS</span>
+                      <span>Linux</span>
+                      <span>CloudWatch</span>
+                      <span>Prometheus</span>
+                      <span>Grafana</span>
+                      <span>Git</span>
+                      <span>CI/CD</span>
+                    </div>
+                  </article>
+                  <article class="skill-detail" data-skill-detail="software-systems" aria-hidden="true">
+                    <p class="skill-detail-kicker">Core strengths</p>
+                    <div class="skill-chip-row">
+                      <span>Distributed Systems</span>
+                      <span>Microservices</span>
+                      <span>API Design</span>
+                      <span>Real-time Streaming</span>
+                      <span>Performance Tuning</span>
+                      <span>Database Optimization</span>
+                      <span>Observability</span>
+                    </div>
+                  </article>
+                  <article class="skill-detail" data-skill-detail="software-app" aria-hidden="true">
+                    <p class="skill-detail-kicker">Additional depth</p>
+                    <div class="skill-chip-row">
+                      <span>Django</span>
+                      <span>React.js</span>
+                      <span>Java</span>
+                      <span>TypeScript</span>
+                      <span>JavaScript</span>
+                      <span>SQL</span>
+                      <span>C</span>
+                    </div>
+                  </article>
+                  <article class="skill-detail" data-skill-detail="software-ml" aria-hidden="true">
+                    <p class="skill-detail-kicker">Applied ML</p>
+                    <div class="skill-chip-row">
+                      <span>PyTorch</span>
+                      <span>TensorFlow</span>
+                      <span>scikit-learn</span>
+                      <span>Pandas</span>
+                      <span>NumPy</span>
+                      <span>CUDA</span>
+                      <span>cuML</span>
+                      <span>Jupyter</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
+
+              <section
+                class="skill-panel"
+                id="skill-panel-robotics"
+                role="tabpanel"
+                data-skill-panel="robotics"
+                aria-hidden="true"
+              >
+                <div class="skill-card-grid">
+                  <button class="skill-card is-active" type="button" data-skill-card="robotics-systems">
+                    <span class="skill-card-icon">ROS</span>
+                    <span class="skill-card-label">Systems</span>
+                    <span class="skill-card-glance">Navigation, simulation, diagnostics, and control loops.</span>
+                  </button>
+                  <button class="skill-card" type="button" data-skill-card="robotics-firmware">
+                    <span class="skill-card-icon">FW</span>
+                    <span class="skill-card-label">Embedded</span>
+                    <span class="skill-card-glance">Firmware-adjacent tooling and device instrumentation.</span>
+                  </button>
+                  <button class="skill-card" type="button" data-skill-card="robotics-telemetry">
+                    <span class="skill-card-icon">TEL</span>
+                    <span class="skill-card-label">Telemetry</span>
+                    <span class="skill-card-glance">Backend ingestion and time-series visibility for robots.</span>
+                  </button>
+                  <button class="skill-card" type="button" data-skill-card="robotics-perception">
+                    <span class="skill-card-icon">CV</span>
+                    <span class="skill-card-label">Perception</span>
+                    <span class="skill-card-glance">Real-time vision pipelines and ML-backed sensing.</span>
+                  </button>
+                  <button class="skill-card" type="button" data-skill-card="robotics-mechanical">
+                    <span class="skill-card-icon">CAD</span>
+                    <span class="skill-card-label">Mechanical</span>
+                    <span class="skill-card-glance">Design tools and hands-on integration work.</span>
+                  </button>
+                </div>
+                <div class="skill-detail-stage">
+                  <article class="skill-detail is-active" data-skill-detail="robotics-systems">
+                    <p class="skill-detail-kicker">Robotics and systems</p>
+                    <div class="skill-chip-row">
+                      <span>ROS2</span>
+                      <span>Nav2</span>
+                      <span>Gazebo</span>
+                      <span>RViz</span>
+                      <span>URDF/xacro</span>
+                      <span>tf2</span>
+                      <span>rosbag2</span>
+                      <span>Waypoint Navigation</span>
+                      <span>Kinematics</span>
+                      <span>PID Control</span>
+                      <span>Diagnostics</span>
+                      <span>Digital Filtering</span>
+                    </div>
+                  </article>
+                  <article class="skill-detail" data-skill-detail="robotics-firmware" aria-hidden="true">
+                    <p class="skill-detail-kicker">Embedded and firmware</p>
+                    <div class="skill-chip-row">
+                      <span>C/C++</span>
+                      <span>BLE</span>
+                      <span>RTOS Concepts</span>
+                      <span>On-device Instrumentation</span>
+                      <span>UART Logging</span>
+                      <span>RTT Logging</span>
+                    </div>
+                  </article>
+                  <article class="skill-detail" data-skill-detail="robotics-telemetry" aria-hidden="true">
+                    <p class="skill-detail-kicker">Backend and data pipelines</p>
+                    <div class="skill-chip-row">
+                      <span>Node.js</span>
+                      <span>WebSockets</span>
+                      <span>PostgreSQL</span>
+                      <span>Telemetry Ingestion</span>
+                      <span>Time-series Schema Design</span>
+                      <span>Sensor Logging</span>
+                      <span>Visualization</span>
+                    </div>
+                  </article>
+                  <article class="skill-detail" data-skill-detail="robotics-perception" aria-hidden="true">
+                    <p class="skill-detail-kicker">Perception</p>
+                    <div class="skill-chip-row">
+                      <span>OpenCV</span>
+                      <span>PyTorch</span>
+                      <span>Real-time Vision Pipelines</span>
+                    </div>
+                  </article>
+                  <article class="skill-detail" data-skill-detail="robotics-mechanical" aria-hidden="true">
+                    <p class="skill-detail-kicker">Mechanical and integration</p>
+                    <div class="skill-chip-row">
+                      <span>SolidWorks</span>
+                      <span>ANSYS</span>
+                      <span>FEA</span>
+                      <span>GD&amp;T</span>
+                      <span>NX</span>
+                      <span>Fusion 360</span>
+                      <span>MATLAB</span>
+                      <span>Prototyping</span>
+                      <span>Lathe</span>
+                      <span>Welding</span>
+                      <span>Mill Operation</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
+
+              <section
+                class="skill-panel"
+                id="skill-panel-education"
+                role="tabpanel"
+                data-skill-panel="education"
+                aria-hidden="true"
+              >
+                <div class="skill-education-grid" aria-label="Education">
+                  <article class="skill-education-card">
+                    <p class="skill-education-degree">MS in Electrical and Computer Engineering</p>
+                    <p class="skill-education-school">Purdue University (In Progress)</p>
+                  </article>
+                  <article class="skill-education-card">
+                    <p class="skill-education-degree">MS in Computer Science</p>
+                    <p class="skill-education-school">Northeastern University</p>
+                  </article>
+                  <article class="skill-education-card">
+                    <p class="skill-education-degree">BS in Mechanical Engineering</p>
+                    <p class="skill-education-school">The Ohio State University</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </section>
         </aside>
       </div>
     </section>
@@ -457,161 +651,197 @@
           </p>
         </div>
 
-        <div class="experience-timeline reveal" aria-label="Experience timeline">
-          <div class="timeline-track">
-            <button class="timeline-step" type="button" data-job-index="0">
-              <span class="timeline-year">Mar 2021 - May 2022</span>
-              <span class="timeline-chip"><span class="timeline-logo">EIS</span>Engineering and Industrial Services</span>
-            </button>
-            <button class="timeline-step" type="button" data-job-index="1">
-              <span class="timeline-year">Jun 2022 - Mar 2023</span>
-              <span class="timeline-chip"><span class="timeline-logo">KT</span>Keystone Tower Systems</span>
-            </button>
-            <button class="timeline-step" type="button" data-job-index="2">
-              <span class="timeline-year">Apr 2023 - Jan 2024</span>
-              <span class="timeline-chip"><span class="timeline-logo">CE</span>Campos EPC</span>
-            </button>
-            <button class="timeline-step" type="button" data-job-index="3">
-              <span class="timeline-year">May 2024 - Aug 2024</span>
-              <span class="timeline-chip"><span class="timeline-logo">IO</span>Infinite Option</span>
-            </button>
-            <button class="timeline-step" type="button" data-job-index="4">
-              <span class="timeline-year">May 2025 - Dec 2025</span>
-              <span class="timeline-chip"><span class="timeline-logo">NL</span>NeuroLeap</span>
-            </button>
+        <div class="experience-layout">
+          <div class="experience-timeline reveal" aria-label="Experience timeline">
+            <div class="timeline-track">
+              <article
+                class="experience-card current-role is-expanded"
+                id="experience-card-0"
+                data-job-index="0"
+                aria-current="true"
+              >
+                <button
+                  class="timeline-step is-active"
+                  type="button"
+                  data-job-index="0"
+                  aria-controls="experience-detail-0"
+                  aria-expanded="true"
+                >
+                  <span class="timeline-year">May 2025 - Dec 2025</span>
+                  <span class="timeline-chip"><span class="timeline-logo">NL</span>NeuroLeap</span>
+                  <span class="timeline-role-title">Software/Embedded Engineer</span>
+                </button>
+                <div class="experience-detail" id="experience-detail-0">
+                  <div class="experience-detail-inner">
+                    <div class="experience-tags">
+                      <span>Node.js</span>
+                      <span>APIs</span>
+                      <span>Telemetry Ingestion</span>
+                      <span>PostgreSQL</span>
+                      <span>Dashboard Performance</span>
+                      <span>CloudWatch</span>
+                    </div>
+                    <p class="experience-summary">
+                      Built backend APIs and telemetry pipelines that moved real-time device data through ingestion, PostgreSQL, and dashboards with strong observability.
+                    </p>
+                    <ul class="experience-points">
+                      <li>Designed backend API and ingestion paths that moved real-time telemetry from devices into backend services and persisted it reliably for downstream dashboard reads.</li>
+                      <li>Optimized PostgreSQL indexes, query plans, and write patterns on high-volume datasets to improve p95 latency, throughput, and query stability.</li>
+                      <li>Improved dashboard performance by reducing API and database bottlenecks so telemetry updates reached users faster and with better consistency.</li>
+                      <li>Instrumented the end-to-end data flow with metrics and logs across device, API, and UI boundaries to make production debugging and root-cause analysis faster.</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="experience-card past-role"
+                id="experience-card-1"
+                data-job-index="1"
+              >
+              <button
+                class="timeline-step"
+                type="button"
+                data-job-index="1"
+                aria-controls="experience-detail-1"
+                aria-expanded="false"
+              >
+                <span class="timeline-year">May 2024 - Aug 2024</span>
+                <span class="timeline-chip"><span class="timeline-logo">IO</span>Infinite Option</span>
+                <span class="timeline-role-title">Software Engineer Intern</span>
+              </button>
+              <div class="experience-detail" id="experience-detail-1">
+                <div class="experience-detail-inner">
+                  <div class="experience-tags">
+                    <span>Node.js</span>
+                    <span>JWT</span>
+                    <span>RBAC</span>
+                    <span>Redis</span>
+                  </div>
+                  <p class="experience-summary">
+                    Built authentication and reliability improvements for a production system with daily user traffic.
+                  </p>
+                  <ul class="experience-points">
+                    <li>Worked on backend authentication and API reliability for a production system serving daily user traffic.</li>
+                    <li>Built secure authentication flows with stronger session handling, helping reduce recurring incidents and improve operational stability.</li>
+                    <li>Implemented authorization logic and access-control rules that strengthened security while keeping the system maintainable.</li>
+                    <li>Contributed to a more reliable backend by improving how authentication, session state, and incident response were handled in production.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="experience-card past-role"
+              id="experience-card-2"
+              data-job-index="2"
+            >
+              <button
+                class="timeline-step"
+                type="button"
+                data-job-index="2"
+                aria-controls="experience-detail-2"
+                aria-expanded="false"
+              >
+                <span class="timeline-year">Apr 2023 - Jan 2024</span>
+                <span class="timeline-chip"><span class="timeline-logo">CE</span>Campos EPC</span>
+                <span class="timeline-role-title">Integrity Engineer</span>
+              </button>
+              <div class="experience-detail" id="experience-detail-2">
+                <div class="experience-detail-inner">
+                  <div class="experience-tags">
+                    <span>Reliability</span>
+                    <span>Compliance</span>
+                    <span>Investigation</span>
+                    <span>Reporting</span>
+                  </div>
+                  <p class="experience-summary">
+                    Focused on reliability, compliance, and risk mitigation for safety-critical infrastructure.
+                  </p>
+                  <ul class="experience-points">
+                    <li>Worked on reliability, compliance, and risk mitigation for safety-critical infrastructure systems where failure analysis and corrective action were central to engineering decisions.</li>
+                    <li>Conducted investigations into system failures, identified root causes, and developed corrective actions to reduce repeat issues and improve operational reliability.</li>
+                    <li>Produced technical reports and engineering documentation that translated complex findings into clear actions for clients, leadership, and regulatory stakeholders.</li>
+                    <li>Built a strong foundation in structured problem solving, reliability thinking, and communicating technical risk in high-consequence environments.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="experience-card past-role"
+              id="experience-card-3"
+              data-job-index="3"
+            >
+              <button
+                class="timeline-step"
+                type="button"
+                data-job-index="3"
+                aria-controls="experience-detail-3"
+                aria-expanded="false"
+              >
+                <span class="timeline-year">Jun 2022 - Mar 2023</span>
+                <span class="timeline-chip"><span class="timeline-logo">KT</span>Keystone Tower Systems</span>
+                <span class="timeline-role-title">Mechanical Engineer</span>
+              </button>
+              <div class="experience-detail" id="experience-detail-3">
+                <div class="experience-detail-inner">
+                  <div class="experience-tags">
+                    <span>Design</span>
+                    <span>Optimization</span>
+                    <span>Integration</span>
+                    <span>Validation</span>
+                  </div>
+                  <p class="experience-summary">
+                    Designed electro-mechanical systems for automated equipment with a focus on precision and manufacturability.
+                  </p>
+                  <ul class="experience-points">
+                    <li>Designed electro-mechanical systems for automated industrial equipment in an environment where precision, manufacturability, and deployment readiness all mattered.</li>
+                    <li>Improved system performance through iterative design, structural analysis, and optimization under real-world engineering constraints.</li>
+                    <li>Worked closely with controls and manufacturing teams to ensure designs could be integrated, built, and deployed effectively.</li>
+                    <li>Strengthened my ability to think in terms of full-system behavior, cross-functional execution, and practical engineering tradeoffs.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="experience-card past-role"
+              id="experience-card-4"
+              data-job-index="4"
+            >
+              <button
+                class="timeline-step"
+                type="button"
+                data-job-index="4"
+                aria-controls="experience-detail-4"
+                aria-expanded="false"
+              >
+                <span class="timeline-year">Mar 2021 - May 2022</span>
+                <span class="timeline-chip"><span class="timeline-logo">EIS</span>Engineering and Industrial Services</span>
+                <span class="timeline-role-title">Mechanical Engineer</span>
+              </button>
+              <div class="experience-detail" id="experience-detail-4">
+                <div class="experience-detail-inner">
+                  <div class="experience-tags">
+                    <span>Coordination</span>
+                    <span>Execution</span>
+                    <span>Prototyping</span>
+                    <span>Ownership</span>
+                  </div>
+                  <p class="experience-summary">
+                    Led machine design and project delivery across industrial machinery and fabrication projects.
+                  </p>
+                  <ul class="experience-points">
+                    <li>Led engineering design and project execution across industrial machinery and fabrication projects, balancing technical requirements with delivery constraints.</li>
+                    <li>Directed prototype and machine design from concept to production readiness with a focus on feasibility, manufacturability, and execution.</li>
+                    <li>Managed stakeholder discussions, vendor coordination, and project workflows across multiple concurrent efforts.</li>
+                    <li>Built early experience in ownership, coordination, and moving complex systems from design into real-world implementation.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
           </div>
-        </div>
-
-        <div class="experience-grid">
-          <article class="experience-card past-role wheel-slot-1 reveal">
-            <div class="experience-head">
-              <div>
-                <p class="experience-role">Engineering and Industrial Services</p>
-                <h3>Mechanical Design Engineer / Project Manager</h3>
-              </div>
-              <span class="experience-date">Mar 2021 - May 2022</span>
-            </div>
-            <div class="experience-tags">
-              <span>Coordination</span>
-              <span>Execution</span>
-              <span>Prototyping</span>
-              <span>Ownership</span>
-            </div>
-            <p class="experience-summary">
-              Led machine design and project delivery across industrial machinery and fabrication projects.
-            </p>
-            <ul class="experience-points">
-              <li>Led engineering design and project execution across industrial machinery and fabrication projects, balancing technical requirements with delivery constraints.</li>
-              <li>Directed prototype and machine design from concept to production readiness with a focus on feasibility, manufacturability, and execution.</li>
-              <li>Managed stakeholder discussions, vendor coordination, and project workflows across multiple concurrent efforts.</li>
-              <li>Built early experience in ownership, coordination, and moving complex systems from design into real-world implementation.</li>
-            </ul>
-          </article>
-
-          <article class="experience-card past-role wheel-slot-2 reveal">
-            <div class="experience-head">
-              <div>
-                <p class="experience-role">Keystone Tower Systems</p>
-                <h3>Mechanical Engineer</h3>
-              </div>
-              <span class="experience-date">Jun 2022 - Mar 2023</span>
-            </div>
-            <div class="experience-tags">
-              <span>Design</span>
-              <span>Optimization</span>
-              <span>Integration</span>
-              <span>Validation</span>
-            </div>
-            <p class="experience-summary">
-              Designed electro-mechanical systems for automated equipment with a focus on precision and manufacturability.
-            </p>
-            <ul class="experience-points">
-              <li>Designed electro-mechanical systems for automated industrial equipment in an environment where precision, manufacturability, and deployment readiness all mattered.</li>
-              <li>Improved system performance through iterative design, structural analysis, and optimization under real-world engineering constraints.</li>
-              <li>Worked closely with controls and manufacturing teams to ensure designs could be integrated, built, and deployed effectively.</li>
-              <li>Strengthened my ability to think in terms of full-system behavior, cross-functional execution, and practical engineering tradeoffs.</li>
-            </ul>
-          </article>
-
-          <article class="experience-card past-role wheel-slot-3 reveal">
-            <div class="experience-head">
-              <div>
-                <p class="experience-role">Campos EPC</p>
-                <h3>Integrity Engineer</h3>
-              </div>
-              <span class="experience-date">Apr 2023 - Jan 2024</span>
-            </div>
-            <div class="experience-tags">
-              <span>Reliability</span>
-              <span>Compliance</span>
-              <span>Investigation</span>
-              <span>Reporting</span>
-            </div>
-            <p class="experience-summary">
-              Focused on reliability, compliance, and risk mitigation for safety-critical infrastructure.
-            </p>
-            <ul class="experience-points">
-              <li>Worked on reliability, compliance, and risk mitigation for safety-critical infrastructure systems where failure analysis and corrective action were central to engineering decisions.</li>
-              <li>Conducted investigations into system failures, identified root causes, and developed corrective actions to reduce repeat issues and improve operational reliability.</li>
-              <li>Produced technical reports and engineering documentation that translated complex findings into clear actions for clients, leadership, and regulatory stakeholders.</li>
-              <li>Built a strong foundation in structured problem solving, reliability thinking, and communicating technical risk in high-consequence environments.</li>
-            </ul>
-          </article>
-
-          <article class="experience-card past-role wheel-slot-4 reveal">
-            <div class="experience-head">
-              <div>
-                <p class="experience-role">Infinite Option</p>
-                <h3>Software Engineer Intern</h3>
-              </div>
-              <span class="experience-date">May 2024 - Aug 2024</span>
-            </div>
-            <div class="experience-tags">
-              <span>Node.js</span>
-              <span>JWT</span>
-              <span>RBAC</span>
-              <span>Redis</span>
-            </div>
-            <p class="experience-summary">
-              Built authentication and reliability improvements for a production system with daily user traffic.
-            </p>
-            <ul class="experience-points">
-              <li>Worked on backend authentication and API reliability for a production system serving daily user traffic.</li>
-              <li>Built secure authentication flows with stronger session handling, helping reduce recurring incidents and improve operational stability.</li>
-              <li>Implemented authorization logic and access-control rules that strengthened security while keeping the system maintainable.</li>
-              <li>Contributed to a more reliable backend by improving how authentication, session state, and incident response were handled in production.</li>
-            </ul>
-          </article>
-
-          <article class="experience-card current-role wheel-slot-5 reveal">
-            <div class="experience-head">
-              <div>
-                <p class="experience-role">NeuroLeap</p>
-                <h3>Backend &amp; Real-Time Systems Intern</h3>
-              </div>
-              <span class="experience-date">May 2025 - Dec 2025</span>
-            </div>
-            <div class="experience-tags">
-              <span>Node.js</span>
-              <span>APIs</span>
-              <span>Telemetry Ingestion</span>
-              <span>PostgreSQL</span>
-              <span>Dashboard Performance</span>
-              <span>CloudWatch</span>
-            </div>
-            <p class="experience-summary">
-              Built backend APIs and telemetry pipelines that moved real-time device data through ingestion, PostgreSQL, and dashboards with strong observability.
-            </p>
-            <ul class="experience-points">
-              <li>Designed backend API and ingestion paths that moved real-time telemetry from devices into backend services and persisted it reliably for downstream dashboard reads.</li>
-              <li>Optimized PostgreSQL indexes, query plans, and write patterns on high-volume datasets to improve p95 latency, throughput, and query stability.</li>
-              <li>Improved dashboard performance by reducing API and database bottlenecks so telemetry updates reached users faster and with better consistency.</li>
-              <li>Instrumented the end-to-end data flow with metrics and logs across device, API, and UI boundaries to make production debugging and root-cause analysis faster.</li>
-            </ul>
-          </article>
-        </div>
-        <div class="experience-scrollbar" aria-hidden="true">
-          <span class="experience-scrollbar-thumb"></span>
         </div>
       </div>
     </section>
@@ -929,12 +1159,6 @@
         <div class="section-intro">
           <p class="section-kicker">About</p>
           <h2>Backend systems that stay predictable in production.</h2>
-          <p>
-            I build backend systems that stay reliable when things go wrong. I care about latency, failure modes, observability, and the debugging needed to keep systems trustworthy in production.
-          </p>
-          <p>
-            I work across device telemetry, backend services, and cloud infrastructure, so I can reason about the full path from data generation to system behavior. Embedded experience helps me design backend systems under real-world constraints, while backend and real-time systems remain my core focus.
-          </p>
         </div>
 
         <div class="about-grid">
@@ -968,12 +1192,6 @@
     <section id="contact">
       <div class="container contact-shell reveal">
         <p class="section-kicker">Contact</p>
-        <h2>I&rsquo;m interested in building systems where performance and reliability actually matter.</h2>
-        <p class="contact-lead">
-          I am most interested in backend and real-time systems roles where service behavior,
-          latency, reliability, and debugging in production all matter. Embedded and robotics
-          experience support my backend systems work when cross-layer integration is important.
-        </p>
         <p class="contact-meta">Open to full-time and internship roles. Usually replies within 24 hours.</p>
 
         <div class="contact-quick-actions">

@@ -588,6 +588,8 @@
       let activeIndex = 0;
       let rotationTimer = null;
       let exitTimer = null;
+      let touchStartX = 0;
+      let touchStartY = 0;
 
       const updateIndicatorDots = (currentIndex, previewIndex) => {
         dotNodes.forEach((dot, index) => {
@@ -660,6 +662,11 @@
         transitionToIndex((activeIndex + 1) % cards.length);
       };
 
+      const moveBy = (offset) => {
+        const nextIndex = (activeIndex + offset + cards.length) % cards.length;
+        transitionToIndex(nextIndex);
+      };
+
       const shouldKeepRotatingOnMobile = () => mobileLayout.matches;
 
       const stopRotation = (force = false) => {
@@ -721,6 +728,47 @@
         });
       });
 
+      group.addEventListener(
+        "touchstart",
+        (event) => {
+          const touch = event.touches[0];
+          if (!touch) {
+            return;
+          }
+
+          touchStartX = touch.clientX;
+          touchStartY = touch.clientY;
+        },
+        { passive: true }
+      );
+
+      group.addEventListener(
+        "touchend",
+        (event) => {
+          const touch = event.changedTouches[0];
+          if (!touch) {
+            return;
+          }
+
+          const deltaX = touch.clientX - touchStartX;
+          const deltaY = touch.clientY - touchStartY;
+          const absX = Math.abs(deltaX);
+          const absY = Math.abs(deltaY);
+
+          touchStartX = 0;
+          touchStartY = 0;
+
+          if (!mobileLayout.matches || absX < 42 || absX <= absY) {
+            return;
+          }
+
+          moveBy(deltaX < 0 ? 1 : -1);
+          stopRotation(true);
+          startRotation();
+        },
+        { passive: true }
+      );
+
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
           stopRotation(true);
@@ -750,6 +798,7 @@
     const projectCards = Array.from(
       document.querySelectorAll("#work .stack-card, #additional-work .support-card")
     );
+    const PRIMARY_PROJECT_TAG_LIMIT = 4;
 
     if (!projectCards.length) {
       return;
@@ -797,6 +846,19 @@
       }
     };
 
+    const buildTagGroup = (labels, className) => {
+      const group = document.createElement("div");
+      group.className = className;
+
+      labels.forEach((label) => {
+        const pill = document.createElement("span");
+        pill.textContent = label;
+        group.appendChild(pill);
+      });
+
+      return group;
+    };
+
     const isOpen = () => overlay.classList.contains("is-open");
 
     const closeOverlay = () => {
@@ -835,7 +897,33 @@
       clearNode(bodySlot);
 
       if (tagSource) {
-        tagsSlot.appendChild(tagSource.cloneNode(true));
+        const tagLabels = Array.from(tagSource.querySelectorAll("span"))
+          .map((tag) => tag.textContent?.trim() || "")
+          .filter(Boolean);
+
+        if (tagLabels.length) {
+          const primaryTags = tagLabels.slice(0, PRIMARY_PROJECT_TAG_LIMIT);
+          const secondaryTags = tagLabels.slice(PRIMARY_PROJECT_TAG_LIMIT);
+
+          tagsSlot.appendChild(
+            buildTagGroup(primaryTags, "experience-tags project-reading-tags-primary")
+          );
+
+          if (secondaryTags.length) {
+            const secondaryBlock = document.createElement("div");
+            secondaryBlock.className = "project-reading-tags-secondary";
+
+            const secondaryLabel = document.createElement("p");
+            secondaryLabel.className = "project-reading-tags-note";
+            secondaryLabel.textContent = "Also used";
+            secondaryBlock.appendChild(secondaryLabel);
+            secondaryBlock.appendChild(
+              buildTagGroup(secondaryTags, "experience-tags project-reading-tags-muted")
+            );
+
+            tagsSlot.appendChild(secondaryBlock);
+          }
+        }
       }
 
       actionLinks.forEach((link) => {
@@ -924,6 +1012,183 @@
         closeOverlay();
       }
     });
+  }
+
+  function setupSkillExplorer() {
+    const explorer = document.querySelector(".skill-explorer");
+    if (!explorer) {
+      return;
+    }
+
+    const segments = Array.from(
+      explorer.querySelectorAll(".skill-segment[data-skill-target]")
+    );
+    const panels = Array.from(
+      explorer.querySelectorAll(".skill-panel[data-skill-panel]")
+    );
+
+    if (!segments.length || !panels.length) {
+      return;
+    }
+
+    const panelState = new Map();
+
+    const getPanel = (key) =>
+      panels.find((panel) => panel.dataset.skillPanel === key) || null;
+
+    const getCards = (key) =>
+      Array.from(getPanel(key)?.querySelectorAll(".skill-card[data-skill-card]") || []);
+
+    const getDetails = (key) =>
+      Array.from(getPanel(key)?.querySelectorAll(".skill-detail[data-skill-detail]") || []);
+
+    const getDefaultCard = (key) => getCards(key)[0]?.dataset.skillCard || null;
+
+    const setActiveCard = (panelKey, cardKey) => {
+      const cards = getCards(panelKey);
+      const details = getDetails(panelKey);
+      const nextCardKey = cardKey || panelState.get(panelKey) || getDefaultCard(panelKey);
+
+      if (!nextCardKey) {
+        return;
+      }
+
+      panelState.set(panelKey, nextCardKey);
+
+      cards.forEach((card) => {
+        const isActive = card.dataset.skillCard === nextCardKey;
+        card.classList.toggle("is-active", isActive);
+        card.setAttribute("aria-pressed", String(isActive));
+      });
+
+      details.forEach((detail) => {
+        const isActive = detail.dataset.skillDetail === nextCardKey;
+        detail.classList.toggle("is-active", isActive);
+        detail.setAttribute("aria-hidden", String(!isActive));
+      });
+    };
+
+    const setActivePanel = (panelKey) => {
+      if (!panelKey) {
+        return;
+      }
+
+      segments.forEach((segment) => {
+        const isActive = segment.dataset.skillTarget === panelKey;
+        segment.classList.toggle("is-active", isActive);
+        segment.setAttribute("aria-selected", String(isActive));
+        segment.tabIndex = isActive ? 0 : -1;
+      });
+
+      panels.forEach((panel) => {
+        const isActive = panel.dataset.skillPanel === panelKey;
+        panel.classList.toggle("is-active", isActive);
+        panel.setAttribute("aria-hidden", String(!isActive));
+      });
+
+      setActiveCard(panelKey, panelState.get(panelKey) || getDefaultCard(panelKey));
+    };
+
+    segments.forEach((segment) => {
+      segment.addEventListener("click", () => {
+        const key = segment.dataset.skillTarget;
+        if (key) {
+          setActivePanel(key);
+        }
+      });
+
+      segment.addEventListener("keydown", (event) => {
+        const currentIndex = segments.indexOf(segment);
+        if (currentIndex === -1) {
+          return;
+        }
+
+        let nextIndex = null;
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          nextIndex = (currentIndex + 1) % segments.length;
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          nextIndex = (currentIndex - 1 + segments.length) % segments.length;
+        } else if (event.key === "Home") {
+          nextIndex = 0;
+        } else if (event.key === "End") {
+          nextIndex = segments.length - 1;
+        }
+
+        if (nextIndex === null) {
+          return;
+        }
+
+        event.preventDefault();
+        const nextSegment = segments[nextIndex];
+        const nextKey = nextSegment?.dataset.skillTarget;
+        if (!nextKey) {
+          return;
+        }
+
+        setActivePanel(nextKey);
+        nextSegment.focus();
+      });
+    });
+
+    panels.forEach((panel) => {
+      const panelKey = panel.dataset.skillPanel;
+      if (!panelKey) {
+        return;
+      }
+
+      const cards = getCards(panelKey);
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const cardKey = card.dataset.skillCard;
+          if (cardKey) {
+            setActiveCard(panelKey, cardKey);
+          }
+        });
+
+        card.addEventListener("keydown", (event) => {
+          const currentIndex = cards.indexOf(card);
+          if (currentIndex === -1) {
+            return;
+          }
+
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            const cardKey = card.dataset.skillCard;
+            if (cardKey) {
+              setActiveCard(panelKey, cardKey);
+            }
+            return;
+          }
+
+          let nextIndex = null;
+          if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+            nextIndex = (currentIndex + 1) % cards.length;
+          } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+            nextIndex = (currentIndex - 1 + cards.length) % cards.length;
+          } else if (event.key === "Home") {
+            nextIndex = 0;
+          } else if (event.key === "End") {
+            nextIndex = cards.length - 1;
+          }
+
+          if (nextIndex === null) {
+            return;
+          }
+
+          event.preventDefault();
+          cards[nextIndex]?.focus();
+        });
+      });
+    });
+
+    const initialPanel =
+      segments.find((segment) => segment.classList.contains("is-active"))?.dataset.skillTarget ||
+      panels[0]?.dataset.skillPanel;
+
+    if (initialPanel) {
+      setActivePanel(initialPanel);
+    }
   }
 
   function setupAboutInteractive() {
@@ -1121,38 +1386,17 @@
   }
 
   function setupExperienceWheel() {
-    const grid = document.querySelector(".experience-grid");
-    const cards = Array.from(grid?.querySelectorAll(".experience-card") || []);
-    const timelineSteps = Array.from(document.querySelectorAll(".timeline-step[data-job-index]"));
-    const scrollbar = document.querySelector(".experience-scrollbar");
-    const scrollbarThumb = scrollbar?.querySelector(".experience-scrollbar-thumb");
+    const track = document.querySelector(".timeline-track");
+    const cards = Array.from(track?.querySelectorAll(".experience-card[data-job-index]") || []);
+    const timelineSteps = Array.from(track?.querySelectorAll(".timeline-step[data-job-index]") || []);
 
-    if (!grid || !cards.length) {
+    if (!track || !cards.length || !timelineSteps.length) {
       return;
     }
 
-    const desktopLayout = window.matchMedia("(min-width: 721px)");
-    const wheelClasses = [
-      "wheel-active",
-      "wheel-left-1",
-      "wheel-left-2",
-      "wheel-left-3",
-      "wheel-left-4",
-      "wheel-right-1",
-      "wheel-right-2",
-      "wheel-right-3",
-      "wheel-right-4",
-    ];
-
-    const latestIndex = cards.length - 1;
-    let activeIndex = latestIndex;
-    let scrollTicking = false;
-    let lockedActiveIndex = null;
-    let unlockTimerId = null;
-
     const clampIndex = (index) => Math.min(Math.max(index, 0), cards.length - 1);
-    const resolveStepIndex = (step, fallbackIndex) => {
-      const parsed = Number(step.getAttribute("data-job-index"));
+    const resolveIndex = (node, fallbackIndex) => {
+      const parsed = Number(node.getAttribute("data-job-index"));
       if (!Number.isNaN(parsed) && Number.isFinite(parsed)) {
         return clampIndex(parsed);
       }
@@ -1160,264 +1404,85 @@
       return clampIndex(fallbackIndex);
     };
 
-    const updateEdgeGutters = () => {
-      if (!desktopLayout.matches) {
-        grid.style.setProperty("--wheel-edge-gutter", "0px");
-        return;
-      }
+    const scrollBehavior = prefersReducedMotion ? "auto" : "smooth";
+    let activeIndex = resolveIndex(cards[0], 0);
 
-      const referenceCard = cards[0];
-      if (!referenceCard) {
-        return;
-      }
-
-      const gutter = Math.max((grid.clientWidth - referenceCard.clientWidth) / 2, 0);
-      grid.style.setProperty("--wheel-edge-gutter", `${gutter.toFixed(1)}px`);
-    };
-
-    const updateScrollIndicator = () => {
-      if (!scrollbar || !scrollbarThumb) {
-        return;
-      }
-
-      const maxLeft = Math.max(grid.scrollWidth - grid.clientWidth, 0);
-      if (maxLeft <= 1 || grid.clientWidth <= 0) {
-        scrollbar.classList.add("is-hidden");
-        return;
-      }
-
-      scrollbar.classList.remove("is-hidden");
-
-      const trackWidth = scrollbar.clientWidth;
-      if (trackWidth <= 0) {
-        return;
-      }
-
-      const viewportRatio = Math.min(grid.clientWidth / grid.scrollWidth, 1);
-      const thumbWidth = Math.max(Math.round(trackWidth * viewportRatio), 34);
-      const travel = Math.max(trackWidth - thumbWidth, 0);
-      const progress = maxLeft > 0 ? grid.scrollLeft / maxLeft : 0;
-      const x = travel * progress;
-
-      scrollbarThumb.style.width = `${thumbWidth}px`;
-      scrollbarThumb.style.transform = `translateX(${x.toFixed(1)}px)`;
-    };
-
-    const applyWheelState = () => {
-      cards.forEach((card, index) => {
-        card.classList.remove(...wheelClasses);
-        card.removeAttribute("aria-current");
-
-        const delta = index - activeIndex;
-        if (delta === 0) {
-          card.classList.add("wheel-active");
-          card.setAttribute("aria-current", "true");
-          return;
-        }
-
-        if (delta < 0) {
-          card.classList.add(`wheel-left-${Math.min(Math.abs(delta), 4)}`);
-          return;
-        }
-
-        card.classList.add(`wheel-right-${Math.min(delta, 4)}`);
-      });
+    const setActive = (targetIndex, { scrollIntoView = false } = {}) => {
+      activeIndex = clampIndex(targetIndex);
 
       timelineSteps.forEach((step, index) => {
-        const stepIndex = resolveStepIndex(step, index);
-        const isActive = stepIndex === activeIndex;
+        const isActive = resolveIndex(step, index) === activeIndex;
         step.classList.toggle("is-active", isActive);
+        step.setAttribute("aria-expanded", String(isActive));
         if (isActive) {
           step.setAttribute("aria-current", "true");
         } else {
           step.removeAttribute("aria-current");
         }
       });
-    };
 
-    const centerCard = (index, behavior = "auto") => {
-      updateEdgeGutters();
-
-      const card = cards[clampIndex(index)];
-      if (!card) {
-        return;
-      }
-
-      const rawLeft = card.offsetLeft - (grid.clientWidth - card.clientWidth) / 2;
-      const maxLeft = Math.max(grid.scrollWidth - grid.clientWidth, 0);
-      const nextLeft = Math.min(Math.max(rawLeft, 0), maxLeft);
-      grid.scrollTo({ left: nextLeft, behavior });
-      updateScrollIndicator();
-    };
-
-    const findCenteredIndex = () => {
-      const gridRect = grid.getBoundingClientRect();
-      const viewportCenter = gridRect.left + gridRect.width * 0.5;
-
-      return cards.reduce(
-        (best, card, index) => {
-          const rect = card.getBoundingClientRect();
-          const cardCenter = rect.left + rect.width * 0.5;
-          const distance = Math.abs(cardCenter - viewportCenter);
-
-          if (distance < best.distance) {
-            return { index, distance };
+      cards.forEach((card, index) => {
+        const isActive = resolveIndex(card, index) === activeIndex;
+        card.classList.toggle("is-expanded", isActive);
+        card.setAttribute("aria-expanded", String(isActive));
+        if (isActive) {
+          card.setAttribute("aria-current", "true");
+          if (scrollIntoView) {
+            card.scrollIntoView({ block: "nearest", behavior: scrollBehavior });
           }
-
-          return best;
-        },
-        { index: activeIndex, distance: Number.POSITIVE_INFINITY }
-      ).index;
-    };
-
-    const syncFromScroll = () => {
-      updateScrollIndicator();
-      const centeredIndex = findCenteredIndex();
-      if (centeredIndex === activeIndex) {
-        return;
-      }
-
-      activeIndex = centeredIndex;
-      applyWheelState();
-    };
-
-    const navigateToCard = (index, behavior = "smooth") => {
-      activeIndex = clampIndex(index);
-      applyWheelState();
-
-      lockedActiveIndex = activeIndex;
-      if (unlockTimerId !== null) {
-        window.clearTimeout(unlockTimerId);
-      }
-      unlockTimerId = window.setTimeout(() => {
-        lockedActiveIndex = null;
-        unlockTimerId = null;
-      }, 900);
-
-      centerCard(activeIndex, behavior);
-      if (behavior === "auto") {
-        requestAnimationFrame(() => {
-          lockedActiveIndex = null;
-          if (unlockTimerId !== null) {
-            window.clearTimeout(unlockTimerId);
-            unlockTimerId = null;
-          }
-          syncFromScroll();
-        });
-      }
-    };
-
-    const onGridScroll = () => {
-      if (scrollTicking) {
-        return;
-      }
-
-      scrollTicking = true;
-      requestAnimationFrame(() => {
-        updateScrollIndicator();
-
-        if (lockedActiveIndex !== null) {
-          const centeredIndex = findCenteredIndex();
-          if (centeredIndex !== lockedActiveIndex) {
-            scrollTicking = false;
-            return;
-          }
-
-          lockedActiveIndex = null;
-          if (unlockTimerId !== null) {
-            window.clearTimeout(unlockTimerId);
-            unlockTimerId = null;
-          }
+        } else {
+          card.removeAttribute("aria-current");
         }
-
-        syncFromScroll();
-        scrollTicking = false;
       });
     };
-
-    const initializeWheel = () => {
-      activeIndex = latestIndex;
-      applyWheelState();
-      updateEdgeGutters();
-      centerCard(activeIndex);
-      requestAnimationFrame(syncFromScroll);
-    };
-
-    cards.forEach((card, index) => {
-      card.addEventListener("click", () => {
-        navigateToCard(index, "smooth");
-      });
-    });
 
     timelineSteps.forEach((step, index) => {
       step.addEventListener("click", () => {
-        navigateToCard(resolveStepIndex(step, index), "smooth");
+        setActive(resolveIndex(step, index), { scrollIntoView: true });
+      });
+
+      step.addEventListener("keydown", (event) => {
+        const currentIndex = resolveIndex(step, index);
+        let nextIndex = null;
+
+        if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+          nextIndex = currentIndex + 1;
+        } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+          nextIndex = currentIndex - 1;
+        } else if (event.key === "Home") {
+          nextIndex = 0;
+        } else if (event.key === "End") {
+          nextIndex = cards.length - 1;
+        }
+
+        if (nextIndex === null) {
+          return;
+        }
+
+        event.preventDefault();
+        const boundedIndex = clampIndex(nextIndex);
+        setActive(boundedIndex, { scrollIntoView: true });
+        timelineSteps[boundedIndex]?.focus();
       });
     });
 
-    const onGridWheel = (event) => {
-      if (!desktopLayout.matches) {
-        return;
-      }
+    cards.forEach((card, index) => {
+      const cardIndex = resolveIndex(card, index);
 
-      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
-        return;
-      }
+      card.addEventListener("click", (event) => {
+        if (event.target.closest(".timeline-step")) {
+          return;
+        }
 
-      event.preventDefault();
-      window.scrollBy({
-        top: event.deltaY,
-        left: 0,
-        behavior: "auto",
+        if (cardIndex === activeIndex) {
+          return;
+        }
+
+        setActive(cardIndex, { scrollIntoView: true });
       });
-    };
-
-    grid.addEventListener("scroll", onGridScroll, { passive: true });
-    grid.addEventListener("wheel", onGridWheel, { passive: false });
-
-    const handleLayoutChange = (event) => {
-      lockedActiveIndex = null;
-      if (unlockTimerId !== null) {
-        window.clearTimeout(unlockTimerId);
-        unlockTimerId = null;
-      }
-
-      if (!event.matches) {
-        updateEdgeGutters();
-        applyWheelState();
-        centerCard(activeIndex, "auto");
-        syncFromScroll();
-        return;
-      }
-
-      updateEdgeGutters();
-      centerCard(activeIndex);
-      syncFromScroll();
-    };
-
-    if (typeof desktopLayout.addEventListener === "function") {
-      desktopLayout.addEventListener("change", handleLayoutChange);
-    } else if (typeof desktopLayout.addListener === "function") {
-      desktopLayout.addListener(handleLayoutChange);
-    }
-
-    window.addEventListener("resize", () => {
-      updateEdgeGutters();
-      centerCard(activeIndex, "auto");
-      syncFromScroll();
     });
 
-    window.addEventListener(
-      "load",
-      () => {
-        updateEdgeGutters();
-        centerCard(activeIndex, "auto");
-        syncFromScroll();
-      },
-      { once: true }
-    );
-
-    initializeWheel();
+    setActive(activeIndex);
   }
 
   function setupRevealStagger() {
@@ -1546,6 +1611,7 @@
   setupMetricCountUp();
   setupFocusCardTilt();
   setupHeroFocusRotation();
+  setupSkillExplorer();
   setupProjectInfoCards();
   setupAboutInteractive();
   setupExperienceWheel();
