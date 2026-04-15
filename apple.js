@@ -1149,10 +1149,6 @@
     let scrollTicking = false;
     let lockedActiveIndex = null;
     let unlockTimerId = null;
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let lastTouchY = 0;
-    let touchIntent = null;
 
     const clampIndex = (index) => Math.min(Math.max(index, 0), cards.length - 1);
     const resolveStepIndex = (step, fallbackIndex) => {
@@ -1360,6 +1356,10 @@
     });
 
     const onGridWheel = (event) => {
+      if (!desktopLayout.matches) {
+        return;
+      }
+
       if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
         return;
       }
@@ -1372,71 +1372,8 @@
       });
     };
 
-    const resetTouchTracking = () => {
-      touchStartX = 0;
-      touchStartY = 0;
-      lastTouchY = 0;
-      touchIntent = null;
-    };
-
-    const onGridTouchStart = (event) => {
-      const touch = event.touches[0];
-      if (!touch) {
-        return;
-      }
-
-      touchStartX = touch.clientX;
-      touchStartY = touch.clientY;
-      lastTouchY = touch.clientY;
-      touchIntent = null;
-    };
-
-    const onGridTouchMove = (event) => {
-      if (desktopLayout.matches) {
-        return;
-      }
-
-      const touch = event.touches[0];
-      if (!touch) {
-        return;
-      }
-
-      const deltaX = touch.clientX - touchStartX;
-      const deltaY = touch.clientY - touchStartY;
-
-      if (touchIntent === null) {
-        const distance = Math.max(Math.abs(deltaX), Math.abs(deltaY));
-        if (distance < 10) {
-          return;
-        }
-
-        touchIntent = Math.abs(deltaY) > Math.abs(deltaX) ? "vertical" : "horizontal";
-      }
-
-      if (touchIntent !== "vertical") {
-        return;
-      }
-
-      if (event.cancelable) {
-        event.preventDefault();
-      }
-
-      const scrollDelta = lastTouchY - touch.clientY;
-      lastTouchY = touch.clientY;
-
-      window.scrollBy({
-        top: scrollDelta,
-        left: 0,
-        behavior: "auto",
-      });
-    };
-
     grid.addEventListener("scroll", onGridScroll, { passive: true });
     grid.addEventListener("wheel", onGridWheel, { passive: false });
-    grid.addEventListener("touchstart", onGridTouchStart, { passive: true });
-    grid.addEventListener("touchmove", onGridTouchMove, { passive: false });
-    grid.addEventListener("touchend", resetTouchTracking, { passive: true });
-    grid.addEventListener("touchcancel", resetTouchTracking, { passive: true });
 
     const handleLayoutChange = (event) => {
       lockedActiveIndex = null;
@@ -1444,7 +1381,6 @@
         window.clearTimeout(unlockTimerId);
         unlockTimerId = null;
       }
-      resetTouchTracking();
 
       if (!event.matches) {
         updateEdgeGutters();
