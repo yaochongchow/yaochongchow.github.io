@@ -386,7 +386,7 @@
   }
 
   function setupMetricCountUp() {
-    const metrics = Array.from(document.querySelectorAll("#proof-strip .proof-stat strong"));
+    const metrics = Array.from(document.querySelectorAll("#what-i-build .proof-stat strong"));
     if (!metrics.length || prefersReducedMotion) {
       return;
     }

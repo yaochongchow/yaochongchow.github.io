@@ -32,7 +32,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="apple.css?v=20" />
+  <link rel="stylesheet" href="apple.css?v=21" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -44,9 +44,9 @@
         <li><a href="#core-skill">Core Skill</a></li>
         <li><a href="#work">Flagship Project</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#proof-strip">Backend Skills</a></li>
         <li><a href="#additional-work">Supporting Systems Projects</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#what-i-build">What I Build</a></li>
         <li><a href="#contact">Contact</a></li>
         <li>
           <a
@@ -76,9 +76,9 @@
     <a class="section-rail-link" href="#core-skill"><span>Core Skill</span></a>
     <a class="section-rail-link" href="#work"><span>Flagship</span></a>
     <a class="section-rail-link" href="#experience"><span>Experience</span></a>
-    <a class="section-rail-link" href="#proof-strip"><span>Backend Skills</span></a>
     <a class="section-rail-link" href="#additional-work"><span>Projects</span></a>
     <a class="section-rail-link" href="#about"><span>About</span></a>
+    <a class="section-rail-link" href="#what-i-build"><span>What I Build</span></a>
     <a class="section-rail-link" href="#contact"><span>Contact</span></a>
   </aside>
 
@@ -843,41 +843,6 @@
       </div>
     </section>
 
-    <section id="proof-strip">
-      <div class="section-motion section-motion-metrics" aria-hidden="true">
-        <span class="motion-shape motion-shape-d" data-depth="14"></span>
-        <span class="motion-shape motion-shape-e" data-depth="10"></span>
-      </div>
-      <div class="container proof-shell">
-        <p class="section-kicker">Backend Skills</p>
-        <div class="proof-strip metrics-strip" aria-label="Core backend engineering skills">
-          <article class="proof-stat metrics-node reveal">
-            <span class="proof-stat-label">Backend Languages &amp; Services</span>
-            <strong>Go, Python, Java, Node.js</strong>
-            <p>Production backend services built around clear API contracts, reliability, and debuggability.</p>
-          </article>
-          <span class="metrics-link" aria-hidden="true"></span>
-          <article class="proof-stat metrics-node reveal">
-            <span class="proof-stat-label">Data and Storage</span>
-            <strong>PostgreSQL, Redis, DynamoDB, MySQL</strong>
-            <p>Query tuning, schema design, caching strategy, and consistency patterns for production workloads.</p>
-          </article>
-          <span class="metrics-link" aria-hidden="true"></span>
-          <article class="proof-stat metrics-node reveal">
-            <span class="proof-stat-label">Messaging &amp; Distributed Systems</span>
-            <strong>Kafka, SQS, EventBridge</strong>
-            <p>Queue-driven workflows and event-based coordination designed to remain resilient under failure.</p>
-          </article>
-          <span class="metrics-link" aria-hidden="true"></span>
-          <article class="proof-stat metrics-node reveal">
-            <span class="proof-stat-label">Cloud, Observability &amp; Delivery</span>
-            <strong>AWS, CloudWatch, Prometheus, Grafana, Docker, Kubernetes, Git, CI/CD</strong>
-            <p>Metrics-first debugging, instrumentation, deployment, and incident workflows for production systems.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section id="additional-work">
       <div class="container section-shell">
         <div class="section-intro">
@@ -1158,14 +1123,36 @@
           <h2>Backend systems that stay predictable in production.</h2>
         </div>
 
-        <div class="about-grid">
-          <article class="about-card reveal" tabindex="0" data-about-card="build">
-            <h3>What I build</h3>
-            <p>
-              Backend APIs, telemetry pipelines, and distributed services with clear boundaries and predictable production behavior.
-            </p>
-          </article>
+        <div class="proof-shell about-proof-shell reveal" id="what-i-build" tabindex="0">
+          <h3>What I build</h3>
+          <div class="proof-strip metrics-strip" aria-label="Core backend engineering skills">
+            <article class="proof-stat metrics-node reveal">
+              <span class="proof-stat-label">Backend Languages &amp; Services</span>
+              <strong>Go, Python, Java, Node.js</strong>
+              <p>Production backend services built around clear API contracts, reliability, and debuggability.</p>
+            </article>
+            <span class="metrics-link" aria-hidden="true"></span>
+            <article class="proof-stat metrics-node reveal">
+              <span class="proof-stat-label">Data and Storage</span>
+              <strong>PostgreSQL, Redis, DynamoDB, MySQL</strong>
+              <p>Query tuning, schema design, caching strategy, and consistency patterns for production workloads.</p>
+            </article>
+            <span class="metrics-link" aria-hidden="true"></span>
+            <article class="proof-stat metrics-node reveal">
+              <span class="proof-stat-label">Messaging &amp; Distributed Systems</span>
+              <strong>Kafka, SQS, EventBridge</strong>
+              <p>Queue-driven workflows and event-based coordination designed to remain resilient under failure.</p>
+            </article>
+            <span class="metrics-link" aria-hidden="true"></span>
+            <article class="proof-stat metrics-node reveal">
+              <span class="proof-stat-label">Cloud, Observability &amp; Delivery</span>
+              <strong>AWS, CloudWatch, Prometheus, Grafana, Docker, Kubernetes, Git, CI/CD</strong>
+              <p>Metrics-first debugging, instrumentation, deployment, and incident workflows for production systems.</p>
+            </article>
+          </div>
+        </div>
 
+        <div class="about-grid">
           <article class="about-card reveal" tabindex="0" data-about-card="work">
             <h3>How I work</h3>
             <ul class="check-list">
@@ -1276,6 +1263,6 @@
   </footer>
 
   <script src="script.js?v=2"></script>
-  <script src="apple.js?v=11"></script>
+  <script src="apple.js?v=12"></script>
 </body>
 </html>

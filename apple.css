@@ -312,13 +312,13 @@ section {
   left: 0;
   right: 0;
   bottom: -1px;
-  height: clamp(7rem, 16vw, 12rem);
+  height: clamp(8.5rem, 18vw, 13.5rem);
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0) 0%,
-    rgba(30, 36, 48, 0.52) 58%,
-    var(--tone-4) 86%,
-    var(--tone-5) 100%
+    rgba(30, 36, 48, 0.42) 46%,
+    rgba(101, 118, 144, 0.68) 78%,
+    var(--tone-6) 100%
   );
   pointer-events: none;
   z-index: 0;
@@ -1166,13 +1166,13 @@ section {
   line-height: 1.58;
 }
 
-#proof-strip,
+section#proof-strip,
 #about {
   background: var(--bg-light);
   color: var(--ink-dark);
 }
 
-#proof-strip {
+section#proof-strip {
   background: linear-gradient(
     180deg,
     var(--tone-1) 0%,
@@ -1188,8 +1188,10 @@ section {
   background: linear-gradient(
     180deg,
     var(--tone-1) 0%,
-    #0b1118 46%,
-    #060a10 100%
+    #0b1118 42%,
+    #060a10 74%,
+    rgba(101, 118, 144, 0.9) 90%,
+    var(--tone-6) 100%
   );
 }
 
@@ -1198,9 +1200,9 @@ section {
   overflow: hidden;
   background: linear-gradient(
     180deg,
-    var(--tone-5) 0%,
-    var(--tone-6) 20%,
-    var(--tone-7) 48%,
+    var(--tone-6) 0%,
+    #e7eef8 18%,
+    var(--tone-7) 44%,
     var(--tone-4) 74%,
     var(--tone-2) 90%,
     var(--tone-1) 100%
@@ -1226,7 +1228,8 @@ section {
 #additional-work {
   background: linear-gradient(
     180deg,
-    var(--bg-light) 0%,
+    var(--tone-6) 0%,
+    var(--bg-light) 16%,
     var(--tone-7) 44%,
     #eef3f9 78%,
     var(--bg-light) 100%
@@ -2306,6 +2309,72 @@ body.project-reading-open {
   margin-top: 0.1rem;
 }
 
+#what-i-build {
+  scroll-margin-top: 4.2rem;
+}
+
+#about .about-proof-shell {
+  width: 100%;
+  margin-top: 0.15rem;
+  position: relative;
+  padding: 1.05rem 1rem;
+  border: 1px solid rgba(36, 52, 72, 0.16);
+  background: linear-gradient(180deg, #ffffff, #f4f7fc);
+  backdrop-filter: none;
+  transform-style: preserve-3d;
+  transform:
+    perspective(920px)
+    rotateX(var(--about-proof-tilt-x, 0deg))
+    rotateY(var(--about-proof-tilt-y, 0deg))
+    translateY(var(--about-proof-lift, 0px));
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    opacity 220ms ease,
+    filter 220ms ease;
+  box-shadow: 0 12px 24px rgba(13, 26, 45, 0.08);
+  will-change: transform;
+  overflow: hidden;
+}
+
+#about .about-proof-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 8% 0%, rgba(46, 168, 255, 0.16), rgba(46, 168, 255, 0));
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+#about .about-proof-shell:focus-visible {
+  outline: 2px solid rgba(30, 126, 219, 0.62);
+  outline-offset: 2px;
+}
+
+#about .about-proof-shell h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+#about .about-proof-shell .proof-strip {
+  margin-top: 0.82rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #about .about-proof-shell:hover {
+    --about-proof-lift: -6px;
+    border-color: rgba(29, 126, 220, 0.44);
+    box-shadow: 0 22px 34px rgba(13, 40, 73, 0.16);
+  }
+
+  #about .about-proof-shell:hover::after {
+    opacity: 1;
+  }
+}
+
 #additional-work .feature-head h3,
 #additional-work .feature-link,
 #additional-work .feature-points li {
@@ -2322,7 +2391,7 @@ body.project-reading-open {
 }
 
 #about .about-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
   margin-top: 0.2rem;
 }
@@ -3143,6 +3212,10 @@ footer {
   }
 
   #about .about-card h3 {
+    font-size: 1.6rem;
+  }
+
+  #about .about-proof-shell h3 {
     font-size: 1.6rem;
   }
 
