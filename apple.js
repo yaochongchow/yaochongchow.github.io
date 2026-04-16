@@ -283,6 +283,68 @@
     });
   }
 
+  function setupAnchorNavigation() {
+    const anchorLinks = Array.from(document.querySelectorAll("a[href^='#']"));
+    if (!anchorLinks.length) {
+      return;
+    }
+
+    const getNavbarOffset = () => {
+      const navbar = document.getElementById("navbar");
+      return Math.round((navbar?.getBoundingClientRect().height || 0) + 12);
+    };
+
+    const scrollToHash = (hash, { behavior = "smooth", updateHistory = false } = {}) => {
+      const id = hash.replace(/^#/, "");
+      const target = id ? document.getElementById(id) : null;
+      if (!target) {
+        return;
+      }
+
+      const absoluteTop = target.getBoundingClientRect().top + window.scrollY;
+      const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+      const nextTop = Math.min(Math.max(absoluteTop - getNavbarOffset(), 0), maxScroll);
+
+      window.scrollTo({ top: nextTop, behavior });
+
+      if (updateHistory && window.location.hash !== `#${id}`) {
+        window.history.pushState(null, "", `#${id}`);
+      }
+    };
+
+    anchorLinks.forEach((link) => {
+      const hash = link.getAttribute("href");
+      if (!hash || hash === "#") {
+        return;
+      }
+
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        scrollToHash(hash, {
+          behavior: prefersReducedMotion ? "auto" : "smooth",
+          updateHistory: true,
+        });
+      });
+    });
+
+    const syncHashOnLoad = () => {
+      if (!window.location.hash) {
+        return;
+      }
+
+      scrollToHash(window.location.hash, { behavior: "auto" });
+    };
+
+    window.addEventListener("load", syncHashOnLoad);
+    window.addEventListener("hashchange", () => {
+      if (!window.location.hash) {
+        return;
+      }
+
+      scrollToHash(window.location.hash, { behavior: "auto" });
+    });
+  }
+
   function setupActiveNav() {
     const navLinks = Array.from(
       document.querySelectorAll(".nav-links a[href^='#'], .section-rail-link[href^='#']")
@@ -358,6 +420,11 @@
       const orderedSections = getOrderedSections();
       const activationOffset = Math.min(160, window.innerHeight * 0.2);
       const scrollAnchor = window.scrollY + activationOffset;
+
+      const atBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight - 2;
+      if (atBottom && orderedSections.length) {
+        return orderedSections[orderedSections.length - 1].id;
+      }
 
       let currentId = orderedSections[0].id;
 
@@ -1607,6 +1674,7 @@
   setupDropdownAnimation();
   setupScrollProgress();
   setupCopyEmailAction();
+  setupAnchorNavigation();
   setupActiveNav();
   setupMetricCountUp();
   setupFocusCardTilt();

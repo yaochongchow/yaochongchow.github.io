@@ -1301,11 +1301,8 @@ section#proof-strip {
   margin-top: 0.72rem;
 }
 
-#contact .section-kicker {
+#contact .section-intro .section-kicker {
   color: #d8e2f3;
-  font-size: 0.84rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
 }
 
 #contact .contact-lead {
