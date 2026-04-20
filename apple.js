@@ -1099,6 +1099,7 @@
     }
 
     const panelState = new Map();
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
     const getPanel = (key) =>
       panels.find((panel) => panel.dataset.skillPanel === key) || null;
@@ -1207,6 +1208,24 @@
 
       cards.forEach((card) => {
         card.addEventListener("click", () => {
+          const cardKey = card.dataset.skillCard;
+          if (cardKey) {
+            setActiveCard(panelKey, cardKey);
+          }
+        });
+
+        card.addEventListener("focus", () => {
+          const cardKey = card.dataset.skillCard;
+          if (cardKey) {
+            setActiveCard(panelKey, cardKey);
+          }
+        });
+
+        card.addEventListener("pointerenter", () => {
+          if (!finePointer.matches) {
+            return;
+          }
+
           const cardKey = card.dataset.skillCard;
           if (cardKey) {
             setActiveCard(panelKey, cardKey);
@@ -1328,7 +1347,7 @@
         }
       });
 
-      const isFocusedMode = bestRatio > 0.22 && window.innerWidth > 720;
+      const isFocusedMode = bestRatio > 0.22 && window.innerWidth > 960;
       aboutSection.classList.toggle("about-focus-mode", isFocusedMode);
 
       if (isFocusedMode) {
@@ -1642,7 +1661,7 @@
       const coreOffset = (progress - 0.4) * -14;
       const panelOffset = (progress - 0.4) * -22;
 
-      if (window.innerWidth <= 900) {
+      if (window.innerWidth <= 960) {
         heroCore.style.transform = "";
         heroPanel.style.transform = "";
       } else {

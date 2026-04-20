@@ -2,6 +2,7 @@ const navbar = document.getElementById("navbar");
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("nav-links");
 const animatedItems = document.querySelectorAll(".reveal");
+const NAV_COLLAPSE_BREAKPOINT = 960;
 
 function syncNavbar() {
   navbar.classList.toggle("scrolled", window.scrollY > 16);
@@ -36,7 +37,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("resize", () => {
-  if (window.innerWidth > 720) {
+  if (window.innerWidth > NAV_COLLAPSE_BREAKPOINT) {
     closeMenu();
   }
 });
