@@ -800,7 +800,7 @@ section {
 
 .skill-segmented {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(9.25rem, 1fr));
   gap: 0.36rem;
   padding: 0.34rem;
   border-radius: 18px;
@@ -1087,6 +1087,20 @@ section {
   color: #e0e6ef;
   font-size: 0.87rem;
   line-height: 1.62;
+}
+
+.skill-proof-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #e0e6ef;
+  display: grid;
+  gap: 0.34rem;
+  font-size: 0.87rem;
+  line-height: 1.56;
+}
+
+.skill-proof-list li {
+  margin: 0;
 }
 
 .skill-chip-groups {
@@ -3311,6 +3325,7 @@ footer {
   }
 
   .skill-segmented {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 0.28rem;
   }
 
@@ -3413,6 +3428,7 @@ footer {
   }
 
   .skill-proof p,
+  .skill-proof-list,
   .skill-education-copy {
     font-size: 0.8rem;
     line-height: 1.52;

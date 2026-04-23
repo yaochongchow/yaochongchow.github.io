@@ -32,7 +32,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="apple.css?v=24" />
+  <link rel="stylesheet" href="apple.css?v=25" />
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -195,6 +195,17 @@
                 type="button"
                 role="tab"
                 aria-selected="false"
+                aria-controls="skill-panel-machine-learning"
+                tabindex="-1"
+                data-skill-target="machine-learning"
+              >
+                Machine Learning
+              </button>
+              <button
+                class="skill-segment"
+                type="button"
+                role="tab"
+                aria-selected="false"
                 aria-controls="skill-panel-robotics"
                 tabindex="-1"
                 data-skill-target="robotics"
@@ -231,7 +242,7 @@
                   >
                     <span class="skill-card-icon">API</span>
                     <span class="skill-card-label">Backend Services</span>
-                    <span class="skill-card-glance">Correct APIs under concurrency, rate limits, and live traffic.</span>
+                    <span class="skill-card-glance">Backend services that stay correct, fast, and traceable under concurrent traffic.</span>
                   </button>
                   <button
                     class="skill-card"
@@ -240,8 +251,8 @@
                     aria-controls="skill-detail-software-data"
                   >
                     <span class="skill-card-icon">DB</span>
-                    <span class="skill-card-label">Data &amp; Runtime</span>
-                    <span class="skill-card-glance">Caching, queues, and storage choices that start changing system behavior.</span>
+                    <span class="skill-card-label">Data &amp; Runtime Systems</span>
+                    <span class="skill-card-glance">Storage, caching, and queue-backed systems that hold up under real load.</span>
                   </button>
                   <button
                     class="skill-card"
@@ -250,8 +261,8 @@
                     aria-controls="skill-detail-software-observability"
                   >
                     <span class="skill-card-icon">OBS</span>
-                    <span class="skill-card-label">Observability &amp; Ops</span>
-                    <span class="skill-card-glance">Metrics, logs, and traces that make production debugging feel less like archaeology.</span>
+                    <span class="skill-card-label">Observability &amp; Operations</span>
+                    <span class="skill-card-glance">Observability built around the questions engineers ask during incidents.</span>
                   </button>
                   <button
                     class="skill-card"
@@ -261,7 +272,7 @@
                   >
                     <span class="skill-card-icon">SYS</span>
                     <span class="skill-card-label">Distributed Coordination</span>
-                    <span class="skill-card-glance">Retries, ordering, and stale state across service boundaries.</span>
+                    <span class="skill-card-glance">Service workflows designed around retries, ordering, stale state, and partial failure.</span>
                   </button>
                   <button
                     class="skill-card"
@@ -271,17 +282,7 @@
                   >
                     <span class="skill-card-icon">APP</span>
                     <span class="skill-card-label">Product &amp; Operator Tools</span>
-                    <span class="skill-card-glance">Dashboards and internal tools that make the backend actually operable.</span>
-                  </button>
-                  <button
-                    class="skill-card"
-                    type="button"
-                    data-skill-card="software-ml"
-                    aria-controls="skill-detail-software-ml"
-                  >
-                    <span class="skill-card-icon">ML</span>
-                    <span class="skill-card-label">Applied ML Workflows</span>
-                    <span class="skill-card-glance">Models and inference folded into workflows you can observe and iterate on.</span>
+                    <span class="skill-card-glance">Internal tools that make backend systems easier to inspect, operate, and recover.</span>
                   </button>
                 </div>
                 <div class="skill-detail-stage">
@@ -291,20 +292,22 @@
                     data-skill-detail="software-backend"
                   >
                     <p class="skill-detail-kicker">Software / Backend Services</p>
-                    <h4 class="skill-detail-title">Backend Services (API)</h4>
-                    <p class="skill-detail-copy">Correct APIs under concurrency, rate limits, and live traffic.</p>
+                    <h4 class="skill-detail-title">Backend Services</h4>
+                    <p class="skill-detail-copy">I build backend services that stay correct, fast, and traceable under concurrent traffic.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>Fan-out amplifies everything. A race condition invisible at low traffic becomes a consistency bug at scale, and one slow handler poisons tail latency for the whole request.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>REST and gRPC API design</li>
+                          <li>Stateless service handlers</li>
+                          <li>Request deduplication and idempotency</li>
+                          <li>Rate limiting and traffic control</li>
+                          <li>p95/p99 latency reduction</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>Clean REST/gRPC contracts, stateless handlers, and request flows that are actually traceable. Not just "works in staging."</p>
-                      </article>
-                      <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>Global rate limiters, commerce checkout workflows, live telemetry ingestion paths.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>Distributed rate limiter, ShopCloud checkout workflow, live telemetry ingestion APIs.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -327,21 +330,23 @@
                     data-skill-detail="software-data"
                     aria-hidden="true"
                   >
-                    <p class="skill-detail-kicker">Software / Data &amp; Runtime</p>
-                    <h4 class="skill-detail-title">Data &amp; Runtime (DB)</h4>
-                    <p class="skill-detail-copy">Caching, queues, and storage that start changing how the system behaves.</p>
+                    <p class="skill-detail-kicker">Software / Data &amp; Runtime Systems</p>
+                    <h4 class="skill-detail-title">Data &amp; Runtime Systems</h4>
+                    <p class="skill-detail-copy">I design storage, caching, and queue-backed systems that hold up under real load.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>Hot keys, queue buildup, and write contention don't show up in unit tests. They show up when caches, queues, persistence, and containers are all interacting under real load.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>PostgreSQL query and indexing optimization</li>
+                          <li>Redis caching and atomic Lua workflows</li>
+                          <li>Queue-backed coordination</li>
+                          <li>Hot-key and write-contention mitigation</li>
+                          <li>Containerized service runtime behavior</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>Thinking through schema boundaries and cache strategy before they become production fires, not after.</p>
-                      </article>
-                      <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>Redis Cluster with Lua scripting for rate limiting, queue-backed coordination layers, relational storage workflows.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>Redis Cluster rate limiter, PostgreSQL telemetry ingestion, DynamoDB-backed commerce workflows.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -365,21 +370,23 @@
                     data-skill-detail="software-observability"
                     aria-hidden="true"
                   >
-                    <p class="skill-detail-kicker">Software / Observability &amp; Ops</p>
-                    <h4 class="skill-detail-title">Observability &amp; Ops (OBS)</h4>
-                    <p class="skill-detail-copy">Metrics, logs, and traces that make production debugging feel less like archaeology.</p>
+                    <p class="skill-detail-kicker">Software / Observability &amp; Operations</p>
+                    <h4 class="skill-detail-title">Observability &amp; Operations</h4>
+                    <p class="skill-detail-copy">I build observability around the questions engineers ask during incidents.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>p95 spikes, flapping targets, retry storms. Hard to catch if observability was bolted on after the fact. By then the signal is already noisy.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>Latency and error-rate dashboards</li>
+                          <li>Service health monitoring</li>
+                          <li>CloudWatch and Prometheus metrics</li>
+                          <li>Operational debugging views</li>
+                          <li>CI/CD and deployment visibility</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>Dashboards and alerts designed around incident questions, not just "green means good."</p>
-                      </article>
-                      <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>Prometheus/Grafana service health setups, CloudWatch operational views, distributed system dashboards for live debugging.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>Prometheus/Grafana dashboards, CloudWatch operational views, distributed system debug dashboards.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -404,31 +411,33 @@
                     aria-hidden="true"
                   >
                     <p class="skill-detail-kicker">Software / Distributed Coordination</p>
-                    <h4 class="skill-detail-title">Distributed Coordination (SYS)</h4>
-                    <p class="skill-detail-copy">Retries, ordering, and stale state across service boundaries.</p>
+                    <h4 class="skill-detail-title">Distributed Coordination</h4>
+                    <p class="skill-detail-copy">I design service workflows around retries, ordering, stale state, and partial failure.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>Racing requests, hidden partial failures, state that looks consistent but isn't. Clean code doesn't save you. You have to reason about timeouts, ordering, and where your isolation boundaries actually sit.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>Idempotency and duplicate request handling</li>
+                          <li>Event ordering and state transitions</li>
+                          <li>Backpressure and retry behavior</li>
+                          <li>Cross-service consistency</li>
+                          <li>Queue-driven workflows</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>Designing around backpressure, idempotency, and event ordering from the start rather than patching it in later.</p>
-                      </article>
-                      <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>Global rate limiting under concurrent load, queue-driven commerce flows, real-time telemetry pipelines.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>Global rate limiter, ShopCloud saga orchestration, Redis-backed session coordination.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
                       <div class="skill-chip-block">
                         <p class="skill-chip-label">Tools</p>
                         <div class="skill-chip-row">
-                          <span>Distributed Systems</span>
+                          <span>Distributed systems</span>
                           <span>Microservices</span>
-                          <span>API Design</span>
-                          <span>Real-time Streaming</span>
-                          <span>Performance Tuning</span>
+                          <span>API design</span>
+                          <span>Real-time streaming</span>
+                          <span>Performance tuning</span>
                         </div>
                       </div>
                     </div>
@@ -440,20 +449,22 @@
                     aria-hidden="true"
                   >
                     <p class="skill-detail-kicker">Software / Product &amp; Operator Tools</p>
-                    <h4 class="skill-detail-title">Product &amp; Operator Tools (APP)</h4>
-                    <p class="skill-detail-copy">Dashboards and internal tools that make the backend actually operable.</p>
+                    <h4 class="skill-detail-title">Product &amp; Operator Tools</h4>
+                    <p class="skill-detail-copy">I build internal tools that make backend systems easier to inspect, operate, and recover.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>A backend that works but can't be inspected or recovered quickly puts everything on whoever's on-call. Operators need to see state fast, not grep through logs.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>Admin dashboards</li>
+                          <li>Live system status views</li>
+                          <li>Debugging interfaces</li>
+                          <li>Operator workflows</li>
+                          <li>Frontend views over backend state</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>Internal dashboards, admin flows, and debug surfaces that expose what the system is doing in plain terms.</p>
-                      </article>
-                      <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>Live operator dashboards, commerce admin interfaces, internal debug tooling for distributed services.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>Commerce admin interface, live telemetry dashboard, distributed service debug tooling.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -470,27 +481,161 @@
                       </div>
                     </div>
                   </article>
-                  <article
-                    class="skill-detail"
-                    id="skill-detail-software-ml"
-                    data-skill-detail="software-ml"
-                    aria-hidden="true"
+                </div>
+              </section>
+
+              <section
+                class="skill-panel"
+                id="skill-panel-machine-learning"
+                role="tabpanel"
+                data-skill-panel="machine-learning"
+                aria-hidden="true"
+              >
+                <div class="skill-card-grid">
+                  <button
+                    class="skill-card is-active"
+                    type="button"
+                    data-skill-card="ml-vision"
+                    aria-controls="skill-detail-ml-vision"
                   >
-                    <p class="skill-detail-kicker">Software / Applied ML Workflows</p>
-                    <h4 class="skill-detail-title">Applied ML Workflows (ML)</h4>
-                    <p class="skill-detail-copy">Models and inference folded into workflows you can observe and iterate on.</p>
+                    <span class="skill-card-icon">CV</span>
+                    <span class="skill-card-label">Computer Vision &amp; Real-Time Inference</span>
+                    <span class="skill-card-glance">Vision pipelines that turn live input into fast, usable feedback.</span>
+                  </button>
+                  <button
+                    class="skill-card"
+                    type="button"
+                    data-skill-card="ml-gpu"
+                    aria-controls="skill-detail-ml-gpu"
+                  >
+                    <span class="skill-card-icon">GPU</span>
+                    <span class="skill-card-label">GPU Acceleration &amp; ML Systems</span>
+                    <span class="skill-card-glance">ML and vision pipelines optimized from preprocessing through inference output.</span>
+                  </button>
+                  <button
+                    class="skill-card"
+                    type="button"
+                    data-skill-card="ml-applied"
+                    aria-controls="skill-detail-ml-applied"
+                  >
+                    <span class="skill-card-icon">ML</span>
+                    <span class="skill-card-label">Applied ML Workflows</span>
+                    <span class="skill-card-glance">Models connected to evaluation loops, dashboards, and real application workflows.</span>
+                  </button>
+                  <button
+                    class="skill-card"
+                    type="button"
+                    data-skill-card="ml-rl"
+                    aria-controls="skill-detail-ml-rl"
+                  >
+                    <span class="skill-card-icon">RL</span>
+                    <span class="skill-card-label">Reinforcement Learning &amp; Simulation</span>
+                    <span class="skill-card-glance">Simulation-based learning systems for navigation, policy evaluation, and failure analysis.</span>
+                  </button>
+                </div>
+                <div class="skill-detail-stage">
+                  <article
+                    class="skill-detail is-active"
+                    id="skill-detail-ml-vision"
+                    data-skill-detail="ml-vision"
+                  >
+                    <p class="skill-detail-kicker">Machine Learning / Computer Vision &amp; Real-Time Inference</p>
+                    <h4 class="skill-detail-title">Computer Vision &amp; Real-Time Inference</h4>
+                    <p class="skill-detail-copy">I build vision pipelines that turn live input into fast, usable feedback.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>Real-time vision loops and model-heavy experiments where latency and feedback quality have to coexist. Accuracy in a notebook means nothing if the surrounding system can't tell you why the output changed.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>Real-time camera pipelines</li>
+                          <li>Image preprocessing</li>
+                          <li>Object detection and face analysis</li>
+                          <li>Inference latency reduction</li>
+                          <li>Live overlays and feedback loops</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>Connecting inference to data pipelines and dashboards so the loop is observable, not just functional.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>Emoji Cam, traffic monitoring with YOLOv8, real-time facial expression recognition.</p>
+                      </article>
+                    </div>
+                    <div class="skill-chip-groups">
+                      <div class="skill-chip-block">
+                        <p class="skill-chip-label">Tools</p>
+                        <div class="skill-chip-row">
+                          <span>PyTorch</span>
+                          <span>OpenCV</span>
+                          <span>YOLOv8</span>
+                          <span>TensorFlow</span>
+                          <span>NumPy</span>
+                          <span>C++</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article
+                    class="skill-detail"
+                    id="skill-detail-ml-gpu"
+                    data-skill-detail="ml-gpu"
+                    aria-hidden="true"
+                  >
+                    <p class="skill-detail-kicker">Machine Learning / GPU Acceleration &amp; ML Systems</p>
+                    <h4 class="skill-detail-title">GPU Acceleration &amp; ML Systems</h4>
+                    <p class="skill-detail-copy">I optimize ML and vision pipelines by measuring the full path from preprocessing to inference output.</p>
+                    <div class="skill-proof-grid">
+                      <article class="skill-proof">
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>CUDA image processing kernels</li>
+                          <li>CPU vs GPU benchmarking</li>
+                          <li>Memory transfer analysis</li>
+                          <li>FP16 inference optimization</li>
+                          <li>Pipeline latency profiling</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>Perception demos, RL training dashboards, GPU-accelerated analytics pipelines.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>CUDA image processing pipeline, CUDA lane detection pipeline, FP16 real-time inference optimization.</p>
+                      </article>
+                    </div>
+                    <div class="skill-chip-groups">
+                      <div class="skill-chip-block">
+                        <p class="skill-chip-label">Tools</p>
+                        <div class="skill-chip-row">
+                          <span>CUDA</span>
+                          <span>C++</span>
+                          <span>PyTorch</span>
+                          <span>OpenCV</span>
+                          <span>cuML</span>
+                          <span>TensorRT</span>
+                          <span>Python</span>
+                          <span>Nsight</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article
+                    class="skill-detail"
+                    id="skill-detail-ml-applied"
+                    data-skill-detail="ml-applied"
+                    aria-hidden="true"
+                  >
+                    <p class="skill-detail-kicker">Machine Learning / Applied ML Workflows</p>
+                    <h4 class="skill-detail-title">Applied ML Workflows</h4>
+                    <p class="skill-detail-copy">I connect models to evaluation loops, dashboards, and real application workflows.</p>
+                    <div class="skill-proof-grid">
+                      <article class="skill-proof">
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>Model evaluation and comparison</li>
+                          <li>Imbalanced classification</li>
+                          <li>Structured experiment tracking</li>
+                          <li>Inference dashboards</li>
+                          <li>Feedback-driven iteration</li>
+                        </ul>
+                      </article>
+                      <article class="skill-proof">
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>Credit card fraud detection, facial emotion recognition, ML experiment dashboards.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -500,9 +645,49 @@
                           <span>PyTorch</span>
                           <span>TensorFlow</span>
                           <span>scikit-learn</span>
-                          <span>CUDA</span>
-                          <span>cuML</span>
+                          <span>XGBoost</span>
                           <span>Pandas</span>
+                          <span>NumPy</span>
+                          <span>Streamlit</span>
+                          <span>Plotly</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article
+                    class="skill-detail"
+                    id="skill-detail-ml-rl"
+                    data-skill-detail="ml-rl"
+                    aria-hidden="true"
+                  >
+                    <p class="skill-detail-kicker">Machine Learning / Reinforcement Learning &amp; Simulation</p>
+                    <h4 class="skill-detail-title">Reinforcement Learning &amp; Simulation</h4>
+                    <p class="skill-detail-copy">I build simulation-based learning systems for navigation, policy evaluation, and failure analysis.</p>
+                    <div class="skill-proof-grid">
+                      <article class="skill-proof">
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>Recurrent PPO training</li>
+                          <li>Custom Gymnasium environments</li>
+                          <li>Obstacle-density robustness testing</li>
+                          <li>Reward shaping</li>
+                          <li>Trajectory visualization</li>
+                        </ul>
+                      </article>
+                      <article class="skill-proof">
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>RL robot navigation environment, live training dashboard, multi-seed policy evaluation.</p>
+                      </article>
+                    </div>
+                    <div class="skill-chip-groups">
+                      <div class="skill-chip-block">
+                        <p class="skill-chip-label">Tools</p>
+                        <div class="skill-chip-row">
+                          <span>Stable-Baselines3</span>
+                          <span>Gymnasium</span>
+                          <span>Python</span>
+                          <span>Socket.IO</span>
+                          <span>Chart.js</span>
                           <span>NumPy</span>
                         </div>
                       </div>
@@ -527,7 +712,7 @@
                   >
                     <span class="skill-card-icon">ROS</span>
                     <span class="skill-card-label">Robotics Systems</span>
-                    <span class="skill-card-glance">Navigation and control loops that stay debuggable once the robot is moving.</span>
+                    <span class="skill-card-glance">Robotics systems that are easier to simulate, navigate, diagnose, and replay.</span>
                   </button>
                   <button
                     class="skill-card"
@@ -537,7 +722,7 @@
                   >
                     <span class="skill-card-icon">FW</span>
                     <span class="skill-card-label">Embedded &amp; Device Debugging</span>
-                    <span class="skill-card-glance">When the problem is near the hardware and abstractions stop helping.</span>
+                    <span class="skill-card-glance">Debugging problems at the boundary between firmware, sensors, wireless links, and hardware behavior.</span>
                   </button>
                   <button
                     class="skill-card"
@@ -547,7 +732,7 @@
                   >
                     <span class="skill-card-icon">TEL</span>
                     <span class="skill-card-label">Telemetry &amp; Visibility</span>
-                    <span class="skill-card-glance">Robot state streamed into backend services, dashboards, and history.</span>
+                    <span class="skill-card-glance">Telemetry paths that make robot and sensor behavior readable live and reviewable later.</span>
                   </button>
                   <button
                     class="skill-card"
@@ -557,7 +742,7 @@
                   >
                     <span class="skill-card-icon">CV</span>
                     <span class="skill-card-label">Perception</span>
-                    <span class="skill-card-glance">Vision pipelines that stay stable enough to drive live feedback.</span>
+                    <span class="skill-card-glance">Perception pipelines where camera input, preprocessing, inference, and feedback are visible end to end.</span>
                   </button>
                   <button
                     class="skill-card"
@@ -567,7 +752,7 @@
                   >
                     <span class="skill-card-icon">CAD</span>
                     <span class="skill-card-label">Mechanical Integration</span>
-                    <span class="skill-card-glance">Physical constraints that decide whether the system works outside a simulation.</span>
+                    <span class="skill-card-glance">Mechanical design experience applied where physical constraints affect software behavior.</span>
                   </button>
                 </div>
                 <div class="skill-detail-stage">
@@ -576,21 +761,23 @@
                     id="skill-detail-robotics-systems"
                     data-skill-detail="robotics-systems"
                   >
-                    <p class="skill-detail-kicker">Robotics / Systems</p>
-                    <h4 class="skill-detail-title">Robotics Systems (ROS)</h4>
-                    <p class="skill-detail-copy">Navigation and control loops that stay debuggable once the robot is moving.</p>
+                    <p class="skill-detail-kicker">Robotics / Robotics Systems</p>
+                    <h4 class="skill-detail-title">Robotics Systems</h4>
+                    <p class="skill-detail-copy">I build robotics systems that are easier to simulate, navigate, diagnose, and replay.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>Navigation drift, transform mismatches, and controller tuning that only reveals itself outside simulation. A stack that looks great in Gazebo can behave completely differently on hardware.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>ROS2 navigation</li>
+                          <li>Nav2 bring-up</li>
+                          <li>Gazebo simulation</li>
+                          <li>tf2 transform debugging</li>
+                          <li>rosbag2 replay and diagnostics</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>Tracing behavior through ROS2, Nav2, and sensor-driven control loops with enough visibility to diagnose problems without guessing.</p>
-                      </article>
-                      <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>Autonomous delivery robot stacks, RL-based navigation systems with improved operational visibility.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>ROS2 mobile robot stack, autonomous navigation simulation, diagnostic replay workflows.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -602,8 +789,8 @@
                           <span>Gazebo</span>
                           <span>RViz</span>
                           <span>tf2</span>
-                          <span>URDF</span>
-                          <span>PID Control</span>
+                          <span>URDF/xacro</span>
+                          <span>PID control</span>
                           <span>rosbag2</span>
                         </div>
                       </div>
@@ -616,20 +803,22 @@
                     aria-hidden="true"
                   >
                     <p class="skill-detail-kicker">Robotics / Embedded &amp; Device Debugging</p>
-                    <h4 class="skill-detail-title">Embedded &amp; Device Debugging (FW)</h4>
-                    <p class="skill-detail-copy">When the problem is near the hardware and abstractions stop helping.</p>
+                    <h4 class="skill-detail-title">Embedded &amp; Device Debugging</h4>
+                    <p class="skill-detail-copy">I debug problems at the boundary between firmware, sensors, wireless links, and hardware behavior.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>Intermittent device behavior and BLE/serial issues are nearly impossible to debug without visibility at the boundary. Higher layers hide the source fast.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>BLE packet reliability</li>
+                          <li>UART and RTT instrumentation</li>
+                          <li>CRC validation</li>
+                          <li>Device-state tracing</li>
+                          <li>Firmware-adjacent debugging</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>Getting signal through logs, interfaces, and firmware-adjacent instrumentation before the problem propagates upward.</p>
-                      </article>
-                      <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>BLE bring-up instrumentation, boundary debugging using RTT and UART logging, device-state tracing on nRF52840 hardware.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>nRF52840 BLE telemetry firmware, RTT/UART instrumentation, packet integrity validation.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -638,10 +827,11 @@
                         <div class="skill-chip-row">
                           <span>C/C++</span>
                           <span>BLE</span>
-                          <span>RTOS</span>
+                          <span>RTOS concepts</span>
                           <span>UART</span>
                           <span>RTT</span>
-                          <span>On-device Instrumentation</span>
+                          <span>CRC validation</span>
+                          <span>On-device instrumentation</span>
                         </div>
                       </div>
                     </div>
@@ -653,20 +843,22 @@
                     aria-hidden="true"
                   >
                     <p class="skill-detail-kicker">Robotics / Telemetry &amp; Visibility</p>
-                    <h4 class="skill-detail-title">Telemetry &amp; Visibility (TEL)</h4>
-                    <p class="skill-detail-copy">Robot state feeding into backend services, dashboards, and event history.</p>
+                    <h4 class="skill-detail-title">Telemetry &amp; Visibility</h4>
+                    <p class="skill-detail-copy">I build telemetry paths that make robot and sensor behavior readable live and reviewable after the fact.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>Live status, replayable state, and after-the-fact review don't come for free. Dropped updates and schema choices compound into gaps in the record fast.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>WebSocket sensor streaming</li>
+                          <li>Time-series schema design</li>
+                          <li>Live dashboards</li>
+                          <li>Replayable logs</li>
+                          <li>Sensor data ingestion</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>Ingestion paths, time-series schemas, and dashboards built so robot behavior is readable live or in review.</p>
-                      </article>
-                      <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>Live dashboards for robot navigation systems, warehouse-style telemetry pipelines.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>Live robot telemetry dashboard, WebSocket sensor pipeline, PostgreSQL-backed sensor logging.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -676,8 +868,9 @@
                           <span>Node.js</span>
                           <span>WebSockets</span>
                           <span>PostgreSQL</span>
-                          <span>Time-series Schema Design</span>
-                          <span>Sensor Logging</span>
+                          <span>Time-series schema design</span>
+                          <span>Sensor logging</span>
+                          <span>Dashboard visualization</span>
                         </div>
                       </div>
                     </div>
@@ -689,20 +882,22 @@
                     aria-hidden="true"
                   >
                     <p class="skill-detail-kicker">Robotics / Perception</p>
-                    <h4 class="skill-detail-title">Perception (CV)</h4>
-                    <p class="skill-detail-copy">Vision pipelines stable enough to drive live feedback.</p>
+                    <h4 class="skill-detail-title">Perception</h4>
+                    <p class="skill-detail-copy">I build perception pipelines where camera input, preprocessing, inference, and feedback are visible end to end.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>Unstable detections and slow inference kill the feedback loop. Inference speed, frame-to-frame consistency, and useful output all have to hold simultaneously, and they usually pull against each other.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>Real-time vision preprocessing</li>
+                          <li>Object and face detection</li>
+                          <li>CUDA-accelerated vision stages</li>
+                          <li>Inference overlays</li>
+                          <li>Detection stability</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>OpenCV and PyTorch pipelines where the output is immediately visible and usable, not just technically correct.</p>
-                      </article>
-                      <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>Emoji Cam, live face detection pipelines, real-time sensing experiments.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>Emoji Cam, traffic perception pipeline, CUDA lane detection, live face detection.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -711,7 +906,10 @@
                         <div class="skill-chip-row">
                           <span>OpenCV</span>
                           <span>PyTorch</span>
-                          <span>Real-time Vision Pipelines</span>
+                          <span>CUDA</span>
+                          <span>Real-time vision pipelines</span>
+                          <span>Image preprocessing</span>
+                          <span>Model inference</span>
                         </div>
                       </div>
                     </div>
@@ -723,20 +921,22 @@
                     aria-hidden="true"
                   >
                     <p class="skill-detail-kicker">Robotics / Mechanical Integration</p>
-                    <h4 class="skill-detail-title">Mechanical Integration (CAD)</h4>
-                    <p class="skill-detail-copy">Physical constraints that decide whether the system works outside a simulation.</p>
+                    <h4 class="skill-detail-title">Mechanical Integration</h4>
+                    <p class="skill-detail-copy">I bring mechanical design experience into robotics and embedded systems where physical constraints affect software behavior.</p>
                     <div class="skill-proof-grid">
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Challenges</span>
-                        <p>Tolerance stack-up, packaging, and manufacturability don't surface in CAD. They surface when you try to assemble or deploy the thing.</p>
+                        <span class="skill-proof-label">Focus</span>
+                        <ul class="skill-proof-list">
+                          <li>Electromechanical integration</li>
+                          <li>Tolerance stack-up</li>
+                          <li>Structural validation</li>
+                          <li>Packaging and manufacturability</li>
+                          <li>Prototype design</li>
+                        </ul>
                       </article>
                       <article class="skill-proof">
-                        <span class="skill-proof-label">Approach</span>
-                        <p>Design for assembly, validating structural assumptions early, making sure the hardware actually supports the software and controls running on top of it.</p>
-                      </article>
-                      <article class="skill-proof">
-                        <span class="skill-proof-label">Projects</span>
-                        <p>Automated equipment designs, robot mechanical integrations, prototypes machined and welded in-house.</p>
+                        <span class="skill-proof-label">Representative Work</span>
+                        <p>Automated welding equipment, electromechanical motion systems, machined and welded prototypes.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -767,25 +967,26 @@
                 <div class="skill-education-grid" aria-label="Education">
                   <article class="skill-education-card">
                     <p class="skill-education-degree">MS in Electrical and Computer Engineering</p>
-                    <p class="skill-education-school">Purdue University (In Progress)</p>
+                    <p class="skill-education-school">Purdue University, in progress</p>
                     <p class="skill-education-copy">
-                      Deepening systems and hardware-software thinking that supports backend and
-                      robotics work.
+                      Focused on embedded systems, computer architecture, hardware-software
+                      interaction, robotics, and systems engineering.
                     </p>
                   </article>
                   <article class="skill-education-card">
                     <p class="skill-education-degree">MS in Computer Science</p>
                     <p class="skill-education-school">Northeastern University</p>
                     <p class="skill-education-copy">
-                      Strengthened software design, data structures, and systems problem-solving.
+                      Focused on software engineering, algorithms, data structures, backend
+                      systems, databases, and distributed system design.
                     </p>
                   </article>
                   <article class="skill-education-card">
                     <p class="skill-education-degree">BS in Mechanical Engineering</p>
                     <p class="skill-education-school">The Ohio State University</p>
                     <p class="skill-education-copy">
-                      Built full-system thinking across physical constraints, manufacturability,
-                      and integration.
+                      Focused on mechanical design, structural analysis, manufacturability,
+                      physical systems, and full-system integration.
                     </p>
                   </article>
                 </div>
