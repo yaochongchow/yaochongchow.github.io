@@ -555,7 +555,7 @@
                       </article>
                       <article class="skill-proof">
                         <span class="skill-proof-label">Representative Work</span>
-                        <p>Emoji Cam, traffic monitoring with YOLOv8, real-time facial expression recognition.</p>
+                        <p>CUDA traffic analytics pipeline, YOLOv8 vehicle detection, real-time lane perception.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -897,7 +897,7 @@
                       </article>
                       <article class="skill-proof">
                         <span class="skill-proof-label">Representative Work</span>
-                        <p>Emoji Cam, traffic perception pipeline, CUDA lane detection, live face detection.</p>
+                        <p>CUDA traffic analytics pipeline, traffic perception pipeline, CUDA lane detection.</p>
                       </article>
                     </div>
                     <div class="skill-chip-groups">
@@ -1549,13 +1549,13 @@
             <div class="support-grid">
               <article
                 class="support-card reveal"
-                data-project-glance="Real-time traffic monitoring pipeline built on computer vision."
-                data-project-summary="Computer vision pipeline for traffic monitoring with stable frame processing and event extraction."
+                data-project-glance="Phased real-time traffic analytics system comparing CPU OpenCV lanes, YOLOv8 detection, and CUDA acceleration."
+                data-project-summary="CUDA traffic analytics pipeline with baseline and advanced lane detection, optional YOLOv8 vehicle tracking, GPU preprocessing, and RTX 3080 Ti CPU-vs-GPU benchmarks."
               >
                 <div class="support-media image-media">
                   <img
-                    src="https://raw.githubusercontent.com/yaochongchow/traffic-monitor/main/demo_small.gif"
-                    alt="Traffic Monitoring System demo"
+                    src="https://raw.githubusercontent.com/yaochongchow/cuda-traffic-analytics-pipeline/main/docs/assets/demo_small.gif"
+                    alt="CUDA traffic analytics pipeline demo"
                     loading="lazy"
                   />
                 </div>
@@ -1565,13 +1565,13 @@
                       <div class="experience-tags">
                         <span>Python</span>
                         <span>OpenCV</span>
+                        <span>CUDA</span>
                         <span>YOLOv8</span>
-                        <span>PyTorch</span>
                       </div>
-                      <h3>Traffic Monitoring System</h3>
+                      <h3>CUDA Traffic Analytics Pipeline</h3>
                     </div>
                     <a
-                      href="https://github.com/yaochongchow/traffic-monitor"
+                      href="https://github.com/yaochongchow/cuda-traffic-analytics-pipeline"
                       target="_blank"
                       rel="noopener noreferrer"
                       class="feature-link"
@@ -1580,8 +1580,8 @@
                     </a>
                   </div>
                   <ul class="feature-points compact-points">
-                    <li>Built a real-time perception pipeline with deterministic stage behavior under load.</li>
-                    <li>Designed outputs for monitoring and analytics with strong observability.</li>
+                    <li>Built baseline and advanced lane paths with perspective warp, color masks, temporal tracking, and optional YOLOv8 vehicle detection.</li>
+                    <li>Validated the CUDA lane path on an RTX 3080 Ti, reaching about 96.5 FPS and a 2.69x speedup on 1080p footage.</li>
                   </ul>
                 </div>
               </article>
@@ -1624,46 +1624,6 @@
                   </ul>
                 </div>
               </article>
-
-              <article
-                class="support-card reveal"
-                data-project-glance="Real-time vision interface that maps facial expressions to emoji feedback."
-                data-project-summary="Real-time vision app that maps facial emotion inference into responsive camera feedback."
-              >
-                <div class="support-media image-media">
-                  <img
-                    src="https://raw.githubusercontent.com/yaochongchow/emoji-cam/main/demo.gif"
-                    alt="Emoji Cam demo"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="support-body">
-                  <div class="feature-head">
-                    <div>
-                      <div class="experience-tags">
-                        <span>Python</span>
-                        <span>OpenCV</span>
-                        <span>FER</span>
-                        <span>MTCNN</span>
-                      </div>
-                      <h3>Emoji Cam</h3>
-                    </div>
-                    <a
-                      href="https://github.com/yaochongchow/emoji-cam"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="feature-link"
-                    >
-                      View Repo
-                    </a>
-                  </div>
-                  <ul class="feature-points compact-points">
-                    <li>Implemented a low-latency inference loop with stable processing and rendering.</li>
-                    <li>Exposed tracked outputs through a debuggable interface with consistent updates.</li>
-                  </ul>
-                </div>
-              </article>
-
 
               <article
                 class="support-card reveal"
